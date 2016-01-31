@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     private float speed = 8.0f;
     private float jumpForce = 1100.0f;
     private int direction = 1;
+    private bool isGrounded = false;
 
     void Start() {
         mainCamera = Camera.main;
@@ -22,30 +23,42 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 
-        if (Input.GetMouseButton(0)) {
-            animator.SetBool("Moving", true);
+        // Check for Ground
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 2.5f), 0.1f, whatIsGround) != null) {
+            isGrounded = true;
+            animator.SetBool("Grounded", true);
+        }
+        else {
+            isGrounded = false;
+            animator.SetBool("Grounded", false);
+        }
 
+        // Movement Input
+        if (Input.GetMouseButton(0)) {
             if (mainCamera.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
                 direction = 1;
             else
                 direction = -1;
-            
-            transform.Translate(direction * speed * Time.deltaTime, 0, 0);
         }
         else {
-            animator.SetBool("Moving", false);
+            direction = 0;
         }
 
+        // Jumping Input
         if (Input.GetMouseButtonDown(1)) {
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 2.5f), 0.1f, whatIsGround) != null) {
+            if (isGrounded) {
                 rigidbody.AddForce(new Vector2(0, jumpForce));
             }
         }
 	}
 
-    void Flip() {
-        Debug.Log("Flipping");
-        transform.localScale = new Vector3(direction*transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    void FixedUpdate() {
+        // Move the character
+        rigidbody.velocity = new Vector2(direction*speed, rigidbody.velocity.y);
+
+        // Set speed variables for animator
+        animator.SetFloat("Speed", rigidbody.velocity.x);
+        animator.SetFloat("Vertical Velocity", rigidbody.velocity.y);
     }
 
 }
