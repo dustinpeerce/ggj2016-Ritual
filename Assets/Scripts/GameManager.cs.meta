@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: e016d0e16cfaaf343b4ba5d51a87ad9a
-timeCreated: 1454272294
+timeCreated: 1454283238
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pausePanel: {instanceID: 0}
+  - retryPanel: {instanceID: 0}
+  - nextLevelPanel: {instanceID: 0}
+  - audioLose: {instanceID: 0}
+  - audioWin: {instanceID: 0}
+  - audioPause: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

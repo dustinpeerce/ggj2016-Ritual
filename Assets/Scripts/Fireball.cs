@@ -11,8 +11,6 @@ public class Fireball : MonoBehaviour {
     private Vector3 objectPos;
     private float playerRotationAngle;
     private bool moving = false;
-    private bool gameOver = false;
-    private bool endLevel = false;
 	
 	void Start () {
 	    
@@ -46,11 +44,9 @@ public class Fireball : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Obstacle") {
-            gameOver = true;
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
-            endLevel = true;
             GameManager.instance.ActivateNextLevelPanel();
         }
     }

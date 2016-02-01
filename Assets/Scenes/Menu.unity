@@ -788,7 +788,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: .5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -957,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed5955301af13341bb7e2b3bf9f8da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicManager: {fileID: 169084, guid: 5553240d1d576c7459c171a1d224662c, type: 2}
 --- !u!4 &921490503
 Transform:
   m_ObjectHideFlags: 0
