@@ -12,13 +12,22 @@ public class Candle : MonoBehaviour {
     bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
     public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
+    private GameObject flame;
+    private float volume;
+    public AudioClip candleFlame;
+
     void Start() {
         activated = false;
+        flame = transform.FindChild("flame").gameObject;
+        flame.SetActive(false);
+        volume = PlayerPrefs.GetFloat("sfxVolume");
     }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
             if (!activated) {
                 activated = !activated;
+                flame.SetActive(true);
+                AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
                 Activate();
 
             }

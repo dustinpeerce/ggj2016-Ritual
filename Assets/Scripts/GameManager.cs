@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioLose;
     public AudioClip audioWin;
     public AudioClip audioPause;
+    public AudioClip audioButtonClick;
+    public AudioClip audioButtonHover;
+    private float volume;
     private Fireball fire;
     private GameObject pausePanel;
     private GameObject retryPanel;
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour {
         retryPanel.SetActive(false);
         nextLevelPanel.SetActive(false);
         Time.timeScale = 1.0f;
+        volume = PlayerPrefs.GetFloat("sfxVolume");
     }
 
     void Update() {
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivatePausePanel() {
-        AudioSource.PlayClipAtPoint(audioPause, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(audioPause, Camera.main.transform.position, volume);
         pausePanel.SetActive(!pausePanel.activeInHierarchy);
         if (Time.timeScale == 0) 
             Time.timeScale = 1.0f;
@@ -75,7 +79,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateRetryPanel() {
-        AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
         Time.timeScale = 0;
         retryPanel.SetActive(!retryPanel.activeInHierarchy);
     }
@@ -88,22 +92,31 @@ public class GameManager : MonoBehaviour {
                 starsWon = 2;
         else
             starsWon = 3;
-        AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
         Time.timeScale = 0;
         nextLevelPanel.SetActive(!nextLevelPanel.activeInHierarchy);
     }
 
     public void Retry() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
         resetTimer = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Continue() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
         pausePanel.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
     public void NextLevel() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
         resetTimer = true;
         if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCount)
             SceneManager.LoadScene(0);
@@ -117,10 +130,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LevelSelect() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
         SceneManager.LoadScene(1);
     }
 
-    public void Exit() {        
+    public void Exit() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
         SceneManager.LoadScene(0);
     }
 
@@ -135,5 +154,11 @@ public class GameManager : MonoBehaviour {
     public void ResetTimer()
     {
         resetTimer = true;
+    }
+
+    public void PointerEnter() {
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(audioButtonHover, Camera.main.transform.position, volume);
+        Time.timeScale = 0;
     }
 }
