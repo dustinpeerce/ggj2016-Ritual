@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Teleporter
   - Music
+  - Water
+  - Torch
   layers:
   - Default
   - TransparentFX
