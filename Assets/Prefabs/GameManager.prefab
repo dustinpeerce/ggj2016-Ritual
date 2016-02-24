@@ -1610,7 +1610,9 @@ MonoBehaviour:
   starTime2: 5
   audioLose: {fileID: 8300000, guid: 79060e839aad3ff488b145609fa30158, type: 3}
   audioWin: {fileID: 8300000, guid: 6cd61f6175aa30f4eb8d190b006d0acf, type: 3}
-  audioPause: {fileID: 8300000, guid: 565976057bb796d4cab0347e5431a774, type: 3}
+  audioPause: {fileID: 8300000, guid: c313d6fa0dc6d834f8e9f7c4afa8d6c2, type: 3}
+  audioButtonClick: {fileID: 8300000, guid: 301f0083cc2956e4a9c96fdb58e0f6d6, type: 3}
+  audioButtonHover: {fileID: 8300000, guid: e0b1967531da7c14d8594fa9d20ae2ae, type: 3}
 --- !u!114 &11456552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2835,7 +2837,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: audioPause
+      value: 
+      objectReference: {fileID: 8300000, guid: c313d6fa0dc6d834f8e9f7c4afa8d6c2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioButtonClick
+      value: 
+      objectReference: {fileID: 8300000, guid: 301f0083cc2956e4a9c96fdb58e0f6d6, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioButtonHover
+      value: 
+      objectReference: {fileID: 8300000, guid: e0b1967531da7c14d8594fa9d20ae2ae, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128782}
