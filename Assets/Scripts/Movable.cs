@@ -21,16 +21,18 @@ public class Movable : MonoBehaviour {
 
     // Update is called once per frame
     public void Activation() {
-        activated = true;
-        timer = 0;
+         
+         timer = 0;
+        
     }
     void Update() {
 
-        if (activated) {
+        if (activated) {//work on getting a better delay?
 
             if (timer <= 1.0f) {
                 timer += Time.deltaTime * speed;
-                transform.position = Vector3.Lerp(startPosition, finalPosition, timer);
+                transform.position = new Vector3(Mathf.SmoothStep(startPosition.x, finalPosition.x, timer), Mathf.SmoothStep(startPosition.y, finalPosition.y, timer), 0);
+                //transform.position = Vector3.Lerp(startPosition, finalPosition, timer);
             }
 
 
@@ -71,6 +73,13 @@ public class Movable : MonoBehaviour {
             }
              * */
         }
-
+        else
+        {
+            if (timer > 0.0f)
+            {
+                timer -= Time.deltaTime * speed;
+                transform.position = new Vector3(Mathf.SmoothStep(finalPosition.x, startPosition.x, 1.0f - timer), Mathf.SmoothStep(finalPosition.y, startPosition.y, 1.0f - timer), 0);
+            }
+        }
     }
 }
