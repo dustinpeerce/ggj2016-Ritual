@@ -1,52 +1,52 @@
 fileFormatVersion: 2
-guid: 8de479b64bd38a4449f883fb6da6147c
-timeCreated: 1456155553
+guid: cd0bac0fe48e5a9438b019f99c01e29f
+timeCreated: 1456500093
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spiritfire_NewSprite_0
-    21300002: spiritfire_NewSprite_1
-    21300004: spiritfire_NewSprite_2
-    21300006: spiritfire_NewSprite_3
-    21300008: spiritfire_NewSprite_4
-    21300010: spiritfire_NewSprite_5
-    21300012: spiritfire_NewSprite_6
-    21300014: spiritfire_NewSprite_7
-    21300016: spiritfire_NewSprite_8
-    21300018: spiritfire_NewSprite_9
-    21300020: spiritfire_NewSprite_10
-    21300022: spiritfire_NewSprite_11
-    21300024: spiritfire_NewSprite_12
-    21300026: spiritfire_NewSprite_13
-    21300028: spiritfire_NewSprite_14
-    21300030: spiritfire_NewSprite_15
-    21300032: spiritfire_NewSprite_16
-    21300034: spiritfire_NewSprite_17
-    21300036: spiritfire_NewSprite_18
-    21300038: spiritfire_NewSprite_19
-    21300040: spiritfire_NewSprite_20
-    21300042: spiritfire_NewSprite_21
-    21300044: spiritfire_NewSprite_22
-    21300046: spiritfire_NewSprite_23
-    21300048: spiritfire_NewSprite_24
-    21300050: spiritfire_NewSprite_25
-    21300052: spiritfire_NewSprite_26
-    21300054: spiritfire_NewSprite_27
-    21300056: spiritfire_NewSprite_28
-    21300058: spiritfire_NewSprite_29
-    21300060: spiritfire_NewSprite_30
-    21300062: spiritfire_NewSprite_31
-    21300064: spiritfire_NewSprite_32
-    21300066: spiritfire_NewSprite_33
-    21300068: spiritfire_NewSprite_34
-    21300070: spiritfire_NewSprite_35
-    21300072: spiritfire_NewSprite_36
-    21300074: spiritfire_NewSprite_37
-    21300076: spiritfire_NewSprite_38
-    21300078: spiritfire_NewSprite_39
-    21300080: spiritfire_NewSprite_40
-    21300082: spiritfire_NewSprite_41
-    21300084: spiritfire_NewSprite_42
+    21300000: grey_0
+    21300002: grey_1
+    21300004: grey_2
+    21300006: grey_3
+    21300008: grey_4
+    21300010: grey_5
+    21300012: grey_6
+    21300014: grey_7
+    21300016: grey_8
+    21300018: grey_9
+    21300020: grey_10
+    21300022: grey_11
+    21300024: grey_12
+    21300026: grey_13
+    21300028: grey_14
+    21300030: grey_15
+    21300032: grey_16
+    21300034: grey_17
+    21300036: grey_18
+    21300038: grey_19
+    21300040: grey_20
+    21300042: grey_21
+    21300044: grey_22
+    21300046: grey_23
+    21300048: grey_24
+    21300050: grey_25
+    21300052: grey_26
+    21300054: grey_27
+    21300056: grey_28
+    21300058: grey_29
+    21300060: grey_30
+    21300062: grey_31
+    21300064: grey_32
+    21300066: grey_33
+    21300068: grey_34
+    21300070: grey_35
+    21300072: grey_36
+    21300074: grey_37
+    21300076: grey_38
+    21300078: grey_39
+    21300080: grey_40
+    21300082: grey_41
+    21300084: grey_42
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -93,7 +93,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: spiritfire_NewSprite_0
+    - name: grey_0
       rect:
         serializedVersion: 2
         x: 2
@@ -112,7 +112,7 @@ TextureImporter:
         - {x: 24.5, y: -33.5}
         - {x: 24.5, y: 15.5}
         - {x: 21.5, y: 21.5}
-    - name: spiritfire_NewSprite_1
+    - name: grey_1
       rect:
         serializedVersion: 2
         x: 63
@@ -131,7 +131,7 @@ TextureImporter:
         - {x: 24, y: -37}
         - {x: 24, y: 10}
         - {x: 13, y: 43}
-    - name: spiritfire_NewSprite_2
+    - name: grey_2
       rect:
         serializedVersion: 2
         x: 123
@@ -150,7 +150,7 @@ TextureImporter:
         - {x: 24.5, y: -35}
         - {x: 24.5, y: 26}
         - {x: 20.5, y: 40}
-    - name: spiritfire_NewSprite_3
+    - name: grey_3
       rect:
         serializedVersion: 2
         x: 183
@@ -169,7 +169,7 @@ TextureImporter:
         - {x: 24.5, y: -35}
         - {x: 24.5, y: 26}
         - {x: 20.5, y: 40}
-    - name: spiritfire_NewSprite_4
+    - name: grey_4
       rect:
         serializedVersion: 2
         x: 243
@@ -187,7 +187,7 @@ TextureImporter:
         - {x: 25.5, y: -34.5}
         - {x: 25.5, y: 15.5}
         - {x: 14.5, y: 38.5}
-    - name: spiritfire_NewSprite_5
+    - name: grey_5
       rect:
         serializedVersion: 2
         x: 302
@@ -206,7 +206,7 @@ TextureImporter:
         - {x: 25, y: -40}
         - {x: 25, y: 19}
         - {x: 10, y: 40}
-    - name: spiritfire_NewSprite_6
+    - name: grey_6
       rect:
         serializedVersion: 2
         x: 362
@@ -225,7 +225,7 @@ TextureImporter:
         - {x: 25, y: -40}
         - {x: 25, y: 19}
         - {x: 10, y: 40}
-    - name: spiritfire_NewSprite_7
+    - name: grey_7
       rect:
         serializedVersion: 2
         x: 423
@@ -245,7 +245,7 @@ TextureImporter:
         - {x: 25, y: -35}
         - {x: 25, y: 16}
         - {x: 10, y: 36}
-    - name: spiritfire_NewSprite_8
+    - name: grey_8
       rect:
         serializedVersion: 2
         x: 2
@@ -265,7 +265,7 @@ TextureImporter:
         - {x: 26, y: -36}
         - {x: 26, y: 20}
         - {x: -1, y: 40}
-    - name: spiritfire_NewSprite_9
+    - name: grey_9
       rect:
         serializedVersion: 2
         x: 62
@@ -285,7 +285,7 @@ TextureImporter:
         - {x: 26, y: -36}
         - {x: 26, y: 20}
         - {x: -1, y: 40}
-    - name: spiritfire_NewSprite_10
+    - name: grey_10
       rect:
         serializedVersion: 2
         x: 120
@@ -304,7 +304,7 @@ TextureImporter:
         - {x: 27.5, y: -36}
         - {x: 27.5, y: 17}
         - {x: -1.5, y: 40}
-    - name: spiritfire_NewSprite_11
+    - name: grey_11
       rect:
         serializedVersion: 2
         x: 181
@@ -323,7 +323,7 @@ TextureImporter:
         - {x: 26, y: -28}
         - {x: 26, y: 20}
         - {x: 13, y: 40}
-    - name: spiritfire_NewSprite_12
+    - name: grey_12
       rect:
         serializedVersion: 2
         x: 241
@@ -342,7 +342,7 @@ TextureImporter:
         - {x: 26, y: -28}
         - {x: 26, y: 20}
         - {x: 13, y: 40}
-    - name: spiritfire_NewSprite_13
+    - name: grey_13
       rect:
         serializedVersion: 2
         x: 303
@@ -362,7 +362,7 @@ TextureImporter:
         - {x: 26, y: -27.5}
         - {x: 26, y: 25.5}
         - {x: 7, y: 37.5}
-    - name: spiritfire_NewSprite_14
+    - name: grey_14
       rect:
         serializedVersion: 2
         x: 363
@@ -382,7 +382,7 @@ TextureImporter:
         - {x: 26, y: -27.5}
         - {x: 26, y: 25.5}
         - {x: 7, y: 37.5}
-    - name: spiritfire_NewSprite_15
+    - name: grey_15
       rect:
         serializedVersion: 2
         x: 424
@@ -401,7 +401,7 @@ TextureImporter:
         - {x: 25, y: -32.5}
         - {x: 25, y: 11.5}
         - {x: 15, y: 36.5}
-    - name: spiritfire_NewSprite_16
+    - name: grey_16
       rect:
         serializedVersion: 2
         x: 4
@@ -420,7 +420,7 @@ TextureImporter:
         - {x: 25, y: -32.5}
         - {x: 25, y: 11.5}
         - {x: 15, y: 36.5}
-    - name: spiritfire_NewSprite_17
+    - name: grey_17
       rect:
         serializedVersion: 2
         x: 64
@@ -440,7 +440,7 @@ TextureImporter:
         - {x: 23, y: -31.5}
         - {x: 23, y: 11.5}
         - {x: 18, y: 35.5}
-    - name: spiritfire_NewSprite_18
+    - name: grey_18
       rect:
         serializedVersion: 2
         x: 122
@@ -458,7 +458,7 @@ TextureImporter:
         - {x: 20, y: -36}
         - {x: 27, y: -24}
         - {x: 27, y: 15}
-    - name: spiritfire_NewSprite_19
+    - name: grey_19
       rect:
         serializedVersion: 2
         x: 182
@@ -474,7 +474,7 @@ TextureImporter:
         - {x: -27, y: -36}
         - {x: 27, y: -36}
         - {x: 27, y: 36}
-    - name: spiritfire_NewSprite_20
+    - name: grey_20
       rect:
         serializedVersion: 2
         x: 242
@@ -493,7 +493,7 @@ TextureImporter:
         - {x: 25.5, y: -31.5}
         - {x: 25.5, y: 14.5}
         - {x: 10.5, y: 39.5}
-    - name: spiritfire_NewSprite_21
+    - name: grey_21
       rect:
         serializedVersion: 2
         x: 302
@@ -512,7 +512,7 @@ TextureImporter:
         - {x: 25.5, y: -31.5}
         - {x: 25.5, y: 14.5}
         - {x: 10.5, y: 39.5}
-    - name: spiritfire_NewSprite_22
+    - name: grey_22
       rect:
         serializedVersion: 2
         x: 364
@@ -530,7 +530,7 @@ TextureImporter:
         - {x: 24.5, y: -31.5}
         - {x: 24.5, y: 28.5}
         - {x: 13.5, y: 39.5}
-    - name: spiritfire_NewSprite_23
+    - name: grey_23
       rect:
         serializedVersion: 2
         x: 424
@@ -548,7 +548,7 @@ TextureImporter:
         - {x: 24.5, y: -31.5}
         - {x: 24.5, y: 28.5}
         - {x: 13.5, y: 39.5}
-    - name: spiritfire_NewSprite_24
+    - name: grey_24
       rect:
         serializedVersion: 2
         x: 4
@@ -565,7 +565,7 @@ TextureImporter:
         - {x: 24.5, y: -39.5}
         - {x: 24.5, y: 13.5}
         - {x: 0.5, y: 39.5}
-    - name: spiritfire_NewSprite_25
+    - name: grey_25
       rect:
         serializedVersion: 2
         x: 66
@@ -586,7 +586,7 @@ TextureImporter:
         - {x: 24, y: -29.5}
         - {x: 24, y: 9.5}
         - {x: -5, y: 39.5}
-    - name: spiritfire_NewSprite_26
+    - name: grey_26
       rect:
         serializedVersion: 2
         x: 126
@@ -607,7 +607,7 @@ TextureImporter:
         - {x: 24, y: -29.5}
         - {x: 24, y: 9.5}
         - {x: -5, y: 39.5}
-    - name: spiritfire_NewSprite_27
+    - name: grey_27
       rect:
         serializedVersion: 2
         x: 184
@@ -626,7 +626,7 @@ TextureImporter:
         - {x: 28, y: -41}
         - {x: 28, y: 18}
         - {x: 14, y: 41}
-    - name: spiritfire_NewSprite_28
+    - name: grey_28
       rect:
         serializedVersion: 2
         x: 244
@@ -645,7 +645,7 @@ TextureImporter:
         - {x: 25, y: -35.5}
         - {x: 25, y: 34.5}
         - {x: 22, y: 37.5}
-    - name: spiritfire_NewSprite_29
+    - name: grey_29
       rect:
         serializedVersion: 2
         x: 304
@@ -664,7 +664,7 @@ TextureImporter:
         - {x: 25, y: -35.5}
         - {x: 25, y: 34.5}
         - {x: 22, y: 37.5}
-    - name: spiritfire_NewSprite_30
+    - name: grey_30
       rect:
         serializedVersion: 2
         x: 365
@@ -682,7 +682,7 @@ TextureImporter:
         - {x: 19.5, y: -36}
         - {x: 25.5, y: -26}
         - {x: 25.5, y: 36}
-    - name: spiritfire_NewSprite_31
+    - name: grey_31
       rect:
         serializedVersion: 2
         x: 425
@@ -702,7 +702,7 @@ TextureImporter:
         - {x: 25, y: -30}
         - {x: 25, y: 31}
         - {x: 23, y: 35}
-    - name: spiritfire_NewSprite_32
+    - name: grey_32
       rect:
         serializedVersion: 2
         x: 5
@@ -722,7 +722,7 @@ TextureImporter:
         - {x: 25, y: -30}
         - {x: 25, y: 31}
         - {x: 23, y: 35}
-    - name: spiritfire_NewSprite_33
+    - name: grey_33
       rect:
         serializedVersion: 2
         x: 63
@@ -742,7 +742,7 @@ TextureImporter:
         - {x: 25, y: -33.5}
         - {x: 25, y: 12.5}
         - {x: 20, y: 34.5}
-    - name: spiritfire_NewSprite_34
+    - name: grey_34
       rect:
         serializedVersion: 2
         x: 123
@@ -762,7 +762,7 @@ TextureImporter:
         - {x: 25, y: -33.5}
         - {x: 25, y: 12.5}
         - {x: 20, y: 34.5}
-    - name: spiritfire_NewSprite_35
+    - name: grey_35
       rect:
         serializedVersion: 2
         x: 183
@@ -780,7 +780,7 @@ TextureImporter:
         - {x: 24.5, y: -35.5}
         - {x: 24.5, y: 16.5}
         - {x: 11.5, y: 27.5}
-    - name: spiritfire_NewSprite_36
+    - name: grey_36
       rect:
         serializedVersion: 2
         x: 243
@@ -798,7 +798,7 @@ TextureImporter:
         - {x: 24.5, y: -35.5}
         - {x: 24.5, y: 16.5}
         - {x: 11.5, y: 27.5}
-    - name: spiritfire_NewSprite_37
+    - name: grey_37
       rect:
         serializedVersion: 2
         x: 302
@@ -818,7 +818,7 @@ TextureImporter:
         - {x: 26.5, y: -31.5}
         - {x: 26.5, y: 6.5}
         - {x: 1.5, y: 33.5}
-    - name: spiritfire_NewSprite_38
+    - name: grey_38
       rect:
         serializedVersion: 2
         x: 363
@@ -837,7 +837,7 @@ TextureImporter:
         - {x: 25.5, y: -30}
         - {x: 25.5, y: 13}
         - {x: -1.5, y: 39}
-    - name: spiritfire_NewSprite_39
+    - name: grey_39
       rect:
         serializedVersion: 2
         x: 423
@@ -856,7 +856,7 @@ TextureImporter:
         - {x: 25.5, y: -30}
         - {x: 25.5, y: 13}
         - {x: -1.5, y: 39}
-    - name: spiritfire_NewSprite_40
+    - name: grey_40
       rect:
         serializedVersion: 2
         x: 4
@@ -875,7 +875,7 @@ TextureImporter:
         - {x: 24.5, y: -35.5}
         - {x: 24.5, y: 18.5}
         - {x: 6.5, y: 42.5}
-    - name: spiritfire_NewSprite_41
+    - name: grey_41
       rect:
         serializedVersion: 2
         x: 64
@@ -894,7 +894,7 @@ TextureImporter:
         - {x: 24.5, y: -35.5}
         - {x: 24.5, y: 18.5}
         - {x: 6.5, y: 42.5}
-    - name: spiritfire_NewSprite_42
+    - name: grey_42
       rect:
         serializedVersion: 2
         x: 124

@@ -6,7 +6,11 @@ public class Fireball : MonoBehaviour {
     #region Initialization
     //Attributes to be set in inspector.
     public float speed;
-    public int size;
+    public int sizeFactor;
+    public int scale;
+
+    public TorchColor currentTorchType;
+    public enum TorchColor { Regular,Blue,Green,Yellow}
 
     //Attributes for particle effect changing...Don't touch these please :)
     private const float speedMod = .1f;
@@ -27,7 +31,22 @@ public class Fireball : MonoBehaviour {
     private float rotateLerpTime;
     private Rigidbody2D sexyBody;
     private float hitCoolDown;
-    private const float hitCoolWaitTime = .5f;
+    public  float hitCoolWaitTime;
+    private Gradient currentGradient;
+    private float torchLerpTime;
+
+    private GameObject flicker;
+    private ParticleSystem.ColorOverLifetimeModule flickerGradient;
+    private FlickerGradients flickerScript;
+
+    private ParticleSystem.ColorOverLifetimeModule torchGradient;
+    private FlickerGradients torchScript;
+
+    private ParticleSystem.ColorOverLifetimeModule explosionGradient;
+    private FlickerGradients explosionScript;
+
+    private bool changeTorchType;
+    private ParticleSystem makeMeSmall;
 
     public bool CameraShouldNOTMove {
         get { return distanceGreatEnough || !moving; }
@@ -37,6 +56,18 @@ public class Fireball : MonoBehaviour {
     void Start() {
         fire = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
+        makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
+
+        flicker = GameObject.Find("Flicker");
+        flickerGradient = flicker.GetComponent<ParticleSystem>().colorOverLifetime;
+        flickerScript = flicker.GetComponent<FlickerGradients>();
+
+        torchGradient = fire.colorOverLifetime;
+        torchScript = fire.GetComponent<FlickerGradients>();
+
+        explosionGradient = makeMeBig.colorOverLifetime;
+        explosionScript = makeMeBig.GetComponent<FlickerGradients>();
+
         fireEmission = fire.emission;
         fireShape = fire.shape;
         distanceGreatEnough = true;
@@ -47,6 +78,7 @@ public class Fireball : MonoBehaviour {
 
 
     #region Updating
+
 
     //if something is rigidbody...
     void FixedUpdate() {
@@ -62,7 +94,17 @@ public class Fireball : MonoBehaviour {
 
         //we want input and we want it now...
         input();
+        
+        //kinky fire changing lol...
+        if (changeTorchType)
+            fiftyShadesOfFire();
+    }
 
+    void fiftyShadesOfFire() {
+        flickerGradient.color = flickerScript.changeFlicker(currentTorchType);
+        torchGradient.color = torchScript.changeFlicker(currentTorchType);
+        explosionGradient.color = explosionScript.changeFlicker(currentTorchType);
+        changeTorchType = false;
     }
 
     //sets up vars for using
@@ -145,34 +187,38 @@ public class Fireball : MonoBehaviour {
         else if (col.gameObject.tag == "Teleporter") {
             GameManager.instance.ActivateNextLevelPanel();
         }
-        if(Time.time - hitCoolDown > hitCoolWaitTime)
+        if (Time.time - hitCoolDown > hitCoolWaitTime) {
             if (col.gameObject.tag == "Torch" || col.gameObject.tag == "Water") {
                 if (col.gameObject.tag == "Torch") {
-                    if (size < fireLimit) {
-                        size++;
+                    if (sizeFactor < fireLimit) {
+                        sizeFactor++;
                         makeMeBig.startLifetime = 1f;
                         makeMeBig.Emit(300);
+                        changeTorchType = true;
+                        currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
                     }
 
                 }
-                else
-                    size--;
-
+                else {
+                    sizeFactor--;
+                    makeMeSmall.startLifetime = 1f;
+                    makeMeSmall.Emit(300);
+                }
                 sizeFix();
 
-                if (size == 0)
+                if (sizeFactor == 0)
                     GameManager.instance.ActivateRetryPanel();
 
                 hitCoolDown = Time.time;
             }
+        }
 
     }
 
     private void sizeFix() {
-        float si = (float)(size) * 2/3;
+        float si = (float)(sizeFactor) * 2/3 * scale;
         transform.localScale = new Vector3(si,si,si);
-        Debug.Log(transform.localScale + " " + size + " " +si);
-        si *= 3 / 2;
+        flicker.transform.localScale = new Vector3(si, si, si) / 2;
         fire.transform.localScale = new Vector3(si, si, si);
     }
 
