@@ -8,7 +8,7 @@ namespace UnityStandardAssets._2D {
         public float lookAheadFactor = 3;
         public float lookAheadReturnSpeed = 0.5f;
         public float lookAheadMoveThreshold = 0.1f;
-
+        private Fireball fiya;
         private Transform target;
         private float m_OffsetZ;
         private Vector3 m_LastTargetPosition;
@@ -19,7 +19,7 @@ namespace UnityStandardAssets._2D {
         // Use this for initialization
         private void Start() {
             target = GameObject.FindGameObjectWithTag("Player").transform;
-
+            fiya = GameObject.FindObjectOfType<Fireball>();
             m_LastTargetPosition = target.position;
             m_OffsetZ = (transform.position - target.position).z;
             transform.parent = null;
@@ -28,6 +28,17 @@ namespace UnityStandardAssets._2D {
 
         // Update is called once per frame
         private void Update() {
+            if (fiya.CameraShouldNOTMove) {
+                lookAheadReturnSpeed = 0;
+            }
+            else
+                lookAheadReturnSpeed = .5f;
+
+            follow();
+
+        }
+
+        private void follow() {
             // only update lookahead pos if accelerating or changed direction
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
             float yMoveDelta = (target.position - m_LastTargetPosition).y;
