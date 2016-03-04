@@ -7,7 +7,8 @@ public class Fireball : MonoBehaviour {
     //Attributes to be set in inspector.
     public float speed;
     public int sizeFactor;
-    public int scale;
+    public float scale;
+    public float maxScaleFactor;
 
     public TorchColor currentTorchType;
     public enum TorchColor { Regular,Blue,Green,Yellow}
@@ -72,7 +73,8 @@ public class Fireball : MonoBehaviour {
         fireShape = fire.shape;
         distanceGreatEnough = true;
         sexyBody = GetComponent<Rigidbody2D>();
-        
+
+        sizeFix();   
     }
     #endregion
 
@@ -100,6 +102,7 @@ public class Fireball : MonoBehaviour {
             fiftyShadesOfFire();
     }
 
+    //sexy changing fire stuff
     void fiftyShadesOfFire() {
         flickerGradient.color = flickerScript.changeFlicker(currentTorchType);
         torchGradient.color = torchScript.changeFlicker(currentTorchType);
@@ -140,11 +143,8 @@ public class Fireball : MonoBehaviour {
 
     //that there rotation
     private void rotation(float angle) {
-        float randomEffect = Random.Range(-3f, 3f);
-        angle += randomEffect;
         transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         fire.startRotation = (angle) * -Mathf.Deg2Rad;
-
     }
 
     //rotation and movement...what did you expect?
@@ -190,7 +190,7 @@ public class Fireball : MonoBehaviour {
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
             if (col.gameObject.tag == "Torch" || col.gameObject.tag == "Water") {
                 if (col.gameObject.tag == "Torch") {
-                    if (sizeFactor < fireLimit) {
+                    if (sizeFactor < maxScaleFactor) {
                         sizeFactor++;
                         makeMeBig.startLifetime = 1f;
                         makeMeBig.Emit(300);
@@ -215,6 +215,7 @@ public class Fireball : MonoBehaviour {
 
     }
 
+    //When a fire gets big, or small...
     private void sizeFix() {
         float si = (float)(sizeFactor) * 2/3 * scale;
         transform.localScale = new Vector3(si,si,si);

@@ -3829,6 +3829,22 @@ Prefab:
       propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19868876, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: RotationModule.curve.scalar
+      value: 6.283185
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868876, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868876, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868876, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: ShapeModule.angle
+      value: 65.88
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11427078, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
@@ -4220,8 +4236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  sizeFactor: 3
-  scale: 1
+  sizeFactor: 2
+  scale: 1.7
+  maxScaleFactor: 4
   currentTorchType: 0
   hitCoolWaitTime: 0.25
 --- !u!4 &1367473955 stripped
