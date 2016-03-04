@@ -16,7 +16,8 @@ public class MovingWall : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (WallType == 0)//generic movement
-            transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(Time.time * speed) + 1.0f) / 2.0f);
+            transform.position = new Vector3(Mathf.SmoothStep(pos1.x, pos2.x, (Mathf.Sin(Time.time * speed) + 1.0f) / 2.0f), Mathf.SmoothStep(pos1.y, pos2.y, (Mathf.Sin(Time.time * speed) + 1.0f) / 2.0f), 0);
+        //transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(Time.time * speed) + 1.0f) / 2.0f);
         else {//other possible movement types.
 
         }
