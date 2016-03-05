@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11484972}
   m_Layer: 0
   m_Name: Candle
-  m_TagString: Untagged
+  m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,9 +70,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.6}
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 2.87}
+  m_Size: {x: 0.6, y: 0.6}
 --- !u!114 &11484972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candleNumber: 0
+  candleLife: 0
   pos1: {x: 0, y: 0, z: 0}
   Obstacle_List: []
   candleFlame: {fileID: 8300000, guid: c2be27bff7132804fa09b12c9cbd5efc, type: 3}
@@ -159,6 +160,22 @@ Prefab:
       propertyPath: candleFlame
       value: 
       objectReference: {fileID: 8300000, guid: c2be27bff7132804fa09b12c9cbd5efc, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Candle
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140000}

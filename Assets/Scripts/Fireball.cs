@@ -188,7 +188,7 @@ public class Fireball : MonoBehaviour {
             GameManager.instance.ActivateNextLevelPanel();
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
-            if (col.gameObject.tag == "Torch" || col.gameObject.tag == "Water") {
+            
                 if (col.gameObject.tag == "Torch") {
                     if (sizeFactor < maxScaleFactor) {
                         sizeFactor++;
@@ -199,7 +199,7 @@ public class Fireball : MonoBehaviour {
                     }
 
                 }
-                else {
+                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
@@ -210,7 +210,7 @@ public class Fireball : MonoBehaviour {
                     GameManager.instance.ActivateRetryPanel();
 
                 hitCoolDown = Time.time;
-            }
+            
         }
 
     }

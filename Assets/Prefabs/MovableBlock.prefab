@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6164922}
   - 114: {fileID: 11440854}
   m_Layer: 0
-  m_Name: MovableBlock_0
+  m_Name: MovableBlock
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
