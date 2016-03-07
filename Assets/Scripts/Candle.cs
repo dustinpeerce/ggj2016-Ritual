@@ -4,6 +4,8 @@ using System.Collections;
 public class Candle : MonoBehaviour {
     //this script covers the activation of moving objects based on player colliding with candle.
     public int candleNumber;
+    int currLife;
+    public int candleLife;
     GameObject[] gos;
     Wheel[] wheelList;//list of items with wheel script
     MovingWall[] wallList;//lis of items with movingwall script.
@@ -11,7 +13,8 @@ public class Candle : MonoBehaviour {
     Candle[] candleList;
     bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
-    public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
+    //public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
+    public Movable[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
     private GameObject flame;
     private float volume;
     public AudioClip candleFlame;
@@ -21,6 +24,7 @@ public class Candle : MonoBehaviour {
         flame = transform.FindChild("flame").gameObject;
         flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
+        currLife = 0;
     }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
@@ -37,14 +41,16 @@ public class Candle : MonoBehaviour {
     void Activate()//the activation function that starts everything up.
     {
         if (activated) {
-
+            currLife = candleLife;
             //this will get replaced with a public array later.
-            movableList = GameObject.FindObjectsOfType(typeof(Movable)) as Movable[];
-            if (movableList.Length != 0) {
-                foreach (Movable wall in movableList) {
-                    //wall.gameObject;
-                    if (wall.attachedCandle == candleNumber) {
+            if(Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
+            {
+                foreach(Movable wall in Obstacle_List)
+                {
+                    if (wall.attachedCandle == candleNumber)
+                    {
                         //wall.activated = true;//make this call an actual function.
+                        wall.activated = true;
                         wall.Activation();
                     }
                     else {
@@ -70,6 +76,18 @@ public class Candle : MonoBehaviour {
         }
         else//Other Candle is calling this candle.  What do you want this candle to do?
         {
+            if (Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
+            {
+                foreach (Movable wall in Obstacle_List)
+                {
+                    if (wall.attachedCandle == candleNumber)
+                    {
+                        //wall.activated = true;//make this call an actual function.
+                        wall.activated = false;
+                    }
+                }
+            }
+            
             //set up the case of it being called when activated is still false (other candle calls it to turn off its objects
             //code below is example but it is redundant here since the normal call will turn off everything else anyways.
             /*
@@ -92,6 +110,19 @@ public class Candle : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+        if(activated)
+        {
+            if (currLife > 0)
+                currLife--;
+            else
+            {
+                activated = !activated;
+                flame.SetActive(false);
+                Activate();
+            }
+                
+        }
+          
 
     }
 }

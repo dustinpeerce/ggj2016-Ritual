@@ -3,149 +3,232 @@ using System.Collections;
 
 public class Fireball : MonoBehaviour {
 
+    #region Initialization
+    //Attributes to be set in inspector.
+    public float speed;
+    public int sizeFactor;
+    public float scale;
+    public float maxScaleFactor;
+    
+    public TorchColor currentTorchType;
+    public enum TorchColor { Regular,Blue,Green,Yellow}
 
-    // Private Attributes
-    private float speed;
-	private const float speedMod = .1f;
-	private const float emissionMod = 40;
-	private const float particleSpeedMod = 2f;
+    //Attributes for particle effect changing...Don't touch these please :)
+    private const float speedMod = .1f;
+    private const float emissionMod = 40;
+    private const float particleSpeedMod = 2f;
+
+    //Private attributes
+    private bool dead = false;
+    private const int fireLimit = 5;
     private Vector3 mousePos;
     private Vector3 mouseWorldPos;
     private Vector3 objectPos;
-    private float playerRotationAngle;
     private bool moving = false;
-	private ParticleSystem fire;
-	private ParticleSystem.EmissionModule fireEmission;
-	private ParticleSystem.ShapeModule fireShape;
-    private bool rotated,distanceGreatEnough;
+    private ParticleSystem fire;
+    private ParticleSystem.EmissionModule fireEmission;
+    private ParticleSystem.ShapeModule fireShape;
+    private ParticleSystem makeMeBig;
+    private bool rotated, distanceGreatEnough;
     private float rotateLerpTime;
+    private Rigidbody2D sexyBody;
+    private float hitCoolDown;
+    public  float hitCoolWaitTime;
+    private Gradient currentGradient;
+    private float torchLerpTime;
+
+    private GameObject flicker;
+    private ParticleSystem.ColorOverLifetimeModule flickerGradient;
+    private FlickerGradients flickerScript;
+
+    private ParticleSystem.ColorOverLifetimeModule torchGradient;
+    private FlickerGradients torchScript;
+
+    private ParticleSystem.ColorOverLifetimeModule explosionGradient;
+    private FlickerGradients explosionScript;
+
+    private bool changeTorchType;
+    private ParticleSystem makeMeSmall;
+
     public bool CameraShouldNOTMove {
-        get { return distanceGreatEnough||!moving; }
+        get { return distanceGreatEnough || !moving; }
     }
 
-    void Start () {
-		fire = GetComponent<ParticleSystem> ();
-		fireEmission = fire.emission;
-		fireShape = fire.shape;
-        distanceGreatEnough = true;
-	}
+    //hmm...what's this for?
+    void Start() {
+        fire = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
+        makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
+        makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
 
+        flicker = GameObject.Find("Flicker");
+        flickerGradient = flicker.GetComponent<ParticleSystem>().colorOverLifetime;
+        flickerScript = flicker.GetComponent<FlickerGradients>();
+
+        torchGradient = fire.colorOverLifetime;
+        torchScript = fire.GetComponent<FlickerGradients>();
+
+        explosionGradient = makeMeBig.colorOverLifetime;
+        explosionScript = makeMeBig.GetComponent<FlickerGradients>();
+
+        fireEmission = fire.emission;
+        fireShape = fire.shape;
+        distanceGreatEnough = true;
+        sexyBody = GetComponent<Rigidbody2D>();
+
+        sizeFix();   
+    }
+    #endregion
+
+
+    #region Updating
+    //if something is rigidbody...
+    void FixedUpdate() {
+        //if the camera is done moving once stopped to prevent stuttering...
+        if (moving)
+            rotationAndMovement();
+    }
+
+    //if something is NOT rigidbody lol.
     void Update() {
-        // Calculate Rotation
+        //sets up vars
+        varControl();
+
+        //we want input and we want it now...
+        input();
+        
+        //kinky fire changing lol...
+        if (changeTorchType)
+            fiftyShadesOfFire();
+    }
+
+    //sexy changing fire stuff
+    void fiftyShadesOfFire() {
+        flickerGradient.color = flickerScript.changeFlicker(currentTorchType);
+        torchGradient.color = torchScript.changeFlicker(currentTorchType);
+        explosionGradient.color = explosionScript.changeFlicker(currentTorchType);
+        changeTorchType = false;
+    }
+
+    //sets up vars for using
+    void varControl() {
+        //We need the mouse compared to the object...
         mousePos = Input.mousePosition;
         objectPos = Camera.main.WorldToScreenPoint(transform.position);
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
-
-        mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        input();
-        rotationAndMovement();
-        
-	}
+        mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);        
+    }
 
     //handles input and how we react to such input...
     private void input() {
-        if (!moving && Input.GetMouseButtonDown(0))
-        {
+        if (!moving && Input.GetMouseButtonDown(0)) {
             moving = true;
             GameManager.instance.SetTimer(true);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(moving)
+        if (!dead && Input.GetKeyDown(KeyCode.Escape)) {
+            if (moving) {
                 GameManager.instance.ActivatePausePanel();
+                sexyBody.velocity = Vector2.zero;
+            }
             moving = !moving;
             GameManager.instance.SetTimer(false);
         }
+        
+    }
 
+    //that there movement
+    private void move(Vector2 dist) {
+        sexyBody.AddForce(dist*speed);
+        sexyBody.velocity *= .99f;//dampening...
+    }
+
+    //that there rotation
+    private void rotation(float angle) {
+        transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+        fire.startRotation = (angle) * -Mathf.Deg2Rad;
     }
 
     //rotation and movement...what did you expect?
     private void rotationAndMovement() {
-        // Apply Rotation
-        if (!rotated)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(playerRotationAngle, 270, 0));
-            fire.startRotation = playerRotationAngle * -Mathf.Deg2Rad;
-        }
-        //if it's suppose to be standing still make the fire not just completley static yknow?
-        else {
-            fire.startRotation = (playerRotationAngle) * -Mathf.Deg2Rad;
-            playerRotationAngle = Mathf.Clamp((playerRotationAngle + Random.Range(-.03f, .03f)), -93, -87);
-        }
-        //if it's moving we need to do shit...
-        if (moving)
-        {
-            //detects if the distance is great enough to move
-            Vector2 mouseXY = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
-            Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
+        Vector2 mouseXY = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+        Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
+        Vector2 dist = mouseXY - transXY;
 
-            distanceGreatEnough = Vector2.Distance(mouseXY, transXY) <= 2.1f;
+        float angle = -90;
+        distanceGreatEnough = dist.magnitude <= 2.1f;
+        if (!distanceGreatEnough) {
+            rotated = false;
+            //movement, so simple...so clean...
+            move(dist);
 
-            //if so do this
-            if (!distanceGreatEnough)
-            {
-                //init speed, it's used alot...
-                speed = speedMod * Time.deltaTime * Vector3.Distance(transform.position, mousePos);
-
-                //apply speed modifer
-                fire.startSpeed = particleSpeedMod * speed;
-                fireEmission.rate = new ParticleSystem.MinMaxCurve(emissionMod * speed + 15);
-                fireShape.angle = speed;
-
-                //just for safe keeping
-                mouseWorldPos.z = transform.position.z;
-
-                //we need to move toward the mouse yeah?
-                transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speed);
-
-                rotated = false;
-
-                //if it had rotated we need to lerp back there
-                if (rotateLerpTime > 0)
-                {
-                    playerRotationAngle = Mathf.Lerp(-90, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, 1 - rotateLerpTime);
-                    rotateLerpTime -= .02f;
-                }
-                //other wise make if fly in the rotation angle...
-                else
-                    playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
-
+            //rotation
+            if (rotateLerpTime > 0) {
+                angle = Mathf.Lerp(-90, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, 1 - rotateLerpTime);
+                rotateLerpTime -= .02f;
             }
-            //if we are stopped and we haven't reach our rotation limit...
-            else if (!rotated)
-            {
-                //rotate until the fire is hovering at a -90...
-                if (playerRotationAngle != -90)
-                {
-                    rotateLerpTime += .01f;
-                    playerRotationAngle = Mathf.Lerp(playerRotationAngle, -90, rotateLerpTime);
-                }
-                //then we need to make sure we don't rotate anymore...
-                else
-                    rotated = true;
-            }
+            //other wise make if fly in the rotation angle...
+            else
+                angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
         }
+        else if (!rotated) {
+            angle = -90;
+            rotated = true;
+            sexyBody.velocity = Vector2.zero;
+        }
+        rotation(angle);
     }
 
-    void FixedUpdate() {
-
-    }
-
+    //if we hit some type of trigger...
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log(col.name);
         if (col.gameObject.tag == "Obstacle") {
+            dead = true;
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
             GameManager.instance.ActivateNextLevelPanel();
         }
+        if (Time.time - hitCoolDown > hitCoolWaitTime) {
+            
+                if (col.gameObject.tag == "Torch") {
+                    if (sizeFactor < maxScaleFactor) {
+                        sizeFactor++;
+                        makeMeBig.startLifetime = 1f;
+                        makeMeBig.Emit(300);
+                        changeTorchType = true;
+                        currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
+                    }
+
+                }
+                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
+                    sizeFactor--;
+                    makeMeSmall.startLifetime = 1f;
+                    makeMeSmall.Emit(300);
+                }
+                sizeFix();
+
+                if (sizeFactor == 0)
+                    GameManager.instance.ActivateRetryPanel();
+
+                hitCoolDown = Time.time;
+            
+        }
+
     }
 
+    //When a fire gets big, or small...
+    private void sizeFix() {
+        float si = (float)(sizeFactor) * 2/3 * scale;
+        transform.localScale = new Vector3(si,si,si);
+        flicker.transform.localScale = new Vector3(si, si, si) / 2;
+        fire.transform.localScale = new Vector3(si, si, si);
+    }
+
+    //I WANT TO MOVE!
     public void activateMovement() {
         moving = !moving;
-    }
+    } 
+    
+    #endregion
 }
