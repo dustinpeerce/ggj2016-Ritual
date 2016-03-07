@@ -211,7 +211,7 @@ public class Fireball : MonoBehaviour {
                     }
 
                 }
-                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
+                else if (col.gameObject.tag == "Water") {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
