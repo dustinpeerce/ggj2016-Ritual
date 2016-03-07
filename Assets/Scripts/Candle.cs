@@ -12,7 +12,7 @@ public class Candle : MonoBehaviour {
     Movable[] movableList;
     Candle[] candleList;
     Fireball player;
-    bool activated;
+    public bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
     //public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
     public Movable[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
@@ -27,6 +27,18 @@ public class Candle : MonoBehaviour {
         flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
+    }
+    public void PressureSwitch()
+    {
+        if (!activated)
+        {
+            activated = !activated;
+            flame.SetActive(true);
+            player.MakeSmall();
+            AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
+            Activate();
+
+        }
     }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
