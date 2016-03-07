@@ -177,7 +177,19 @@ public class Fireball : MonoBehaviour {
         }
         rotation(angle);
     }
-
+    public void MakeSmall()
+    {
+        if (Time.time - hitCoolDown > hitCoolWaitTime)
+        {
+            sizeFactor--;
+            makeMeSmall.startLifetime = 1f;
+            makeMeSmall.Emit(300);
+            sizeFix();
+            if (sizeFactor == 0)
+                GameManager.instance.ActivateRetryPanel();
+            hitCoolDown = Time.time;
+        }
+    }
     //if we hit some type of trigger...
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log(col.name);

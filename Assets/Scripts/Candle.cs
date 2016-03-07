@@ -11,6 +11,7 @@ public class Candle : MonoBehaviour {
     MovingWall[] wallList;//lis of items with movingwall script.
     Movable[] movableList;
     Candle[] candleList;
+    Fireball player;
     bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
     //public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
@@ -20,6 +21,7 @@ public class Candle : MonoBehaviour {
     public AudioClip candleFlame;
 
     void Start() {
+        player = GameObject.FindObjectOfType<Fireball>();
         activated = false;
         flame = transform.FindChild("flame").gameObject;
         flame.SetActive(false);
@@ -31,6 +33,7 @@ public class Candle : MonoBehaviour {
             if (!activated) {
                 activated = !activated;
                 flame.SetActive(true);
+                player.MakeSmall();
                 AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
                 Activate();
 
