@@ -9,7 +9,7 @@ public class Fireball : MonoBehaviour {
     public int sizeFactor;
     public float scale;
     public float maxScaleFactor;
-
+    
     public TorchColor currentTorchType;
     public enum TorchColor { Regular,Blue,Green,Yellow}
 
@@ -19,6 +19,7 @@ public class Fireball : MonoBehaviour {
     private const float particleSpeedMod = 2f;
 
     //Private attributes
+    private bool dead = false;
     private const int fireLimit = 5;
     private Vector3 mousePos;
     private Vector3 mouseWorldPos;
@@ -80,8 +81,6 @@ public class Fireball : MonoBehaviour {
 
 
     #region Updating
-
-
     //if something is rigidbody...
     void FixedUpdate() {
         //if the camera is done moving once stopped to prevent stuttering...
@@ -126,9 +125,11 @@ public class Fireball : MonoBehaviour {
             moving = true;
             GameManager.instance.SetTimer(true);
         }
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (moving)
+        if (!dead && Input.GetKeyDown(KeyCode.Escape)) {
+            if (moving) {
                 GameManager.instance.ActivatePausePanel();
+                sexyBody.velocity = Vector2.zero;
+            }
             moving = !moving;
             GameManager.instance.SetTimer(false);
         }
@@ -137,8 +138,8 @@ public class Fireball : MonoBehaviour {
 
     //that there movement
     private void move(Vector2 dist) {
-        sexyBody.AddForce(dist);
-        sexyBody.velocity *= .989f;//dampening...
+        sexyBody.AddForce(dist*speed);
+        sexyBody.velocity *= .99f;//dampening...
     }
 
     //that there rotation
@@ -182,13 +183,14 @@ public class Fireball : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log(col.name);
         if (col.gameObject.tag == "Obstacle") {
+            dead = true;
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
             GameManager.instance.ActivateNextLevelPanel();
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
-            if (col.gameObject.tag == "Torch" || col.gameObject.tag == "Water") {
+            
                 if (col.gameObject.tag == "Torch") {
                     if (sizeFactor < maxScaleFactor) {
                         sizeFactor++;
@@ -199,7 +201,7 @@ public class Fireball : MonoBehaviour {
                     }
 
                 }
-                else {
+                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
@@ -210,7 +212,7 @@ public class Fireball : MonoBehaviour {
                     GameManager.instance.ActivateRetryPanel();
 
                 hitCoolDown = Time.time;
-            }
+            
         }
 
     }
