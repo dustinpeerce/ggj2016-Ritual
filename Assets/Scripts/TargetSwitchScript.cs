@@ -11,7 +11,7 @@ public class TargetSwitchScript : MonoBehaviour {
 	}
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "SwitchBlock")//will need a way to check when it exits as well. Would be nice if a single function covered both.
         {
             if(obstacleType == 1)//pressure_switch
             {

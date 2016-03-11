@@ -10,6 +10,7 @@ TagManager:
   - Water
   - Torch
   - Candle
+  - Switch
   layers:
   - Default
   - TransparentFX
