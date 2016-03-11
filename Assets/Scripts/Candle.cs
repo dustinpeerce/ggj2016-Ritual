@@ -30,7 +30,7 @@ public class Candle : MonoBehaviour {
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
     }
-    public void PressureSwitch()
+    public void TargetSwitch()//change this to target effect.
     {
        // if (!CanAccess)//not sure if I will need this or not.
        // {
