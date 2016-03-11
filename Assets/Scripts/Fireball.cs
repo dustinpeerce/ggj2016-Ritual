@@ -178,7 +178,19 @@ public class Fireball : MonoBehaviour {
         }
         rotation(angle);
     }
-
+    public void MakeSmall()
+    {
+        if (Time.time - hitCoolDown > hitCoolWaitTime)
+        {
+            sizeFactor--;
+            makeMeSmall.startLifetime = 1f;
+            makeMeSmall.Emit(300);
+            sizeFix();
+            if (sizeFactor == 0)
+                GameManager.instance.ActivateRetryPanel();
+            hitCoolDown = Time.time;
+        }
+    }
     //if we hit some type of trigger...
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log(col.name);
@@ -201,7 +213,7 @@ public class Fireball : MonoBehaviour {
                     }
 
                 }
-                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
+                else if (col.gameObject.tag == "Water") {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
