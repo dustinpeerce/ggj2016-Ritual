@@ -11,7 +11,9 @@ public class Candle : MonoBehaviour {
     MovingWall[] wallList;//lis of items with movingwall script.
     Movable[] movableList;
     Candle[] candleList;
-    bool activated;
+    Fireball player;
+    public bool CanAccess;
+    public bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
     //public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
     public Movable[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
@@ -20,17 +22,38 @@ public class Candle : MonoBehaviour {
     public AudioClip candleFlame;
 
     void Start() {
+
+        player = GameObject.FindObjectOfType<Fireball>();
         activated = false;
         flame = transform.FindChild("flame").gameObject;
         flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
     }
+    public void TargetSwitch()//change this to target effect.
+    {
+       // if (!CanAccess)//not sure if I will need this or not.
+       // {
+            CanAccess = !CanAccess;// candle is toggled to either accessible or locked away
+            if(activated && !CanAccess)//if it was just locked away
+            {
+                activated = !activated;//lit candle was just locked away in ice... or something. no longer active.
+                flame.SetActive(false);//turns off the candle since switch locks it away.
+                candleLife = 0;//just in case.
+            }
+            //flame.SetActive(true);// we are making it accessible, not turning it on.
+            //player.MakeSmall();//this will not happen because of the switch, but because of the fire's ability use.
+            //AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
+            //Activate();
+
+       // }
+    }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
-            if (!activated) {
+            if (!activated && CanAccess) {
                 activated = !activated;
                 flame.SetActive(true);
+                player.MakeSmall();
                 AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
                 Activate();
 
