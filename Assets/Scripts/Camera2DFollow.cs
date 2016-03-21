@@ -15,6 +15,11 @@ namespace UnityStandardAssets._2D {
         private Vector3 m_CurrentVelocity;
         private Vector3 m_LookAheadPos;
         private Vector3 m_LookUpPos;
+        public float zoomMin = 10.0f;
+        public float zoomMax = 30.0f;
+        public float zoomSensitivity = 1.0f;
+        private float zoomCurrent;
+        private Camera camera;
 
         // Use this for initialization
         private void Start() {
@@ -23,6 +28,8 @@ namespace UnityStandardAssets._2D {
             m_LastTargetPosition = target.position;
             m_OffsetZ = (transform.position - target.position).z;
             transform.parent = null;
+            camera = transform.GetComponent<Camera>();
+            zoomCurrent = camera.orthographicSize;
         }
 
 
@@ -35,6 +42,12 @@ namespace UnityStandardAssets._2D {
                 lookAheadReturnSpeed = .5f;
 
             follow();
+
+            // Zoom Input
+            float zoomInput = Input.GetAxis("Mouse ScrollWheel") * -zoomSensitivity;
+            zoomCurrent += zoomInput;
+            zoomCurrent = Mathf.Clamp(zoomCurrent, zoomMin, zoomMax);
+            camera.orthographicSize = zoomCurrent;
 
         }
 
