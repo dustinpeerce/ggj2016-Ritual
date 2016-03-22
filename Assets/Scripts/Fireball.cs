@@ -139,7 +139,7 @@ public class Fireball : MonoBehaviour {
     //that there movement
     private void move(Vector2 dist) {
         sexyBody.AddForce(dist*speed);
-        sexyBody.velocity *= .99f;//dampening...
+        sexyBody.velocity *= 0;//dampening...
     }
 
     //that there rotation
