@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public enum GameState { Play, Paused, End, Story }
+    private GameState gameState;
+
     public static GameManager instance;
     public int starTime1;
     public int starTime2;
@@ -36,6 +39,8 @@ public class GameManager : MonoBehaviour {
 	}
 
     void Start() {
+        gameState = GameState.Play;
+
         fire = GameObject.FindGameObjectWithTag("Player").GetComponent<Fireball>();
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
@@ -56,9 +61,20 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetButtonDown("Cancel")) {
-            ActivatePausePanel();
+
+        if (Input.GetMouseButtonDown(0)) {
+            if (!fire.Moving && gameState == GameState.Play)
+                fire.activateMovement();
+            GameManager.instance.SetTimer(true);
         }
+
+        if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.Escape)) {
+            if (gameState == GameState.Play)
+                ActivatePausePanel();
+            else if (gameState == GameState.Paused)
+                Continue();
+        }
+
         if (timerActive)
         {
             timer = Time.time - startTime;
@@ -70,21 +86,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivatePausePanel() {
+        gameState = GameState.Paused;
         AudioSource.PlayClipAtPoint(audioPause, Camera.main.transform.position, volume);
-        pausePanel.SetActive(!pausePanel.activeInHierarchy);
-        if (Time.timeScale == 0) 
-            Time.timeScale = 1.0f;
-        else 
-            Time.timeScale = 0;
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void ActivateRetryPanel() {
+        gameState = GameState.End;
         AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
+        retryPanel.SetActive(true);
         Time.timeScale = 0;
-        retryPanel.SetActive(!retryPanel.activeInHierarchy);
     }
 
     public void ActivateNextLevelPanel() {
+        gameState = GameState.End;
         if (Time.time - startTime > starTime2)
             if (Time.time - startTime > starTime1)
                 starsWon = 1;
@@ -92,54 +108,46 @@ public class GameManager : MonoBehaviour {
                 starsWon = 2;
         else
             starsWon = 3;
+
         AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
+        nextLevelPanel.SetActive(true);
         Time.timeScale = 0;
-        nextLevelPanel.SetActive(!nextLevelPanel.activeInHierarchy);
     }
 
     public void Retry() {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
-        Time.timeScale = 0;
         resetTimer = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Continue() {
+        gameState = GameState.Play;
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
-        Time.timeScale = 0;
         pausePanel.SetActive(false);
-        Time.timeScale = 1.0f;
     }
 
     public void NextLevel() {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
-        Time.timeScale = 0;
         resetTimer = true;
-        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCount)
+
+        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(0);
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void PauseExit() {
-        fire.activateMovement();
-        ActivatePausePanel();
-    }
-
     public void LevelSelect() {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
-        Time.timeScale = 0;
         SceneManager.LoadScene(1);
     }
 
     public void Exit() {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
-        Time.timeScale = 0;
         SceneManager.LoadScene(0);
     }
 
