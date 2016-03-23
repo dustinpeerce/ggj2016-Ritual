@@ -1891,74 +1891,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1274630831}
   m_RootOrder: 0
---- !u!1 &475567919 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 197794, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &475567921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 475567919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!1 &492715819 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 132430, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &492715821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 492715819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &713600760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +1989,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11429596, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5098928, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
@@ -2138,74 +2074,6 @@ Transform:
   - {fileID: 1087236124}
   m_Father: {fileID: 0}
   m_RootOrder: 7
---- !u!1 &1025014420 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 120126, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1025014422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1025014420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!1 &1074395047 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 107610, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1074395049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1074395047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1087236123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,12 +2235,6 @@ Transform:
   - {fileID: 443574941}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &1339361708 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11455768, guid: a33ba054212837342aeb67c4c9fd7743,
-    type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
-  m_Script: {fileID: 11500000, guid: e016d0e16cfaaf343b4ba5d51a87ad9a, type: 3}
 --- !u!1 &1359903512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,74 +2294,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1383002743 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 114974, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1383002745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1383002743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!1 &1424700359 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 176394, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1424700361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1424700359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1454706598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5775,40 +5569,6 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!1 &1764517755 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165274, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1764517757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1764517755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1775284675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5839,40 +5599,6 @@ Transform:
   - {fileID: 1359903513}
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &1783098365 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165082, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &1783098367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1783098365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1001 &1814805369
 Prefab:
   m_ObjectHideFlags: 0
@@ -5880,92 +5606,38 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 452504, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 192376, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 168396, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 112516, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455768, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: audioButtonClick
-      value: 
-      objectReference: {fileID: 8300000, guid: 301f0083cc2956e4a9c96fdb58e0f6d6, type: 3}
-    - target: {fileID: 11455768, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: audioButtonHover
-      value: 
-      objectReference: {fileID: 8300000, guid: e0b1967531da7c14d8594fa9d20ae2ae, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2080110878 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 122448, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-  m_PrefabInternal: {fileID: 1814805369}
---- !u!114 &2080110880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2080110878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1339361708}
-          m_MethodName: PointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
