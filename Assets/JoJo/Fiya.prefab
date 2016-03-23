@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 106100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.68, y: -1.2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 495452}
   - {fileID: 472904}
@@ -160,10 +160,17 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 162470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
+=======
+  m_GameObject: {fileID: 169522}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.49999976, w: 0.5000003}
+  m_LocalPosition: {x: 0, y: -0.23, z: 5}
+  m_LocalScale: {x: 6, y: 6, z: 6}
+>>>>>>> refs/remotes/origin/master
   m_Children: []
   m_Father: {fileID: 454086}
   m_RootOrder: 1
@@ -172,10 +179,17 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 176880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
+=======
+  m_GameObject: {fileID: 196586}
+  m_LocalRotation: {x: -0.0000005591473, y: -0.7071067, z: -0.7071068, w: 0.0000005591472}
+  m_LocalPosition: {x: 0, y: -0.4, z: -1}
+  m_LocalScale: {x: 2.5, y: 3, z: 3}
+>>>>>>> refs/remotes/origin/master
   m_Children: []
   m_Father: {fileID: 454086}
   m_RootOrder: 3
@@ -204,8 +218,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
+<<<<<<< HEAD
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &5840018
@@ -223,6 +238,11 @@ CircleCollider2D:
   serializedVersion: 2
   m_Radius: 2.5638027
 --- !u!58 &5894286
+=======
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!58 &5812660
+>>>>>>> refs/remotes/origin/master
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -233,10 +253,15 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
+<<<<<<< HEAD
   m_Radius: 0.35888863
 --- !u!95 &9544116
+=======
+  m_Radius: 0.25
+--- !u!95 &9517688
+>>>>>>> refs/remotes/origin/master
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -646,8 +671,30 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_NumColorKeys: 3
+<<<<<<< HEAD
     m_NumAlphaKeys: 3
 --- !u!114 &11487126
+=======
+    m_NumAlphaKeys: 2
+--- !u!114 &11429596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc8b4bf4cfd31b4590d1fb2899d5439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 150
+  sizeFactor: 3
+  scale: 3
+  maxScaleFactor: 4
+  currentTorchType: 0
+  hitCoolWaitTime: 0.25
+--- !u!114 &11444570
+>>>>>>> refs/remotes/origin/master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -10303,7 +10350,55 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
+<<<<<<< HEAD
     m_Modifications: []
+=======
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: sizeFactor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+>>>>>>> refs/remotes/origin/master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106100}
