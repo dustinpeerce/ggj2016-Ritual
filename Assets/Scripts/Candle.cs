@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Candle : MonoBehaviour {
     //this script covers the activation of moving objects based on player colliding with candle.
@@ -9,7 +10,7 @@ public class Candle : MonoBehaviour {
     GameObject[] gos;
     Wheel[] wheelList;//list of items with wheel script
     MovingWall[] wallList;//lis of items with movingwall script.
-    Movable[] movableList;
+    List<Movable> movableList;
     Candle[] candleList;
     Fireball player;
     public bool CanAccess;
@@ -29,6 +30,7 @@ public class Candle : MonoBehaviour {
         flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
+        movableList = new List<Movable>();
     }
     public void TargetSwitch()//change this to target effect.
     {
@@ -83,7 +85,7 @@ public class Candle : MonoBehaviour {
             }
             //could also grab an array of all candles using candlescript as the type in order to turn all other candles besides this one off.
             candleList = GameObject.FindObjectsOfType(typeof(Candle)) as Candle[];
-            if (movableList.Length != 0) {
+            if (movableList.Count != 0) {
                 foreach (Candle light in candleList) {
                     //wall.gameObject;
                     if (light.candleNumber != candleNumber) {
