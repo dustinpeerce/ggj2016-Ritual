@@ -19,7 +19,6 @@ public class Fireball : MonoBehaviour {
     private const float particleSpeedMod = 2f;
 
     //Private attributes
-    private bool dead = false;
     private const int fireLimit = 5;
     private Vector3 mousePos;
     private Vector3 mouseWorldPos;
@@ -121,25 +120,18 @@ public class Fireball : MonoBehaviour {
 
     //handles input and how we react to such input...
     private void input() {
+        /*
         if (!moving && Input.GetMouseButtonDown(0)) {
             moving = true;
             GameManager.instance.SetTimer(true);
         }
-        if (!dead && Input.GetKeyDown(KeyCode.Escape)) {
-            if (moving) {
-                GameManager.instance.ActivatePausePanel();
-                sexyBody.velocity = Vector2.zero;
-            }
-            moving = !moving;
-            GameManager.instance.SetTimer(false);
-        }
-        
+        */
     }
 
     //that there movement
     private void move(Vector2 dist) {
         sexyBody.AddForce(dist*speed);
-        sexyBody.velocity *= .99f;//dampening...
+        sexyBody.velocity *= 0;//dampening...
     }
 
     //that there rotation
@@ -178,12 +170,23 @@ public class Fireball : MonoBehaviour {
         }
         rotation(angle);
     }
-
+    public void MakeSmall()
+    {
+        if (Time.time - hitCoolDown > hitCoolWaitTime)
+        {
+            sizeFactor--;
+            makeMeSmall.startLifetime = 1f;
+            makeMeSmall.Emit(300);
+            sizeFix();
+            if (sizeFactor == 0)
+                GameManager.instance.ActivateRetryPanel();
+            hitCoolDown = Time.time;
+        }
+    }
     //if we hit some type of trigger...
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log(col.name);
         if (col.gameObject.tag == "Obstacle") {
-            dead = true;
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
@@ -201,7 +204,7 @@ public class Fireball : MonoBehaviour {
                     }
 
                 }
-                else if (col.gameObject.tag == "Water" || (col.gameObject.tag == "Candle")) {
+                else if (col.gameObject.tag == "Water") {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
@@ -221,14 +224,18 @@ public class Fireball : MonoBehaviour {
     private void sizeFix() {
         float si = (float)(sizeFactor) * 2/3 * scale;
         transform.localScale = new Vector3(si,si,si);
-        flicker.transform.localScale = new Vector3(si, si, si) / 2;
+        flicker.transform.localScale = new Vector3(si, si, si) / 2.5f;
         fire.transform.localScale = new Vector3(si, si, si);
     }
 
     //I WANT TO MOVE!
     public void activateMovement() {
         moving = !moving;
-    } 
+    }
+
+    public bool Moving {
+        get { return moving; }
+    }
     
     #endregion
 }

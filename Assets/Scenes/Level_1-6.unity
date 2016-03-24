@@ -102,7 +102,7 @@ GameObject:
   - 114: {fileID: 19977454}
   m_Layer: 0
   m_Name: MovableBlock_1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,8 +133,8 @@ BoxCollider2D:
   m_GameObject: {fileID: 19977453}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -355,6 +355,10 @@ Prefab:
     - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: m_Offset.y
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: CanAccess
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
@@ -1260,6 +1264,10 @@ Prefab:
       propertyPath: Obstacle_List.Array.data[0]
       value: 
       objectReference: {fileID: 1183417092}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: CanAccess
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
   m_IsPrefabParent: 0
@@ -1324,6 +1332,7 @@ GameObject:
   - 212: {fileID: 679068833}
   - 58: {fileID: 679068832}
   - 114: {fileID: 679068831}
+  - 114: {fileID: 679068834}
   m_Layer: 0
   m_Name: TorchRegular
   m_TagString: Torch
@@ -1357,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMeHappy: 0
+  TorchNumber: 0
 --- !u!58 &679068832
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1403,6 +1413,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &679068834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 679068829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b7b2555d921db44893a249059c9c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 5
+  destroyOnTouch: 1
 --- !u!4 &694972380 stripped
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
@@ -3097,7 +3120,7 @@ Transform:
   m_Children:
   - {fileID: 679068830}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &786960496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,8 +3174,8 @@ Transform:
   - {fileID: 57637172}
   - {fileID: 613310244}
   - {fileID: 1037191283}
-  - {fileID: 165747330}
   - {fileID: 2048624747}
+  - {fileID: 165747330}
   - {fileID: 338490557}
   - {fileID: 1072842265}
   - {fileID: 1862599036}
@@ -4700,7 +4723,7 @@ GameObject:
   - 114: {fileID: 1833095710}
   m_Layer: 0
   m_Name: MovableBlock_2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4731,8 +4754,8 @@ BoxCollider2D:
   m_GameObject: {fileID: 1833095709}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -5137,6 +5160,10 @@ Prefab:
     - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: m_Offset.y
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: CanAccess
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
@@ -7010,6 +7037,18 @@ Prefab:
     - target: {fileID: 468500, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011574, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+      propertyPath: orthographic size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438566, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+      propertyPath: zoomSensitivity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414426, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}

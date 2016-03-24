@@ -102,7 +102,7 @@ GameObject:
   - 114: {fileID: 19977454}
   m_Layer: 0
   m_Name: MovableBlock_1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 19977453}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -902,23 +902,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 419052, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
       propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 450216, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 450216, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 483134, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -7.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 483134, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.14
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
@@ -982,7 +966,7 @@ GameObject:
   - 114: {fileID: 619317903}
   m_Layer: 0
   m_Name: MovableBlock_1 (1)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,7 +997,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 619317902}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -1208,6 +1192,18 @@ Prefab:
       propertyPath: Obstacle_List.Array.data[0]
       value: 
       objectReference: {fileID: 1183417092}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: CanAccess
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: m_Size.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
   m_IsPrefabParent: 0
@@ -2993,11 +2989,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 423158, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.608358
+      value: -15.49
       objectReference: {fileID: 0}
     - target: {fileID: 423158, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26.228542
+      value: 25.916
       objectReference: {fileID: 0}
     - target: {fileID: 423158, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3023,7 +3019,32 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5812660, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429596, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: sizeFactor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429596, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: scale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 446552, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 446552, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 446552, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5098928, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bed602b0d8b075d4a9be9cc6f2d4ea44, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1652853231 stripped
@@ -3442,6 +3463,10 @@ Prefab:
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: candleLife
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: CanAccess
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
