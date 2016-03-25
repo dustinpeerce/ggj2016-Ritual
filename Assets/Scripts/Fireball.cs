@@ -11,6 +11,9 @@ public class Fireball : MonoBehaviour {
     public float maxScaleFactor;
     
     public TorchColor currentTorchType;
+    public TorchColor CurrentTorchType {
+        get { return currentTorchType; }
+    }
     public enum TorchColor { Regular,Blue,Green,Yellow}
 
     //Attributes for particle effect changing...Don't touch these please :)
@@ -21,6 +24,7 @@ public class Fireball : MonoBehaviour {
     //Private attributes
     private const int fireLimit = 5;
     private Vector3 mousePos;
+    private Vector3 oldMousePos;
     private Vector3 mouseWorldPos;
     private Vector3 objectPos;
     private bool moving = false;
@@ -98,6 +102,7 @@ public class Fireball : MonoBehaviour {
         //kinky fire changing lol...
         if (changeTorchType)
             fiftyShadesOfFire();
+        oldMousePos = mousePos;
     }
 
     //sexy changing fire stuff
@@ -131,7 +136,7 @@ public class Fireball : MonoBehaviour {
     //that there movement
     private void move(Vector2 dist) {
         sexyBody.AddForce(dist*speed);
-        sexyBody.velocity *= 0;//dampening...
+        sexyBody.velocity *= .3f;//dampening...
     }
 
     //that there rotation
@@ -147,7 +152,8 @@ public class Fireball : MonoBehaviour {
         Vector2 dist = mouseXY - transXY;
 
         float angle = -90;
-        distanceGreatEnough = dist.magnitude <= 2.1f;
+        Debug.Log(Vector3.Distance(mousePos, oldMousePos));
+        distanceGreatEnough = dist.magnitude <= 2f && Vector3.Distance(mousePos,oldMousePos) <= 50f;
         if (!distanceGreatEnough) {
             rotated = false;
             //movement, so simple...so clean...
