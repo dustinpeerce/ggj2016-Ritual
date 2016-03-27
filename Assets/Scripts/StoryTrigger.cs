@@ -21,9 +21,7 @@ public class StoryTrigger : MonoBehaviour {
         }
 
         foreach (GameObject panel in storyPanels) {
-            Debug.Log("1: " + Screen.height);
             panel.GetComponent<RectTransform>().sizeDelta = new Vector2((float)Screen.height, (float)Screen.height);
-            Debug.Log("2: " + Screen.height);
         }
 
         volume = PlayerPrefs.GetFloat("sfxVolume");

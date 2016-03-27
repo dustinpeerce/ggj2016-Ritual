@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour {
 
         fire = GameObject.FindGameObjectWithTag("Player").GetComponent<Fireball>();
         hudPanel = GameObject.Find("hudPanel");
-        Debug.Log(hudPanel);
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
         nextLevelPanel = GameObject.Find("NextLevelPanel");
