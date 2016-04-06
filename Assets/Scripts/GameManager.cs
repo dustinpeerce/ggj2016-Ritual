@@ -2,6 +2,10 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public interface ISwitchTrigger {
+    void SwitchTriggger();
+}
+
 public class GameManager : MonoBehaviour {
 
     public enum GameState { Play, Paused, End, Story }
@@ -17,7 +21,7 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioButtonClick;
     public AudioClip audioButtonHover;
     private float volume;
-    private Fireball fire;
+    private Player player;
     private GameObject pausePanel;
     private GameObject retryPanel;
     private GameObject nextLevelPanel;
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour {
     void Start() {
         gameState = GameState.Play;
 
-        fire = GameObject.FindGameObjectWithTag("Player").GetComponent<Fireball>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
         nextLevelPanel = GameObject.Find("NextLevelPanel");
@@ -63,8 +67,9 @@ public class GameManager : MonoBehaviour {
     void Update() {
 
         if (Input.GetMouseButtonDown(0)) {
-            if (!fire.Moving && gameState == GameState.Play)
-                fire.activateMovement();
+            player.SizeFix();//this is for the inspector edit stuff....
+            if (!player.Moving && gameState == GameState.Play)
+                player.activateMovement();
             GameManager.instance.SetTimer(true);
         }
 

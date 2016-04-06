@@ -21,9 +21,9 @@ public class FlickerGradients : MonoBehaviour {
         };
     }
 
-    public ParticleSystem.MinMaxGradient changeFlicker(Fireball.TorchColor torchColor) {
+    public ParticleSystem.MinMaxGradient ChangeGradient(Player.TorchColor torchColor) {
         return new ParticleSystem.MinMaxGradient(fireGradients[(int)torchColor]);
     }
-
+    
 
 }

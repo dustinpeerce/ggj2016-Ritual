@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class Candle : MonoBehaviour {
+public class Candle : MonoBehaviour,ISwitchTrigger {
     //this script covers the activation of moving objects based on player colliding with candle.
     public int candleNumber;
+    public Player.TorchColor candleType;
     int currLife;
     public int candleLife;
     GameObject[] gos;
@@ -12,7 +14,7 @@ public class Candle : MonoBehaviour {
     MovingWall[] wallList;//lis of items with movingwall script.
     List<Movable> movableList;
     Candle[] candleList;
-    Fireball player;
+    Player player;
     public bool CanAccess;
     public bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
@@ -23,8 +25,7 @@ public class Candle : MonoBehaviour {
     public AudioClip candleFlame;
 
     void Start() {
-
-        player = GameObject.FindObjectOfType<Fireball>();
+        player = GameObject.FindObjectOfType<Player>();
         activated = false;
         flame = transform.FindChild("flame").gameObject;
         flame.SetActive(false);
@@ -32,7 +33,7 @@ public class Candle : MonoBehaviour {
         currLife = 0;
         movableList = new List<Movable>();
     }
-    public void TargetSwitch()//change this to target effect.
+    public void SwitchTriggger()//change this to target effect.
     {
        // if (!CanAccess)//not sure if I will need this or not.
        // {
@@ -43,15 +44,26 @@ public class Candle : MonoBehaviour {
                 flame.SetActive(false);//turns off the candle since switch locks it away.
                 candleLife = 0;//just in case.
             }
-            //flame.SetActive(true);// we are making it accessible, not turning it on.
-            //player.MakeSmall();//this will not happen because of the switch, but because of the fire's ability use.
-            //AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
-            //Activate();
+        //flame.SetActive(true);// we are making it accessible, not turning it on.
+        //player.MakeSmall();//this will not happen because of the switch, but because of the fire's ability use.
+        //AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
+        //Activate();
 
-       // }
+        // }
     }
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.tag == "Player") {
+        lightCandle(col);
+    }
+    void OnTriggerStay2D(Collider2D col) {
+        lightCandle(col);
+    }
+    void lightCandle(Collider2D col) {
+        if ((col.gameObject.tag == "Player" &&
+            player.CurrentTorchType == candleType &&
+            player.CanLight) ||
+            (col.gameObject.tag == "FireBall"&&
+             candleType == Player.TorchColor.Blue)
+            ) {
             if (!activated && CanAccess) {
                 activated = !activated;
                 flame.SetActive(true);
@@ -63,6 +75,7 @@ public class Candle : MonoBehaviour {
 
         }
     }
+
     void Activate()//the activation function that starts everything up.
     {
         if (activated) {
@@ -150,4 +163,5 @@ public class Candle : MonoBehaviour {
           
 
     }
+
 }

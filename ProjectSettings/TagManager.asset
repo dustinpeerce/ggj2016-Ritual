@@ -12,6 +12,7 @@ TagManager:
   - Candle
   - Switch
   - Target
+  - FireBall
   layers:
   - Default
   - TransparentFX

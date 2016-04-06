@@ -6,9 +6,12 @@ public class ForcePush : MonoBehaviour {
     private PointEffector2D boomBitch;
     private ParticleSystem firePushParticle;
     private ParticleSystem.EmissionModule emission;
-    private Fireball fiyaaaa;
+    private ParticleSystem.ColorOverLifetimeModule theGrad;
+    private FlickerGradients grads;
+    private Player firePlayer;
+    private FireBall fireBall;
     private float burstTime;
-    public const float burstWait = .25f;
+    public const float burstWait =  1;
 
 	// Use this for initialization
 	void Start () {
@@ -16,23 +19,41 @@ public class ForcePush : MonoBehaviour {
         firePushParticle = GetComponent<ParticleSystem>();
         emission = firePushParticle.emission;
         emission.enabled = false;
-        fiyaaaa = GameObject.FindObjectOfType<Fireball>();
+        boomBitch.enabled = false;
+        firePlayer = GameObject.FindObjectOfType<Player>();
+        fireBall = GameObject.FindObjectOfType<FireBall>();
+        theGrad = firePushParticle.colorOverLifetime;
+        grads = GetComponent<FlickerGradients>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (fiyaaaa.CurrentTorchType == Fireball.TorchColor.Yellow) {
-            if (particleReady) {
-                if(emission.enabled)
-                    emission.enabled = false;
-                if (boomBitch.enabled = Input.GetKeyDown(KeyCode.A)) 
-                    burstTime = Time.time;
+        transform.position = firePlayer.transform.position;    
+        if (particleReady) {
+            if (emission.enabled) {
+                emission.enabled = false;
+                firePlayer.FlipCanLightSwitch();
             }
-            else if(burstTime != 0)
+            if (Input.GetMouseButton(1)) {
+                burstTime = Time.time;
                 emission.enabled = true;
+                theGrad.color = grads.ChangeGradient(firePlayer.CurrentTorchType);
+                firePlayer.FlipCanLightSwitch();
+
+                switch (firePlayer.CurrentTorchType) {
+                    case Player.TorchColor.Yellow:
+                        boomBitch.enabled = true;
+                        break;
+                    case Player.TorchColor.Blue:
+                        fireBall.FireTheFireball();
+                        break;
+                }
+                
+            }
         }
 
 	}
+
 
     private bool particleReady {
         get { return Time.time - burstTime > burstWait; }

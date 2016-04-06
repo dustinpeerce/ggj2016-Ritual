@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Fireball : MonoBehaviour {
+public class Player : MonoBehaviour {
 
     #region Initialization
     //Attributes to be set in inspector.
-    public float speed;
+    public int speed;
     public int sizeFactor;
-    public float scale;
+    public int deacclertionRate;
+    public int scale = 3;
     public float maxScaleFactor;
-    
+
     public TorchColor currentTorchType;
     public TorchColor CurrentTorchType {
         get { return currentTorchType; }
@@ -23,12 +24,24 @@ public class Fireball : MonoBehaviour {
 
     //Private attributes
     private const int fireLimit = 5;
+
+    private bool canLight;
     private Vector3 mousePos;
     private Vector3 oldMousePos;
     private Vector3 mouseWorldPos;
     private Vector3 objectPos;
+    private Vector3 clickRotationDest;
+    private Vector2 clickMoveDest;
+    private Vector3? clickDest;
+    private float clickOrHoldTime;
+    private const float clickOrHoldWait = .2f;
+    private float clickDestTime;
+    private const float clickDestWait = .5f;
+    private bool killDest;
+    private bool unkillAbleDest;
+
     private bool moving = false;
-    private ParticleSystem fire;
+    private ParticleSystem fireTail;
     private ParticleSystem.EmissionModule fireEmission;
     private ParticleSystem.ShapeModule fireShape;
     private ParticleSystem makeMeBig;
@@ -59,7 +72,7 @@ public class Fireball : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
-        fire = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
+        fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
         makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
 
@@ -67,18 +80,19 @@ public class Fireball : MonoBehaviour {
         flickerGradient = flicker.GetComponent<ParticleSystem>().colorOverLifetime;
         flickerScript = flicker.GetComponent<FlickerGradients>();
 
-        torchGradient = fire.colorOverLifetime;
-        torchScript = fire.GetComponent<FlickerGradients>();
+        torchGradient = fireTail.colorOverLifetime;
+        torchScript = fireTail.GetComponent<FlickerGradients>();
 
         explosionGradient = makeMeBig.colorOverLifetime;
         explosionScript = makeMeBig.GetComponent<FlickerGradients>();
 
-        fireEmission = fire.emission;
-        fireShape = fire.shape;
+        fireEmission = fireTail.emission;
+        fireShape = fireTail.shape;
         distanceGreatEnough = true;
         sexyBody = GetComponent<Rigidbody2D>();
+        unkillAbleDest = true;
 
-        sizeFix();   
+        SizeFix();   
     }
     #endregion
 
@@ -88,7 +102,16 @@ public class Fireball : MonoBehaviour {
     void FixedUpdate() {
         //if the camera is done moving once stopped to prevent stuttering...
         if (moving)
-            rotationAndMovement();
+            if (clickDest != null) {
+                clickAndGo();
+            }
+            else {
+                sexyBody.velocity *= .2f;
+            }
+        if (killDest) {
+            sexyBody.velocity *= 0;
+            killDest = false;
+        }
     }
 
     //if something is NOT rigidbody lol.
@@ -102,14 +125,15 @@ public class Fireball : MonoBehaviour {
         //kinky fire changing lol...
         if (changeTorchType)
             fiftyShadesOfFire();
-        oldMousePos = mousePos;
+
+        //oldMousePos = mousePos;
     }
 
     //sexy changing fire stuff
     void fiftyShadesOfFire() {
-        flickerGradient.color = flickerScript.changeFlicker(currentTorchType);
-        torchGradient.color = torchScript.changeFlicker(currentTorchType);
-        explosionGradient.color = explosionScript.changeFlicker(currentTorchType);
+        flickerGradient.color = flickerScript.ChangeGradient(currentTorchType);
+        torchGradient.color = torchScript.ChangeGradient(currentTorchType);
+        explosionGradient.color = explosionScript.ChangeGradient(currentTorchType);
         changeTorchType = false;
     }
 
@@ -123,59 +147,109 @@ public class Fireball : MonoBehaviour {
         mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);        
     }
 
+    #region input
     //handles input and how we react to such input...
     private void input() {
-        /*
-        if (!moving && Input.GetMouseButtonDown(0)) {
-            moving = true;
-            GameManager.instance.SetTimer(true);
+        if (moving) {
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                setDest(true);
+                clickOrHoldTime = Time.time;
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0)) {
+                clickOrHoldTime = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.Mouse0)) {
+                if(Time.time - clickOrHoldTime > clickOrHoldWait)
+                    setDest();
+            }
+            
+            else if (!unkillAbleDest) {
+                killDest = true;
+                clickDest = null;
+            }
         }
-        */
+    }
+
+    private void setDest(bool kill = false) {
+        clickDest = mouseWorldPos;
+        clickMoveDest = mouseWorldPos - transform.position;
+        clickRotationDest = mousePos;
+        unkillAbleDest = kill;
     }
 
     //that there movement
     private void move(Vector2 dist) {
-        sexyBody.AddForce(dist*speed);
-        sexyBody.velocity *= .3f;//dampening...
+        sexyBody.AddForce(dist*(speed * deacclertionRate / 4));
     }
 
     //that there rotation
     private void rotation(float angle) {
-        transform.rotation = Quaternion.Euler(0, 0, angle + 90);
-        fire.startRotation = (angle) * -Mathf.Deg2Rad;
+        transform.rotation = Quaternion.Euler(0, 0, angle+90);
+        fireTail.startRotation = (angle) * Mathf.Deg2Rad;
     }
 
-    //rotation and movement...what did you expect?
-    private void rotationAndMovement() {
-        Vector2 mouseXY = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+    //if we just click instead of holding and moving
+    private void clickAndGo() {
+        Vector2 clickXY = new Vector2(((Vector3) clickDest).x, ((Vector3) clickDest).y);
         Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
-        Vector2 dist = mouseXY - transXY;
+        Vector2 dist = clickXY - transXY;
 
-        float angle = -90;
-        Debug.Log(Vector3.Distance(mousePos, oldMousePos));
-        distanceGreatEnough = dist.magnitude <= 2f && Vector3.Distance(mousePos,oldMousePos) <= 50f;
-        if (!distanceGreatEnough) {
-            rotated = false;
-            //movement, so simple...so clean...
-            move(dist);
-
-            //rotation
-            if (rotateLerpTime > 0) {
-                angle = Mathf.Lerp(-90, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, 1 - rotateLerpTime);
-                rotateLerpTime -= .02f;
-            }
-            //other wise make if fly in the rotation angle...
-            else
-                angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
+        if (dist.magnitude >= 1) {
+            move(clickMoveDest);
+            rotation(Mathf.Atan2(clickRotationDest.y, clickRotationDest.x) * Mathf.Rad2Deg);
         }
-        else if (!rotated) {
-            angle = -90;
-            rotated = true;
-            sexyBody.velocity = Vector2.zero;
+        else {
+            clickDest = null;
+            unkillAbleDest = false;
         }
-        rotation(angle);
+
+        sexyBody.velocity *= 100 / ((float)deacclertionRate)/100;
     }
+
+    //deprecated rotmove
+    //rotation and movement...what did you expect?
+    //private void rotationAndMovement() {
+    //    Vector2 mouseXY = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+    //    Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
+    //    Vector2 dist = mouseXY - transXY;
+
+    //    float angle = -90;
+    //    distanceGreatEnough = dist.magnitude <= 2f && Vector3.Distance(mousePos,oldMousePos) <= 50f;
+    //    if (!distanceGreatEnough) {
+    //        rotated = false;
+    //        //movement, so simple...so clean...
+    //        move(dist);
+
+    //        //rotation
+    //        if (rotateLerpTime > 0) {
+    //            angle = Mathf.Lerp(-90, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, 1 - rotateLerpTime);
+    //            rotateLerpTime -= .02f;
+    //        }
+    //        //other wise make if fly in the rotation angle...
+    //        else
+    //            angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+
+    //    }
+    //    else if (!rotated) {
+    //        angle = -90;
+    //        rotated = true;
+    //        sexyBody.velocity = Vector2.zero;
+    //    }
+    //    rotation(angle);
+    //}
+    #endregion
+
+    #region nonFire
+    public float ParticleRotation {
+        get { return fireTail.startRotation; }
+    }
+    public bool CanLight {
+        get { return canLight; }
+    }
+    public void FlipCanLightSwitch() {
+        canLight = !canLight;
+    }
+
     public void MakeSmall()
     {
         if (Time.time - hitCoolDown > hitCoolWaitTime)
@@ -183,15 +257,26 @@ public class Fireball : MonoBehaviour {
             sizeFactor--;
             makeMeSmall.startLifetime = 1f;
             makeMeSmall.Emit(300);
-            sizeFix();
+            SizeFix();
             if (sizeFactor == 0)
                 GameManager.instance.ActivateRetryPanel();
             hitCoolDown = Time.time;
         }
     }
+    public void MakeBig(Collider2D col) {
+        if (sizeFactor < maxScaleFactor) {
+            sizeFactor++;
+            makeMeBig.startLifetime = 1f;
+            makeMeBig.Emit(300);
+            changeTorchType = true;
+            currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
+        }
+    }
+
     //if we hit some type of trigger...
+
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log(col.name);
+
         if (col.gameObject.tag == "Obstacle") {
             GameManager.instance.ActivateRetryPanel();
         }
@@ -201,21 +286,14 @@ public class Fireball : MonoBehaviour {
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
             
                 if (col.gameObject.tag == "Torch") {
-                    if (sizeFactor < maxScaleFactor) {
-                        sizeFactor++;
-                        makeMeBig.startLifetime = 1f;
-                        makeMeBig.Emit(300);
-                        changeTorchType = true;
-                        currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
-                    }
-
+                    MakeBig(col);
                 }
                 else if (col.gameObject.tag == "Water") {
                     sizeFactor--;
                     makeMeSmall.startLifetime = 1f;
                     makeMeSmall.Emit(300);
                 }
-                sizeFix();
+                SizeFix();
 
                 if (sizeFactor == 0)
                     GameManager.instance.ActivateRetryPanel();
@@ -226,12 +304,22 @@ public class Fireball : MonoBehaviour {
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision) {
+        clickDestTime = Time.time;
+    }
+
+    void OnCollisionStay2D(Collision2D collision) {
+        if(Time.time - clickDestTime > clickDestWait)
+            clickDest = null;
+    }
+
     //When a fire gets big, or small...
-    private void sizeFix() {
+    public void SizeFix() {
         float si = (float)(sizeFactor) * 2/3 * scale;
+
         transform.localScale = new Vector3(si,si,si);
         flicker.transform.localScale = new Vector3(si, si, si) / 2.5f;
-        fire.transform.localScale = new Vector3(si, si, si);
+        fireTail.transform.localScale = new Vector3(si, si, si);
     }
 
     //I WANT TO MOVE!
@@ -242,6 +330,7 @@ public class Fireball : MonoBehaviour {
     public bool Moving {
         get { return moving; }
     }
-    
+    #endregion
+
     #endregion
 }
