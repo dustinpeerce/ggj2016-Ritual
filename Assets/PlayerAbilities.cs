@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ForcePush : MonoBehaviour {
+public class PlayerAbilities : MonoBehaviour {
 
     private PointEffector2D boomBitch;
     private ParticleSystem firePushParticle;
@@ -12,9 +12,11 @@ public class ForcePush : MonoBehaviour {
     private FireBall fireBall;
     private float burstTime;
     public const float burstWait =  1;
+    private PlayerHeart playerHeart;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        playerHeart = GameObject.FindObjectOfType<PlayerHeart>();
         boomBitch = GetComponent<PointEffector2D>();
         firePushParticle = GetComponent<ParticleSystem>();
         emission = firePushParticle.emission;
@@ -35,6 +37,7 @@ public class ForcePush : MonoBehaviour {
                 firePlayer.FlipCanLightSwitch();
             }
             if (Input.GetMouseButton(1)) {
+                playerHeart.TickDown();
                 burstTime = Time.time;
                 emission.enabled = true;
                 theGrad.color = grads.ChangeGradient(firePlayer.CurrentTorchType);

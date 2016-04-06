@@ -6,6 +6,19 @@ public class WaterSwitch : MonoBehaviour, ISwitchTrigger {
     private Player player;
     bool CanAccess;
     GameObject child;
+
+
+    // Use this for initialization
+    void Start () {
+        player = FindObjectOfType<Player>();
+        child = transform.FindChild("Agua").gameObject;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
     public void SwitchTriggger() {
         if (player.CurrentTorchType == Player.TorchColor.Green &&
             player.CanLight) {
@@ -20,15 +33,4 @@ public class WaterSwitch : MonoBehaviour, ISwitchTrigger {
             }
         }
     }
-
-    // Use this for initialization
-    void Start () {
-        player = FindObjectOfType<Player>();
-        child = transform.FindChild("Agua").gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
