@@ -1,4 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: e3e6e74e76475a54b874f19df637fb7d
+timeCreated: 1458935438
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName: {}
+=======
 guid: 06fd288966191d84c82e3e8984b8a6b5
 timeCreated: 1459728343
 licenseType: Free
@@ -37,6 +44,7 @@ TextureImporter:
     21300060: alchemist_block_lg_1
     21300062: alchemist_block_lg_4
     21300064: alchemist_block_lg_2
+>>>>>>> refs/remotes/origin/master
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,7 +71,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
+<<<<<<< HEAD
+    aniso: -1
+=======
     aniso: 16
+>>>>>>> refs/remotes/origin/master
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -71,7 +83,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> refs/remotes/origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -82,6 +98,9 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+<<<<<<< HEAD
+    sprites: []
+=======
     sprites:
     - name: alchemist_wall_md_2
       rect:
@@ -404,6 +423,7 @@ TextureImporter:
         - {x: -128, y: -64}
         - {x: 128, y: -64}
         - {x: 128, y: 64}
+>>>>>>> refs/remotes/origin/master
     outline: []
   spritePackingTag: 
   userData: 
