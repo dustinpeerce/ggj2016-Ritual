@@ -204,9 +204,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &5812310
 CircleCollider2D:
@@ -219,9 +219,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
-  m_Radius: 0.35888863
+  m_Radius: 0.2
 --- !u!58 &5890610
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -632,10 +632,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   sizeFactor: 3
-  scale: 1
+  scale: 3
   maxScaleFactor: 4
   currentTorchType: 0
-  hitCoolWaitTime: 0.25
+  hitCoolWaitTime: 0
 --- !u!114 &11468854
 MonoBehaviour:
   m_ObjectHideFlags: 1

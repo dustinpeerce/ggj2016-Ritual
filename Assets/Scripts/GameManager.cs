@@ -21,7 +21,12 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioButtonClick;
     public AudioClip audioButtonHover;
     private float volume;
+<<<<<<< HEAD
     private Player player;
+=======
+    private Fireball fire;
+    private GameObject hudPanel;
+>>>>>>> refs/remotes/origin/master
     private GameObject pausePanel;
     private GameObject retryPanel;
     private GameObject nextLevelPanel;
@@ -39,19 +44,23 @@ public class GameManager : MonoBehaviour {
             DestroyImmediate(gameObject);
             return;
         }
-        
-	}
 
-    void Start() {
         gameState = GameState.Play;
 
+<<<<<<< HEAD
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+=======
+        fire = GameObject.FindGameObjectWithTag("Player").GetComponent<Fireball>();
+        hudPanel = GameObject.Find("hudPanel");
+>>>>>>> refs/remotes/origin/master
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
         nextLevelPanel = GameObject.Find("NextLevelPanel");
         timerText = GameObject.Find("TimerText").GetComponent<Text>();
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
+	}
 
+    void Start() {
 
         string sceneName = SceneManager.GetActiveScene().name;
         sceneName = sceneName.Replace("_", " ");
@@ -67,10 +76,17 @@ public class GameManager : MonoBehaviour {
     void Update() {
 
         if (Input.GetMouseButtonDown(0)) {
+<<<<<<< HEAD
             player.SizeFix();//this is for the inspector edit stuff....
             if (!player.Moving && gameState == GameState.Play)
                 player.activateMovement();
             GameManager.instance.SetTimer(true);
+=======
+            if (!fire.Moving && gameState == GameState.Play) {
+                fire.activateMovement();
+                GameManager.instance.SetTimer(true);
+            }
+>>>>>>> refs/remotes/origin/master
         }
 
         if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.Escape)) {
@@ -117,6 +133,16 @@ public class GameManager : MonoBehaviour {
         AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
         nextLevelPanel.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void ActivateStoryPanel() {
+        gameState = GameState.Story;
+        hudPanel.SetActive(false);
+    }
+
+    public void DeactivateStoryPanel() {
+        gameState = GameState.Play;
+        hudPanel.SetActive(true);
     }
 
     public void Retry() {
