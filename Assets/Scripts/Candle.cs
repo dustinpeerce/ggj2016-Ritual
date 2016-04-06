@@ -25,9 +25,30 @@ public class Candle : MonoBehaviour {
     void Start() {
 
         player = GameObject.FindObjectOfType<Fireball>();
-        activated = false;
+        //activated = false;
         flame = transform.FindChild("flame").gameObject;
-        flame.SetActive(false);
+		if(activated)
+		{
+			currLife = candleLife;
+			flame.SetActive(true);
+            if (Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
+            {
+                foreach (Movable wall in Obstacle_List)
+                {
+                    if (wall.attachedCandle == candleNumber)
+                    {
+                        //wall.activated = true;//make this call an actual function.
+                        wall.activated = true;
+                        wall.Activation();
+                    }
+                    else {
+                        wall.activated = false;
+                    }
+                }
+            }
+        }
+		else
+			flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
         movableList = new List<Movable>();
