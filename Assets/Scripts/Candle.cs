@@ -25,14 +25,14 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     public AudioClip candleFlame;
 
     void Start() {
-<<<<<<< HEAD
-        player = GameObject.FindObjectOfType<Player>();
-        activated = false;
-=======
 
-        player = GameObject.FindObjectOfType<Fireball>();
+        player = GameObject.FindObjectOfType<Player>();
         //activated = false;
->>>>>>> refs/remotes/origin/Lord-of-Trees
+
+
+        //player = GameObject.FindObjectOfType<Fireball>();
+        //activated = false;
+
         flame = transform.FindChild("flame").gameObject;
 		if(activated)
 		{
