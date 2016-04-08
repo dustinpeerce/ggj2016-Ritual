@@ -208,7 +208,7 @@ public class Player : MonoBehaviour {
             unkillAbleDest = false;
         }
 
-        sexyBody.velocity *= 100 / ((float)deacclertionRate)/100;
+        sexyBody.velocity *=( 100 / ((float)deacclertionRate)/100);
     }
 
     //deprecated rotmove
