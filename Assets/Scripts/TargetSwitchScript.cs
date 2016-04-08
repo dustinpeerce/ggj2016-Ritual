@@ -1,53 +1,86 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class TargetSwitchScript : MonoBehaviour {
-    public int Light_Target;//the numbers can be used twice since targets will never check torch list, vice versa.
-    Candle[] candleList;
-    EreDayBeTorching[] torches;
-    public int obstacleType;//this will later be changed based on whether the object has the specific tag, etc.
+    public GameObject[] objectList;
+    
+    private System.Array array;
+    private System.Type t;
+    private Generic<ISwitchTrigger> g;
+
+    private const float triggerWait = 1f;
+    private float triggerTime;
+
+    private bool activated;
+    private string colliderTag;
+    private const string TORCH = "Torch", CANDLE = "Candle", WATER = "Water";
+    
     // Use this for initialization
     void Start () {
-        
-	}
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (obstacleType == 1)//pressure_switch
-        {
-            if(col.gameObject.tag == "SwitchBlock")//will need a way to check when it exits as well. Would be nice if a single function covered both.
-            {
-                
-                torches = GameObject.FindObjectsOfType(typeof(EreDayBeTorching)) as EreDayBeTorching[];
-                foreach (EreDayBeTorching light in torches)
-                {
-                    if(light.TorchNumber == Light_Target)
-                    {
-                        light.PressureSwitch();
+        activated = false;
+        g = new Generic<ISwitchTrigger>(objectList);
 
-                    }
-                    
-                }
-            }
+        if (objectList[0].tag == TORCH) {
+            request<EreDayBeTorching>("Player");
         }
-        else if(obstacleType == 0)//target
-        {
-            if(col.gameObject.tag == "FireBullet")//temp name, obviously
-            {
-                candleList = GameObject.FindObjectsOfType(typeof(Candle)) as Candle[];
-                foreach (Candle light in candleList)
-                {
-                    if (light.candleNumber == Light_Target)
-                    {
-                        light.TargetSwitch();
+        else if(objectList[0].tag == CANDLE){
+            request<Candle>("FireBall");
+        }
+        else if(objectList[0].tag == WATER){
+            request<WaterSwitch>("Player");
+        }
+        triggerTime = -1f;
 
-                    }
+    }
 
-                }
+    private void request<Type>(string colliderTag) {
+        this.colliderTag = colliderTag;
+        array = g.RequestTorchOrCandle<Type>();
+    }
+
+    private class Generic<Type> {
+        private GameObject[] objectList;
+
+        public Generic(GameObject[] objectList) {
+            this.objectList = objectList;
+        }
+
+        public Type[] RequestTorchOrCandle<Cast>() {
+            Type[] array = new Type[objectList.Length];
+            for (int i = 0;i < objectList.Length;i++) {
+                array[i] = objectList[i].GetComponent<Type>();
+            }
+            return array;
+        }
+        
+        public void Activate(Type[] array) {
+            foreach (Type t in array) {
+                ((ISwitchTrigger) t).SwitchTriggger();
             }
         }
     }
-        // Update is called once per frame
-        void Update () {
-	
-	}
+
+    void trigger(Collider2D col) {
+        if(Time.time - triggerTime > triggerWait)
+            if (col.gameObject.tag == colliderTag) {
+                g.Activate((ISwitchTrigger[]) array);
+                triggerTime = Time.time;
+            }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        trigger(col);
+    }
+
+    void OnTriggerStay2D(Collider2D col) {
+        trigger(col);
+    }
+
+    void OnTriggerExit2D(Collider2D col) {
+
+    }
+    void Update() {
+
+    }
+
 }
