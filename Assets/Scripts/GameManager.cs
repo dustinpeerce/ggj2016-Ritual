@@ -50,19 +50,19 @@ public class GameManager : MonoBehaviour {
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
         nextLevelPanel = GameObject.Find("NextLevelPanel");
-        timerText = GameObject.Find("TimerText").GetComponent<Text>();
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
+        //timerText = GameObject.Find("TimerText").GetComponent<Text>();
+        //levelText = GameObject.Find("LevelText").GetComponent<Text>();
 	}
 
     void Start() {
 
         string sceneName = SceneManager.GetActiveScene().name;
         sceneName = sceneName.Replace("_", " ");
-        levelText.text = sceneName;
-        timerText.text = "";
-        pausePanel.SetActive(false);
-        retryPanel.SetActive(false);
-        nextLevelPanel.SetActive(false);
+        //levelText.text = sceneName;
+        //timerText.text = "";
+        //pausePanel.SetActive(false);
+        //retryPanel.SetActive(false);
+        //nextLevelPanel.SetActive(false);
         Time.timeScale = 1.0f;
         volume = PlayerPrefs.GetFloat("sfxVolume");
     }
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour {
 
             string minutes = Mathf.Floor(timer / 60).ToString("00");
             string seconds = (timer % 60).ToString("00");
-            timerText.text = minutes + ":" + seconds;
+            //timerText.text = minutes + ":" + seconds;
         }
     }
 

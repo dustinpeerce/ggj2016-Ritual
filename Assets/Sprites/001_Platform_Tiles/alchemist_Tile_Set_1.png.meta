@@ -1,52 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: e3e6e74e76475a54b874f19df637fb7d
-timeCreated: 1458935438
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
-guid: 06fd288966191d84c82e3e8984b8a6b5
-timeCreated: 1459780776
+timeCreated: 1460071832
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-<<<<<<< HEAD
-    21300000: alchemist_wood_long_0
-    21300002: alchemist_block_0
-    21300004: alchemist_wood_long_1
-    21300006: alchemist_block_1
-    21300008: alchemist_wood_long_2
-    21300010: alchemist_block_2
-    21300012: alchemist_wood_short_0
-    21300014: alchemist_block_transparent
-    21300016: alchemist_block_3
-    21300018: alchemist_wood_short_1
-    21300020: alchemist_moveBlock
-    21300022: alchemist_wood_short_2
-    21300024: alchemist_wall_md_2
-    21300026: alchemist_wall_lg_2
-    21300028: alchemist_wall_lg_1
-    21300030: alchemist_wall_lg_0
-    21300032: alchemist_wall_md_1
-    21300034: alchemist_wall_md_0
-    21300036: alchemist_wall_xs_2
-    21300038: alchemist_wall_sm_2
-    21300040: alchemist_wall_sm_1
-    21300042: alchemist_block_sm_0
-    21300044: alchemist_block_sm_1
-    21300046: alchemist_block_sm_2
-    21300048: alchemist_wall_xs_1
-    21300050: alchemist_block_lg_0
-    21300052: alchemist_block_lg_3
-    21300054: alchemist_wall_xs_0
-    21300056: alchemist_wall_sm_0
-    21300058: alchemist_movingStone
-    21300060: alchemist_block_lg_1
-    21300062: alchemist_block_lg_4
-    21300064: alchemist_block_lg_2
->>>>>>> refs/remotes/origin/master
-=======
     21300000: alchemist_Tile_Set_1_0
     21300002: alchemist_Tile_Set_1_1
     21300004: alchemist_Tile_Set_1_2
@@ -68,7 +25,6 @@ TextureImporter:
     21300036: alchemist_Tile_Set_1_18
     21300038: alchemist_Tile_Set_1_19
     21300040: alchemist_Tile_Set_1_20
->>>>>>> refs/remotes/origin/Lord-of-Trees
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -95,11 +51,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-<<<<<<< HEAD
-    aniso: -1
-=======
     aniso: 16
->>>>>>> refs/remotes/origin/master
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -107,11 +59,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> refs/remotes/origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,9 +70,6 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-<<<<<<< HEAD
-    sprites: []
-=======
     sprites:
     - name: alchemist_Tile_Set_1_0
       rect:
@@ -149,7 +94,7 @@ TextureImporter:
         width: 127
         height: 497
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -63.5, y: 248.5}
@@ -164,7 +109,7 @@ TextureImporter:
         width: 128
         height: 497
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -64, y: 248.5}
@@ -179,7 +124,7 @@ TextureImporter:
         width: 128
         height: 497
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -64, y: 248.5}
@@ -209,7 +154,7 @@ TextureImporter:
         width: 443
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -221.5, y: 64}
@@ -269,7 +214,7 @@ TextureImporter:
         width: 129
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -64.5, y: 64}
@@ -284,7 +229,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -64, y: 64}
@@ -447,7 +392,6 @@ TextureImporter:
         - {x: -128, y: -64}
         - {x: 128, y: -64}
         - {x: 128, y: 64}
->>>>>>> refs/remotes/origin/master
     outline: []
   spritePackingTag: 
   userData: 

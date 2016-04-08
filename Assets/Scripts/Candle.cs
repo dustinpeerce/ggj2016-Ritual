@@ -25,14 +25,14 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     public AudioClip candleFlame;
 
     void Start() {
-<<<<<<< HEAD
-        player = GameObject.FindObjectOfType<Player>();
-        activated = false;
-=======
 
-        player = GameObject.FindObjectOfType<Fireball>();
+        player = GameObject.FindObjectOfType<Player>();
         //activated = false;
->>>>>>> refs/remotes/origin/Lord-of-Trees
+
+
+        //player = GameObject.FindObjectOfType<Fireball>();
+        //activated = false;
+
         flame = transform.FindChild("flame").gameObject;
 		if(activated)
 		{
@@ -119,7 +119,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                         wall.Activation();
                     }
                     else {
-                        wall.activated = false;
+                        //wall.activated = false;
                     }
                 }
             }
@@ -129,8 +129,8 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                 foreach (Candle light in candleList) {
                     //wall.gameObject;
                     if (light.candleNumber != candleNumber) {
-                        light.activated = false;
-                        light.Activate();
+                        //light.activated = false;
+                        //light.Activate();
                         //can access whatever it is that turns the light on and off here
                         //uncertain how to do that right now.  Given that you managed to animate the fireball, I am assuming you have a good idea on how to do this.
 
