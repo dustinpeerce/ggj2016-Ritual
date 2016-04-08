@@ -74,6 +74,7 @@ public class Player : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
+        canLight = true;
         fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
         makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();

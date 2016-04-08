@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour {
         sceneName = sceneName.Replace("_", " ");
         //levelText.text = sceneName;
         //timerText.text = "";
-        pausePanel.SetActive(false);
-        retryPanel.SetActive(false);
-        nextLevelPanel.SetActive(false);
+        //pausePanel.SetActive(false);
+        //retryPanel.SetActive(false);
+        //nextLevelPanel.SetActive(false);
         Time.timeScale = 1.0f;
         volume = PlayerPrefs.GetFloat("sfxVolume");
     }
