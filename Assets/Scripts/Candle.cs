@@ -25,10 +25,37 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     public AudioClip candleFlame;
 
     void Start() {
+
         player = GameObject.FindObjectOfType<Player>();
-        activated = false;
+        //activated = false;
+
+
+        //player = GameObject.FindObjectOfType<Fireball>();
+        //activated = false;
+
         flame = transform.FindChild("flame").gameObject;
-        flame.SetActive(false);
+		if(activated)
+		{
+			currLife = candleLife;
+			flame.SetActive(true);
+            if (Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
+            {
+                foreach (Movable wall in Obstacle_List)
+                {
+                    if (wall.attachedCandle == candleNumber)
+                    {
+                        //wall.activated = true;//make this call an actual function.
+                        wall.activated = true;
+                        wall.Activation();
+                    }
+                    else {
+                        wall.activated = false;
+                    }
+                }
+            }
+        }
+		else
+			flame.SetActive(false);
         volume = PlayerPrefs.GetFloat("sfxVolume");
         currLife = 0;
         movableList = new List<Movable>();
@@ -92,7 +119,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                         wall.Activation();
                     }
                     else {
-                        wall.activated = false;
+                        //wall.activated = false;
                     }
                 }
             }
@@ -102,8 +129,8 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                 foreach (Candle light in candleList) {
                     //wall.gameObject;
                     if (light.candleNumber != candleNumber) {
-                        light.activated = false;
-                        light.Activate();
+                        //light.activated = false;
+                        //light.Activate();
                         //can access whatever it is that turns the light on and off here
                         //uncertain how to do that right now.  Given that you managed to animate the fireball, I am assuming you have a good idea on how to do this.
 
