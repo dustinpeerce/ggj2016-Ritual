@@ -55,6 +55,7 @@ public class Player : MonoBehaviour {
     private Gradient currentGradient;
     private float torchLerpTime;
 
+    private GameObject sweetHeart;
     private GameObject flicker;
     private ParticleSystem.ColorOverLifetimeModule flickerGradient;
     private FlickerGradients flickerScript;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
+        sweetHeart = GameObject.Find("SweetHeartLife");
         canLight = true;
         fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
@@ -190,8 +192,6 @@ public class Player : MonoBehaviour {
 
     //that there rotation
     private void rotation(float angle) {
-        transform.rotation = Quaternion.Euler(0, 0, angle+90);
-        fireTail.startRotation = (angle) * Mathf.Deg2Rad;
     }
 
     //if we just click instead of holding and moving
