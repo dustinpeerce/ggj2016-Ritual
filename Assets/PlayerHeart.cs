@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-using UnityEditor;
+#if UNITY_EDITOR 
+    using UnityEditor;
+#endif
 using System.Collections;
 
 public class PlayerHeart : MonoBehaviour {
@@ -27,6 +29,7 @@ public class PlayerHeart : MonoBehaviour {
 
 }
 
+#if UNITY_EDITOR 
 #region EditorWindow
 // Custom Editor using SerializedProperties.
 // Automatic handling of multi-object editing, undo, and prefab overrides.
@@ -101,3 +104,4 @@ public class MyHeartEditor : Editor {
     }
 }
 #endregion
+#endif
