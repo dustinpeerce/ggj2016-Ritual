@@ -2731,11 +2731,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19801556, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
       propertyPath: ShapeModule.angle
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5881214, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
       propertyPath: m_UsedByEffector
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801556, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402280, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 21221776, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
