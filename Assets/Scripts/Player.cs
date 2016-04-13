@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR 
+    using UnityEditor;
+#endif
 using UnityEngine;
 using System.Collections;
 
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour {
     private const int fireLimit = 5;
 
     private bool canLight;
+    private float particleRotation;
     private Vector3 mousePos;
     private Vector3 oldMousePos;
     private Vector3 mouseWorldPos;
@@ -55,6 +58,7 @@ public class Player : MonoBehaviour {
     private Gradient currentGradient;
     private float torchLerpTime;
 
+    private GameObject sweetHeart;
     private GameObject flicker;
     private ParticleSystem.ColorOverLifetimeModule flickerGradient;
     private FlickerGradients flickerScript;
@@ -74,6 +78,8 @@ public class Player : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
+        sweetHeart = GameObject.Find("SweetHeartLife");
+        canLight = true;
         fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
         makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
@@ -187,28 +193,21 @@ public class Player : MonoBehaviour {
         sexyBody.AddForce(dist*(speed * deacclertionRate / 4));
     }
 
-    //that there rotation
-    private void rotation(float angle) {
-        transform.rotation = Quaternion.Euler(0, 0, angle+90);
-        fireTail.startRotation = (angle) * Mathf.Deg2Rad;
-    }
-
     //if we just click instead of holding and moving
     private void clickAndGo() {
         Vector2 clickXY = new Vector2(((Vector3) clickDest).x, ((Vector3) clickDest).y);
         Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
         Vector2 dist = clickXY - transXY;
-
+        
         if (dist.magnitude >= 1) {
             move(clickMoveDest);
-            rotation(Mathf.Atan2(clickRotationDest.y, clickRotationDest.x) * Mathf.Rad2Deg);
         }
         else {
             clickDest = null;
             unkillAbleDest = false;
         }
 
-        sexyBody.velocity *= 100 / ((float)deacclertionRate)/100;
+        sexyBody.velocity *=( 100 / ((float)deacclertionRate)/100);
     }
 
     //deprecated rotmove
@@ -246,7 +245,9 @@ public class Player : MonoBehaviour {
 
     #region nonFire
     public float ParticleRotation {
-        get { return fireTail.startRotation; }
+        get {
+            return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg);
+        }
     }
     public bool CanLight {
         get { return canLight; }
@@ -348,6 +349,8 @@ public class Player : MonoBehaviour {
     #endregion
 
 }
+
+#if UNITY_EDITOR 
 #region EditorWindow
 
 
@@ -361,6 +364,7 @@ public class MyPlayerEditor : Editor {
     SerializedProperty speed;
     SerializedProperty sizeFactor;
     SerializedProperty deacclertionRate;
+    SerializedProperty hitCoolWaitTime;
     void OnEnable() {
         // Setup the SerializedProperties.
         updateProps();
@@ -391,6 +395,7 @@ public class MyPlayerEditor : Editor {
         speed = serializedObject.FindProperty("speed");
         sizeFactor = serializedObject.FindProperty("sizeFactor");
         deacclertionRate = serializedObject.FindProperty("deacclertionRate");
+        hitCoolWaitTime = serializedObject.FindProperty("hitCoolWaitTime");
     }
 
     private void inspectorGagdet() {
@@ -418,6 +423,8 @@ public class MyPlayerEditor : Editor {
 
         EditorGUILayout.DelayedIntField(scale);
 
+        EditorGUILayout.DelayedFloatField(hitCoolWaitTime);
+        
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();
     }
@@ -425,3 +432,4 @@ public class MyPlayerEditor : Editor {
 }
 
 #endregion
+#endif
