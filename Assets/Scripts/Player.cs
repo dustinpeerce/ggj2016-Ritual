@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
     private const int fireLimit = 5;
 
     private bool canLight;
+    private float particleRotation;
     private Vector3 mousePos;
     private Vector3 oldMousePos;
     private Vector3 mouseWorldPos;
@@ -192,19 +193,14 @@ public class Player : MonoBehaviour {
         sexyBody.AddForce(dist*(speed * deacclertionRate / 4));
     }
 
-    //that there rotation
-    private void rotation(float angle) {
-    }
-
     //if we just click instead of holding and moving
     private void clickAndGo() {
         Vector2 clickXY = new Vector2(((Vector3) clickDest).x, ((Vector3) clickDest).y);
         Vector2 transXY = new Vector2(transform.position.x, transform.position.y);
         Vector2 dist = clickXY - transXY;
-
+        
         if (dist.magnitude >= 1) {
             move(clickMoveDest);
-            rotation(Mathf.Atan2(clickRotationDest.y, clickRotationDest.x) * Mathf.Rad2Deg);
         }
         else {
             clickDest = null;
@@ -249,7 +245,9 @@ public class Player : MonoBehaviour {
 
     #region nonFire
     public float ParticleRotation {
-        get { return fireTail.startRotation; }
+        get {
+            return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg);
+        }
     }
     public bool CanLight {
         get { return canLight; }
@@ -366,6 +364,7 @@ public class MyPlayerEditor : Editor {
     SerializedProperty speed;
     SerializedProperty sizeFactor;
     SerializedProperty deacclertionRate;
+    SerializedProperty hitCoolWaitTime;
     void OnEnable() {
         // Setup the SerializedProperties.
         updateProps();
@@ -396,6 +395,7 @@ public class MyPlayerEditor : Editor {
         speed = serializedObject.FindProperty("speed");
         sizeFactor = serializedObject.FindProperty("sizeFactor");
         deacclertionRate = serializedObject.FindProperty("deacclertionRate");
+        hitCoolWaitTime = serializedObject.FindProperty("hitCoolWaitTime");
     }
 
     private void inspectorGagdet() {
@@ -423,6 +423,8 @@ public class MyPlayerEditor : Editor {
 
         EditorGUILayout.DelayedIntField(scale);
 
+        EditorGUILayout.DelayedFloatField(hitCoolWaitTime);
+        
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();
     }
