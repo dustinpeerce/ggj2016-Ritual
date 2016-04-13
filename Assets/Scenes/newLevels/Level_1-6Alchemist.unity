@@ -5131,6 +5131,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11459918, guid: db043be769df05747930ca98c4309bfb, type: 2}
+      propertyPath: cooldownTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db043be769df05747930ca98c4309bfb, type: 2}
   m_IsPrefabParent: 0
@@ -5412,6 +5416,10 @@ Prefab:
     - target: {fileID: 161236, guid: 4bc8c2a40cd763844a7836a5555b3360, type: 2}
       propertyPath: m_Name
       value: TorchRegular (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491836, guid: 4bc8c2a40cd763844a7836a5555b3360, type: 2}
+      propertyPath: cooldownTime
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bc8c2a40cd763844a7836a5555b3360, type: 2}
