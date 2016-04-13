@@ -42,11 +42,13 @@ public class FireBall : MonoBehaviour {
         }
 
     }
+
     public void FireTheFireball() {
         this.enabled = true;
         transform.position = player.transform.position;
-        transform.rotation = player.transform.rotation;
+        transform.rotation = Quaternion.Euler(0, 0, player.ParticleRotation + 90);
         fireTail.startRotation = player.ParticleRotation;
+        
         followPlayer = false;
         foreach(GameObject g in fireObjects) {
             g.transform.localScale = origScale;
