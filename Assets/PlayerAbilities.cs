@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerAbilities : MonoBehaviour {
 
     private PointEffector2D boomBitch;
-    private ParticleSystem firePushParticle;
+    private ParticleSystem fireAbilityParticle;
     private ParticleSystem.EmissionModule emission;
     private ParticleSystem.ColorOverLifetimeModule theGrad;
     private FlickerGradients grads;
@@ -18,13 +18,13 @@ public class PlayerAbilities : MonoBehaviour {
     void Start () {
         playerHeart = GameObject.FindObjectOfType<PlayerHeart>();
         boomBitch = GetComponent<PointEffector2D>();
-        firePushParticle = GetComponent<ParticleSystem>();
-        emission = firePushParticle.emission;
+        fireAbilityParticle = GetComponent<ParticleSystem>();
+        emission = fireAbilityParticle.emission;
         emission.enabled = false;
         boomBitch.enabled = false;
         firePlayer = GameObject.FindObjectOfType<Player>();
         fireBall = GameObject.FindObjectOfType<FireBall>();
-        theGrad = firePushParticle.colorOverLifetime;
+        theGrad = fireAbilityParticle.colorOverLifetime;
         grads = GetComponent<FlickerGradients>();
     }
 	
@@ -38,20 +38,25 @@ public class PlayerAbilities : MonoBehaviour {
             }
             if (Input.GetMouseButton(1)) {
                 playerHeart.TickDown();
-                burstTime = Time.time;
-                emission.enabled = true;
-                theGrad.color = grads.ChangeGradient(firePlayer.CurrentTorchType);
-                firePlayer.FlipCanLightSwitch();
 
-                switch (firePlayer.CurrentTorchType) {
-                    case Player.TorchColor.Yellow:
-                        boomBitch.enabled = true;
-                        break;
-                    case Player.TorchColor.Blue:
-                        fireBall.FireTheFireball();
-                        break;
+                Debug.Log(firePlayer.sizeFactor);
+                if (firePlayer.sizeFactor <= 0)
+                    emission.enabled = false;
+                else {
+                    burstTime = Time.time;
+                    emission.enabled = true;
+                    theGrad.color = grads.ChangeGradient(firePlayer.CurrentTorchType);
+                    firePlayer.FlipCanLightSwitch();
+
+                    switch (firePlayer.CurrentTorchType) {
+                        case Player.TorchColor.Yellow:
+                            boomBitch.enabled = true;
+                            break;
+                        case Player.TorchColor.Blue:
+                            fireBall.FireTheFireball();
+                            break;
+                    }
                 }
-                
             }
         }
 

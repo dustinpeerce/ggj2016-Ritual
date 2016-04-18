@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioButtonHover;
     private float volume;
 
+
+    private const float deathWait = 1f;
+    private float deathTime;
+    private bool deathInit;
+
     private Player player;
     private FireBall fire;
     private GameObject hudPanel;
@@ -95,6 +100,10 @@ public class GameManager : MonoBehaviour {
             string seconds = (timer % 60).ToString("00");
             timerText.text = minutes + ":" + seconds;
         }
+
+        if (deathInit && Time.time - deathTime > deathWait) {
+            retryPanelDeathOrNot();
+        }
     }
 
     public void ActivatePausePanel() {
@@ -105,6 +114,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateRetryPanel() {
+        if (!deathInit && player.sizeFactor == 0) {
+            deathInit = true;
+            deathTime = Time.time;
+        }
+        else {
+            retryPanelDeathOrNot();
+        }
+    }
+    private void retryPanelDeathOrNot() {
         gameState = GameState.End;
         AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
         retryPanel.SetActive(true);
