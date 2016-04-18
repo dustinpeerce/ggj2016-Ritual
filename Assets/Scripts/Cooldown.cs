@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Cooldown : MonoBehaviour {
 
-    public float cooldownTime = 5.0f;
+    public float cooldownTime;
     public bool destroyOnTouch = false;
 
     private float cooldownTimer = 0.0f;

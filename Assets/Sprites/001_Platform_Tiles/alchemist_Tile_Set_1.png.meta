@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e3e6e74e76475a54b874f19df637fb7d
-timeCreated: 1460071832
+timeCreated: 1460558480
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -74,324 +74,292 @@ TextureImporter:
     - name: alchemist_Tile_Set_1_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 953
-        width: 441
-        height: 127
+        x: 119
+        y: 3818
+        width: 1765
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -220.5, y: 63.5}
-        - {x: -220.5, y: -63.5}
-        - {x: 220.5, y: -63.5}
-        - {x: 220.5, y: 63.5}
+      - - {x: -395.65967, y: 114.87317}
+        - {x: -395.65967, y: -114.12683}
+        - {x: 396.34033, y: -114.12683}
+        - {x: 396.34033, y: 114.87317}
     - name: alchemist_Tile_Set_1_1
       rect:
         serializedVersion: 2
-        x: 564
-        y: 578
-        width: 127
-        height: 497
+        x: 2341
+        y: 2335
+        width: 511
+        height: 1985
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -63.5, y: 248.5}
-        - {x: -63.5, y: -248.5}
-        - {x: 63.5, y: -248.5}
-        - {x: 63.5, y: 248.5}
+      - - {x: -114.67456, y: 446.136}
+        - {x: -114.67456, y: -444.864}
+        - {x: 115.32544, y: -444.864}
+        - {x: 115.32544, y: 446.136}
     - name: alchemist_Tile_Set_1_2
       rect:
         serializedVersion: 2
-        x: 711
-        y: 576
-        width: 128
-        height: 497
+        x: 2988
+        y: 2335
+        width: 509
+        height: 1983
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 248.5}
-        - {x: -64, y: -248.5}
-        - {x: 64, y: -248.5}
-        - {x: 64, y: 248.5}
+      - - {x: -114.16443, y: 445.636}
+        - {x: -114.16443, y: -444.364}
+        - {x: 114.83557, y: -444.364}
+        - {x: 114.83557, y: 445.636}
     - name: alchemist_Tile_Set_1_3
       rect:
         serializedVersion: 2
-        x: 860
-        y: 576
-        width: 128
-        height: 497
+        x: 3633
+        y: 2321
+        width: 509
+        height: 1985
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 248.5}
-        - {x: -64, y: -248.5}
-        - {x: 64, y: -248.5}
-        - {x: 64, y: 248.5}
+      - - {x: -114.0509, y: 445.86072}
+        - {x: -114.0509, y: -445.13928}
+        - {x: 114.9491, y: -445.13928}
+        - {x: 114.9491, y: 445.86072}
     - name: alchemist_Tile_Set_1_4
       rect:
         serializedVersion: 2
-        x: 28
-        y: 807
-        width: 441
-        height: 128
+        x: 122
+        y: 3260
+        width: 1764
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -220.5, y: 64}
-        - {x: -220.5, y: -64}
-        - {x: 220.5, y: -64}
-        - {x: 220.5, y: 64}
+      - - {x: -395.31494, y: 114.75635}
+        - {x: -395.31494, y: -114.24365}
+        - {x: 396.68506, y: -114.24365}
+        - {x: 396.68506, y: 114.75635}
     - name: alchemist_Tile_Set_1_5
       rect:
         serializedVersion: 2
-        x: 28
-        y: 662
-        width: 443
-        height: 128
+        x: 111
+        y: 2703
+        width: 1775
+        height: 510
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -221.5, y: 64}
-        - {x: -221.5, y: -64}
-        - {x: 221.5, y: -64}
-        - {x: 221.5, y: 64}
+      - - {x: -396.74557, y: 115.58765}
+        - {x: -397.74557, y: 114.58765}
+        - {x: -397.74557, y: -114.41235}
+        - {x: 399.25443, y: -114.41235}
+        - {x: 399.25443, y: 114.58765}
+        - {x: 398.25443, y: 115.58765}
     - name: alchemist_Tile_Set_1_6
       rect:
         serializedVersion: 2
-        x: 23
-        y: 517
-        width: 232
-        height: 128
+        x: 111
+        y: 2145
+        width: 930
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -116, y: 64}
-        - {x: -116, y: -64}
-        - {x: 116, y: -64}
-        - {x: 116, y: 64}
+      - - {x: -208.24557, y: 115.470825}
+        - {x: -208.24557, y: -114.529175}
+        - {x: 209.75443, y: -114.529175}
+        - {x: 209.75443, y: 115.470825}
     - name: alchemist_Tile_Set_1_7
       rect:
         serializedVersion: 2
-        x: 288
-        y: 395
-        width: 128
-        height: 244
+        x: 1130
+        y: 1654
+        width: 509
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 122}
-        - {x: -64, y: -122}
-        - {x: 64, y: -122}
-        - {x: 64, y: 122}
+      - - {x: -113.990906, y: 220.38586}
+        - {x: -113.990906, y: -219.61414}
+        - {x: 115.009094, y: -219.61414}
+        - {x: 115.009094, y: 220.38586}
     - name: alchemist_Tile_Set_1_8
       rect:
         serializedVersion: 2
-        x: 428
-        y: 395
-        width: 127
-        height: 244
+        x: 1663
+        y: 1641
+        width: 511
+        height: 979
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -63.5, y: 122}
-        - {x: -63.5, y: -122}
-        - {x: 63.5, y: -122}
-        - {x: 63.5, y: 122}
+      - - {x: -114.579956, y: 220.55878}
+        - {x: -114.579956, y: -219.44122}
+        - {x: 115.420044, y: -219.44122}
+        - {x: 115.420044, y: 220.55878}
     - name: alchemist_Tile_Set_1_9
       rect:
         serializedVersion: 2
-        x: 588
-        y: 428
-        width: 129
-        height: 128
+        x: 2341
+        y: 1737
+        width: 513
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64.5, y: 64}
-        - {x: -64.5, y: -64}
-        - {x: 64.5, y: -64}
-        - {x: 64.5, y: 64}
+      - - {x: -115.17456, y: 116.08966}
+        - {x: -115.17456, y: -114.91034}
+        - {x: 115.82544, y: -114.91034}
+        - {x: 115.82544, y: 116.08966}
     - name: alchemist_Tile_Set_1_10
       rect:
         serializedVersion: 2
-        x: 749
-        y: 425
-        width: 128
-        height: 128
+        x: 2988
+        y: 1737
+        width: 513
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 64}
-        - {x: -64, y: -64}
-        - {x: 64, y: -64}
-        - {x: 64, y: 64}
+      - - {x: -115.16443, y: 116.08966}
+        - {x: -115.16443, y: -114.91034}
+        - {x: 115.83557, y: -114.91034}
+        - {x: 115.83557, y: 116.08966}
     - name: alchemist_Tile_Set_1_11
       rect:
         serializedVersion: 2
-        x: 910
-        y: 425
-        width: 128
-        height: 128
+        x: 3635
+        y: 1737
+        width: 511
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 64}
-        - {x: -64, y: -64}
-        - {x: 64, y: -64}
-        - {x: 64, y: 64}
+      - - {x: -114.65442, y: 116.08966}
+        - {x: -114.65442, y: -114.91034}
+        - {x: 115.34558, y: -114.91034}
+        - {x: 115.34558, y: 116.08966}
     - name: alchemist_Tile_Set_1_12
       rect:
         serializedVersion: 2
-        x: 23
-        y: 372
-        width: 232
-        height: 128
+        x: 111
+        y: 1587
+        width: 930
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -116, y: 64}
-        - {x: -116, y: -64}
-        - {x: 116, y: -64}
-        - {x: 116, y: 64}
+      - - {x: -208.24557, y: 114.85394}
+        - {x: -208.24557, y: -114.14606}
+        - {x: 209.75443, y: -114.14606}
+        - {x: 209.75443, y: 114.85394}
     - name: alchemist_Tile_Set_1_13
       rect:
         serializedVersion: 2
-        x: 578
-        y: 273
-        width: 256
-        height: 128
+        x: 2337
+        y: 1094
+        width: 1021
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -128, y: 64}
-        - {x: -128, y: -64}
-        - {x: 128, y: -64}
-        - {x: 128, y: 64}
+      - - {x: -228.96753, y: 115.87253}
+        - {x: -228.96753, y: -115.12747}
+        - {x: 230.03247, y: -115.12747}
+        - {x: 230.03247, y: 114.87253}
+        - {x: 229.03247, y: 115.87253}
     - name: alchemist_Tile_Set_1_14
       rect:
         serializedVersion: 2
-        x: 853
-        y: 273
-        width: 255
-        height: 128
+        x: 3551
+        y: 1112
+        width: 1018
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -127.5, y: 64}
-        - {x: -127.5, y: -64}
-        - {x: 127.5, y: -64}
-        - {x: 127.5, y: 64}
+      - - {x: -227.8064, y: 115.440796}
+        - {x: -227.8064, y: -114.559204}
+        - {x: 229.1936, y: -114.559204}
+        - {x: 229.1936, y: 115.440796}
     - name: alchemist_Tile_Set_1_15
       rect:
         serializedVersion: 2
-        x: 23
-        y: 227
-        width: 232
-        height: 128
+        x: 106
+        y: 1030
+        width: 930
+        height: 508
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -116, y: 64}
-        - {x: -116, y: -64}
-        - {x: 116, y: -64}
-        - {x: 116, y: 64}
+      - - {x: -208.48676, y: 115.18527}
+        - {x: -208.48676, y: -113.81473}
+        - {x: 209.51324, y: -113.81473}
+        - {x: 209.51324, y: 115.18527}
     - name: alchemist_Tile_Set_1_16
       rect:
         serializedVersion: 2
-        x: 288
-        y: 113
-        width: 128
-        height: 245
+        x: 1121
+        y: 583
+        width: 509
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -64, y: 122.5}
-        - {x: -64, y: -122.5}
-        - {x: 64, y: -122.5}
-        - {x: 64, y: 122.5}
+      - - {x: -114.025055, y: 220.32285}
+        - {x: -114.025055, y: -219.67715}
+        - {x: 114.974945, y: -219.67715}
+        - {x: 114.974945, y: 220.32285}
     - name: alchemist_Tile_Set_1_17
       rect:
         serializedVersion: 2
-        x: 434
-        y: 149
-        width: 128
-        height: 211
+        x: 2326
+        y: 543
+        width: 1022
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 15, y: 105.5}
-        - {x: -34, y: 105.5}
-        - {x: -64, y: 27.5}
-        - {x: -64, y: -19.5}
-        - {x: -53, y: -87.5}
-        - {x: -34, y: -105.5}
-        - {x: 41, y: -105.5}
-        - {x: 64, y: -84.5}
-        - {x: 64, y: 65.5}
-        - {x: 32, y: 104.5}
+      - - {x: -227.89807, y: 115.89331}
+        - {x: -228.89807, y: 114.89331}
+        - {x: -228.89807, y: -115.10669}
+        - {x: 230.10193, y: -115.10669}
+        - {x: 230.10193, y: 115.89331}
     - name: alchemist_Tile_Set_1_18
       rect:
         serializedVersion: 2
-        x: 578
-        y: 136
-        width: 256
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -128, y: 64}
-        - {x: -128, y: -64}
-        - {x: 128, y: -64}
-        - {x: 128, y: 64}
-    - name: alchemist_Tile_Set_1_19
-      rect:
-        serializedVersion: 2
-        x: 852
-        y: 135
-        width: 256
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -128, y: 64}
-        - {x: -128, y: -64}
-        - {x: 128, y: -64}
-        - {x: 128, y: 64}
-    - name: alchemist_Tile_Set_1_20
-      rect:
-        serializedVersion: 2
-        x: 576
+        x: 2328
         y: 0
-        width: 256
-        height: 128
+        width: 1022
+        height: 510
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -128, y: 64}
-        - {x: -128, y: -64}
-        - {x: 128, y: -64}
-        - {x: 128, y: 64}
+      - - {x: -229.00159, y: 114.5}
+        - {x: -229.00159, y: -114.5}
+        - {x: 229.99841, y: -114.5}
+        - {x: 229.99841, y: 114.5}
     outline: []
   spritePackingTag: 
   userData: 
