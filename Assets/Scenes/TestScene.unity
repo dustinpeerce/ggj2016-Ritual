@@ -2685,6 +2685,10 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.ctime2
       value: 45276
       objectReference: {fileID: 0}
+    - target: {fileID: 447488, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 21221776, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
     - {fileID: 9503998, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}

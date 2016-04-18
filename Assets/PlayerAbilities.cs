@@ -30,7 +30,12 @@ public class PlayerAbilities : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = firePlayer.transform.position;    
+        if(firePlayer.sizeFactor > 0) 
+            update();
+	}
+
+    void update() {
+        transform.position = firePlayer.transform.position + Vector3.down * .9f * transform.localScale.x;
         if (particleReady) {
             if (emission.enabled) {
                 emission.enabled = false;
@@ -59,9 +64,7 @@ public class PlayerAbilities : MonoBehaviour {
                 }
             }
         }
-
-	}
-
+    }
 
     private bool particleReady {
         get { return Time.time - burstTime > burstWait; }
