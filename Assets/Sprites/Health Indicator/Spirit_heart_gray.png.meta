@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 28ae891b3f09fc842bb8728e505be36b
 timeCreated: 1460989370
+=======
+guid: 29757b3dbae666f4aad01a29b8c091ec
+timeCreated: 1461162850
+>>>>>>> origin/Tree_Lord
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
