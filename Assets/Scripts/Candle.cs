@@ -94,12 +94,10 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
             if (!activated && CanAccess) {
                 activated = !activated;
                 flame.SetActive(true);
-                player.MakeSmall();
+                player.MakeSmall(true);
                 AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
                 Activate();
-
             }
-
         }
     }
 
