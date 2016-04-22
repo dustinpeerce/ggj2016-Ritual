@@ -5,6 +5,7 @@ using System;
 
 public class Candle : MonoBehaviour,ISwitchTrigger {
     //this script covers the activation of moving objects based on player colliding with candle.
+    public int MoveType;
     public int candleNumber;
     public Player.TorchColor candleType;
     int currLife;
@@ -15,6 +16,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     List<Movable> movableList;
     Candle[] candleList;
     Player player;
+    
     public bool CanAccess;
     public bool activated;
     public Vector3 pos1;//incase we need to hard-code a position, etc.
@@ -46,7 +48,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                     {
                         //wall.activated = true;//make this call an actual function.
                         wall.activated = true;
-                        wall.Activation();
+                        wall.Activation(MoveType);
                     }
                     else {
                         wall.activated = false;
@@ -115,7 +117,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                     {
                         //wall.activated = true;//make this call an actual function.
                         wall.activated = true;
-                        wall.Activation();
+                        wall.Activation(MoveType);
                     }
                     else {
                         //wall.activated = false;
