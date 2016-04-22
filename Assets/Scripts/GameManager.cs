@@ -123,10 +123,12 @@ public class GameManager : MonoBehaviour {
         }
     }
     private void retryPanelDeathOrNot() {
-        gameState = GameState.End;
-        AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
-        retryPanel.SetActive(true);
-        Time.timeScale = 0;
+        if (gameState != GameState.End) {
+            gameState = GameState.End;
+            AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
+            retryPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ActivateNextLevelPanel() {
