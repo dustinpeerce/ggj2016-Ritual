@@ -62,13 +62,13 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     }
     public void SwitchTriggger()//change this to target effect.
     {
-       // if (!CanAccess)//not sure if I will need this or not.
-       // {
-            CanAccess = !CanAccess;// candle is toggled to either accessible or locked away
-            if(activated && !CanAccess)//if it was just locked away
+        // if (!CanAccess)//not sure if I will need this or not.
+        // {
+        CanAccess = !CanAccess;
+        if (activated && !CanAccess)//if it was just locked away
             {
                 activated = !activated;//lit candle was just locked away in ice... or something. no longer active.
-                flame.SetActive(false);//turns off the candle since switch locks it away.
+                flame.SetActive(CanAccess);
                 candleLife = 0;//just in case.
             }
         //flame.SetActive(true);// we are making it accessible, not turning it on.
@@ -94,7 +94,8 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
             if (!activated && CanAccess) {
                 activated = !activated;
                 flame.SetActive(true);
-                player.MakeSmall(true);
+                if(col.gameObject.tag == "Player")
+                    player.MakeSmall(true);
                 AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
                 Activate();
             }

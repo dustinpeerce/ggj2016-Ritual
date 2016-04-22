@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 28ae891b3f09fc842bb8728e505be36b
-timeCreated: 1460989370
-=======
-guid: 29757b3dbae666f4aad01a29b8c091ec
-timeCreated: 1461162850
->>>>>>> origin/Tree_Lord
+timeCreated: 1461335795
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Spirit_heart_gray_0
+    21300002: Spirit_heart_gray_1
+    21300004: Spirit_heart_gray_2
+    21300006: Spirit_heart_gray_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -43,7 +42,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -54,7 +53,139 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Spirit_heart_gray_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 297
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 148.5, y: 8}
+        - {x: 148.5, y: 68}
+        - {x: 133.5, y: 98}
+        - {x: 114.5, y: 115}
+        - {x: 94.5, y: 128}
+        - {x: 37.5, y: 128}
+        - {x: 0.5, y: 98}
+        - {x: -27.5, y: 114}
+        - {x: -48.5, y: 125}
+        - {x: -84.5, y: 127}
+        - {x: -119.5, y: 113}
+        - {x: -148.5, y: 76}
+        - {x: -148.5, y: 4}
+        - {x: -119.5, y: -42}
+        - {x: -83.5, y: -75}
+        - {x: -40.5, y: -108}
+        - {x: -7.5, y: -128}
+        - {x: 7.5, y: -128}
+        - {x: 21.5, y: -122}
+        - {x: 86.5, y: -74}
+        - {x: 130.5, y: -26}
+    - name: Spirit_heart_gray_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 297
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 148.5, y: 70}
+        - {x: 132.5, y: 99}
+        - {x: 103.5, y: 125}
+        - {x: 95.5, y: 128}
+        - {x: 42.5, y: 128}
+        - {x: -11.5, y: 105}
+        - {x: -24.5, y: 114}
+        - {x: -56.5, y: 128}
+        - {x: -57.5, y: 128}
+        - {x: -97.5, y: 124}
+        - {x: -119.5, y: 111}
+        - {x: -148.5, y: 74}
+        - {x: -148.5, y: 13}
+        - {x: -144.5, y: 3}
+        - {x: -134.5, y: -19}
+        - {x: -94.5, y: -64}
+        - {x: -71.5, y: -85}
+        - {x: -15.5, y: -126}
+        - {x: -10.5, y: -128}
+        - {x: 13.5, y: -128}
+        - {x: 88.5, y: -72}
+        - {x: 128.5, y: -30}
+        - {x: 148.5, y: 7}
+    - name: Spirit_heart_gray_2
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 0
+        width: 297
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 146.5, y: 2}
+        - {x: 148.5, y: 6}
+        - {x: 148.5, y: 76}
+        - {x: 136.5, y: 102}
+        - {x: 98.5, y: 128}
+        - {x: 45.5, y: 128}
+        - {x: 16.5, y: 111}
+        - {x: 1.5, y: 98}
+        - {x: -42.5, y: 128}
+        - {x: -70.5, y: 128}
+        - {x: -98.5, y: 126}
+        - {x: -140.5, y: 91}
+        - {x: -148.5, y: 69}
+        - {x: -148.5, y: 17}
+        - {x: -146.5, y: 2}
+        - {x: -122.5, y: -33}
+        - {x: -96.5, y: -61}
+        - {x: -43.5, y: -106}
+        - {x: -6.5, y: -128}
+        - {x: 11.5, y: -128}
+        - {x: 57.5, y: -99}
+        - {x: 115.5, y: -46}
+        - {x: 128.5, y: -29}
+    - name: Spirit_heart_gray_3
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 0
+        width: 297
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 148.5, y: 72}
+        - {x: 140.5, y: 91}
+        - {x: 113.5, y: 119}
+        - {x: 94.5, y: 128}
+        - {x: 48.5, y: 128}
+        - {x: -4.5, y: 105}
+        - {x: -45.5, y: 127}
+        - {x: -85.5, y: 128}
+        - {x: -117.5, y: 110}
+        - {x: -135.5, y: 88}
+        - {x: -148.5, y: 62}
+        - {x: -148.5, y: 18}
+        - {x: -132.5, y: -16}
+        - {x: -112.5, y: -43}
+        - {x: -82.5, y: -73}
+        - {x: -41.5, y: -105}
+        - {x: -4.5, y: -128}
+        - {x: 14.5, y: -128}
+        - {x: 77.5, y: -86}
+        - {x: 124.5, y: -40}
+        - {x: 148.5, y: 2}
     outline: []
   spritePackingTag: 
   userData: 
