@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     private bool deathInit;
 
     private Player player;
-    private FireBall fire;
+    private FireBall fireBall;
     private GameObject hudPanel;
     private GameObject pausePanel;
     private GameObject retryPanel;
@@ -73,9 +73,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-
         if (Input.GetMouseButtonDown(0)) {
-            player.SizeFix();//this is for the inspector edit stuff....
             if (!player.Moving && gameState == GameState.Play)
                 player.activateMovement();
             GameManager.instance.SetTimer(true);

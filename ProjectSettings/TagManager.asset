@@ -13,6 +13,7 @@ TagManager:
   - Switch
   - Target
   - FireBall
+  - FireUI
   layers:
   - Default
   - TransparentFX

@@ -9,22 +9,23 @@ public class PlayerHeart : MonoBehaviour {
     public int StartLife;
     public int MaxLife;
     Player player;
+    FIRE FIREUIScript;
 
 	// Use this for initialization
 	void Start () {
         player = FindObjectOfType<Player>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        FIREUIScript = FindObjectOfType<FIRE>();
+    }
 
-	}
+    public void Reset() {
+        FIREUIScript.FixHeart( ( StartLife = player.sizeFactor * 4 ) );
+    }
 
     public void TickDown() {
-        StartLife--;
-        if(StartLife % 4 == 0) {
+        FIREUIScript.FixHeart(--StartLife);
+        if (StartLife % 4 == 0)
             player.MakeSmall(true);
-        }
+        
     }
 
 }

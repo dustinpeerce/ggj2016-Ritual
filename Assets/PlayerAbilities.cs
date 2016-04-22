@@ -44,7 +44,6 @@ public class PlayerAbilities : MonoBehaviour {
             if (Input.GetMouseButton(1)) {
                 playerHeart.TickDown();
 
-                Debug.Log(firePlayer.sizeFactor);
                 if (firePlayer.sizeFactor <= 0)
                     emission.enabled = false;
                 else {

@@ -2,7 +2,9 @@
 
 public class TargetSwitchScript : MonoBehaviour {
     public GameObject[] objectList;
-    
+
+    public Player.TorchColor type;
+
     private System.Array array;
     private System.Type t;
     private Generic<ISwitchTrigger> g;
@@ -63,7 +65,7 @@ public class TargetSwitchScript : MonoBehaviour {
     }
 
     void trigger(Collider2D col) {
-        if (playa.CurrentTorchType == Player.TorchColor.Green &&
+        if (playa.CurrentTorchType == type &&
             playa.CanLight)
             if (Time.time - triggerTime > triggerWait)
                 if (col.gameObject.tag == colliderTag) {

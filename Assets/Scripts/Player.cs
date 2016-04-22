@@ -63,15 +63,23 @@ public class Player : MonoBehaviour {
 
     private GameObject sweetHeart;
     private GameObject fireStandard;
+
     private GameObject flicker;
     private ParticleSystem.ColorOverLifetimeModule flickerGradient;
     private FlickerGradients flickerScript;
+
+    private GameObject flickerHeart;
+    private ParticleSystem.ColorOverLifetimeModule flickerHeartGradient;
+    private FlickerGradients flickerHeartScript;
 
     private ParticleSystem.ColorOverLifetimeModule torchGradient;
     private FlickerGradients torchScript;
 
     private ParticleSystem.ColorOverLifetimeModule explosionGradient;
     private FlickerGradients explosionScript;
+
+    private PlayerHeart heartSystemScript;
+    private FIRE FIREUIScript;
 
     private bool changeTorchType;
     private ParticleSystem makeMeSmall;
@@ -90,6 +98,8 @@ public class Player : MonoBehaviour {
             ps.Clear();
         }
 
+        heartSystemScript = FindObjectOfType<PlayerHeart>();
+        FIREUIScript = FindObjectOfType<FIRE>();
 
         sweetHeart = GameObject.Find("SweetHeartLife");
         canLight = false;
@@ -103,6 +113,10 @@ public class Player : MonoBehaviour {
         flicker = GameObject.Find("Flicker");
         flickerGradient = flicker.GetComponent<ParticleSystem>().colorOverLifetime;
         flickerScript = flicker.GetComponent<FlickerGradients>();
+
+        flickerHeart = GameObject.Find("FlickerHeart");
+        flickerHeartGradient = flickerHeart.GetComponent<ParticleSystem>().colorOverLifetime;
+        flickerHeartScript = flickerHeart.GetComponent<FlickerGradients>();
 
         torchGradient = fireTail.colorOverLifetime;
         torchScript = fireTail.GetComponent<FlickerGradients>();
@@ -180,6 +194,7 @@ public class Player : MonoBehaviour {
     //sexy changing fire stuff
     void fiftyShadesOfFire() {
         flickerGradient.color = flickerScript.ChangeGradient(currentTorchType);
+        flickerHeartGradient.color = flickerHeartScript.ChangeGradient(currentTorchType);
         torchGradient.color = torchScript.ChangeGradient(currentTorchType);
         explosionGradient.color = explosionScript.ChangeGradient(currentTorchType);
         changeTorchType = false;
@@ -315,14 +330,15 @@ public class Player : MonoBehaviour {
 
         hitCoolDown = Time.time;
     }
-    public void MakeBig(Collider2D col) {
+    public void MakeBigAndChangeColor(Collider2D col) {
         if (sizeFactor < maxScaleFactor) {
             sizeFactor++;
             makeMeBig.startLifetime = 1f;
             makeMeBig.Emit(300);
             changeTorchType = true;
-            currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
+            FIREUIScript.ChangeColor(currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy);
             hitCoolDown = Time.time;
+            SizeFix();
         }
     }
 
@@ -339,12 +355,11 @@ public class Player : MonoBehaviour {
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
                 if (col.gameObject.tag == "Torch") {
-                    MakeBig(col);
+                    MakeBigAndChangeColor(col);
                 }
                 else if (col.gameObject.tag == "Water") {
                     MakeSmall();
                 }
-                SizeFix();
         }
 
     }
@@ -364,8 +379,12 @@ public class Player : MonoBehaviour {
 
         transform.localScale = new Vector3(si,si,si);
         flicker.transform.localScale = new Vector3(si, si, si) / 2.5f;
+        flickerHeart.transform.localScale = new Vector3(si, si, si) / 5.5f;
         fireTail.transform.localScale = new Vector3(si, si, si);
         fireStandard.transform.localScale = new Vector3(si, si, si) / 2.2f;
+
+        heartSystemScript.Reset();
+        FIREUIScript.SetInactive(sizeFactor);
     }
 
     //I WANT TO MOVE!

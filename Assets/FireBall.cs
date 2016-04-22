@@ -45,7 +45,7 @@ public class FireBall : MonoBehaviour {
 
     public void FireTheFireball() {
         this.enabled = true;
-        transform.position = player.transform.position;
+        transform.position = player.transform.position - new Vector3(0,player.sizeFactor,0);
         transform.rotation = Quaternion.Euler(0, 0, player.ParticleRotation + 90);
         fireTail.startRotation = player.ParticleRotation;
         
