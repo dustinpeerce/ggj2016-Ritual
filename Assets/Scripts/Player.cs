@@ -50,6 +50,7 @@ public class Player : MonoBehaviour {
     private ParticleSystem.ShapeModule fireShape;
     private ParticleSystem makeMeBig;
     private ParticleSystem makeMeSmallIfForced;
+    private ParticleSystem teleportBam;
     private bool rotated, distanceGreatEnough;
     private float rotateLerpTime;
     private Rigidbody2D sexyBody;
@@ -57,6 +58,8 @@ public class Player : MonoBehaviour {
     public  float hitCoolWaitTime;
     private Gradient currentGradient;
     private float torchLerpTime;
+    private float beatLevelTime;
+    private const float beatLevelWait = 1f;
 
     private GameObject sweetHeart;
     private GameObject fireStandard;
@@ -80,12 +83,21 @@ public class Player : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
+        //when you reload a scene if you don't reset the particles sometimes they 
+        //are added or not reset correctly, so...bam, fixed
+        ParticleSystem[] pses = GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem ps in pses) {
+            ps.Clear();
+        }
+
+
         sweetHeart = GameObject.Find("SweetHeartLife");
         canLight = false;
         fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
         makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
         makeMeSmallIfForced = GameObject.Find("SmallForced").GetComponent<ParticleSystem>();
+        teleportBam = GameObject.Find("TeleportBam").GetComponent<ParticleSystem>();
         fireStandard = GameObject.Find("FireAbilityStandard");
 
         flicker = GameObject.Find("Flicker");
@@ -104,7 +116,7 @@ public class Player : MonoBehaviour {
         sexyBody = GetComponent<Rigidbody2D>();
         unkillAbleDest = true;
 
-
+        beatLevelTime = int.MaxValue;
 
         SizeFix();   
     }
@@ -114,7 +126,7 @@ public class Player : MonoBehaviour {
     #region Updating
     //if something is rigidbody...
     void FixedUpdate() {
-        if (sizeFactor > 0) {
+        if (sizeFactor > 0 && beatLevelTime == int.MaxValue) {
             //if the camera is done moving once stopped to prevent stuttering...
             if (moving)
                 if (clickDest != null) {
@@ -136,21 +148,27 @@ public class Player : MonoBehaviour {
         varControl();
 
         //we want input and we want it now...
-        if (sizeFactor > 0)
+        if (sizeFactor > 0 && beatLevelTime == int.MaxValue)
             input();
+        //unless we die or win
         else {
             sexyBody.velocity = Vector2.zero;
-
             Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y,
-                    Camera.main.transform.position.z);
+            Camera.main.transform.position.z);
+            Camera.main.orthographicSize -= zoom;
 
+            transform.localScale *= .99f;
 
-            if (Camera.main.orthographicSize - zoom > 10) {
-                zoom += Camera.main.orthographicSize/30;
+            if (Camera.main.orthographicSize - zoom > 10) 
+                zoom += Camera.main.orthographicSize / 30;
+            //win
+            if (Time.time - beatLevelTime > beatLevelWait) {
+                GameManager.instance.ActivateNextLevelPanel();
             }
+            //dead
+            else if(sizeFactor == 0){
 
-            Camera.main.orthographicSize -= zoom; ;
-
+            }
         }
         //kinky fire changing lol...
         if (changeTorchType)
@@ -281,7 +299,6 @@ public class Player : MonoBehaviour {
             if (forced) {
                 makeMeSmallIfForced.startLifetime = 1f;
                 makeMeSmallIfForced.Emit(300);
-                SizeFix();
             }
             else {
                 if(sizeFactor == 0) {
@@ -294,7 +311,9 @@ public class Player : MonoBehaviour {
             if (sizeFactor == 0) {
                 GameManager.instance.ActivateRetryPanel();
             }
-            hitCoolDown = Time.time;
+        SizeFix();
+
+        hitCoolDown = Time.time;
     }
     public void MakeBig(Collider2D col) {
         if (sizeFactor < maxScaleFactor) {
@@ -315,7 +334,8 @@ public class Player : MonoBehaviour {
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
-            GameManager.instance.ActivateNextLevelPanel();
+            teleportBam.Emit(300);
+            beatLevelTime = Time.time;
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
                 if (col.gameObject.tag == "Torch") {

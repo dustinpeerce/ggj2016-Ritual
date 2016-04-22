@@ -160,6 +160,7 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
         resetTimer = true;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
