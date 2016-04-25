@@ -11,7 +11,8 @@ public class MaterialSwap : MonoBehaviour {
     }
 
     public void SwapMaterials(int swapTo) {
-        rendHeaven.material = Materials[swapTo];
+        if(rendHeaven!=null && swapTo != -1)
+            rendHeaven.material = Materials[swapTo];
     }
 
 }
