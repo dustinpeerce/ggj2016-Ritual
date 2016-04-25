@@ -4,7 +4,12 @@ using System.Collections;
 public class Movable : MonoBehaviour {
     public bool activated;
     public int attachedCandle;
-    public Vector3 finalPosition;
+    
+    Vector3 CurrfinalPosition;
+    public Vector3 finalPosition1;
+    public Vector3 finalPosition2;
+    public Vector3 finalPosition3;
+    public Vector3 finalPosition4;
     Vector3 startPosition;
     public int Obstacle_Type;
     public float speed = 8;
@@ -20,8 +25,23 @@ public class Movable : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public void Activation() {
-         
+    public void Activation(int move) {
+        if(move == 1)
+        {
+            CurrfinalPosition = finalPosition1;
+        }
+        else if(move == 2)
+        {
+            CurrfinalPosition = finalPosition2;
+        }
+        else if(move == 3)
+        {
+            CurrfinalPosition = finalPosition3;
+        }
+        else if(move == 4)
+        {
+            CurrfinalPosition = finalPosition4;
+        }
          timer = 0;
         
     }
@@ -31,7 +51,9 @@ public class Movable : MonoBehaviour {
 
             if (timer <= 1.0f) {
                 timer += Time.deltaTime * speed;
-                transform.position = new Vector3(Mathf.SmoothStep(startPosition.x, finalPosition.x, timer), Mathf.SmoothStep(startPosition.y, finalPosition.y, timer), 0);
+                //testing something
+                transform.position = new Vector3(Mathf.SmoothStep(transform.position.x, CurrfinalPosition.x, timer), Mathf.SmoothStep(transform.position.y, CurrfinalPosition.y, timer), 0);
+                //transform.position = new Vector3(Mathf.SmoothStep(startPosition.x, CurrfinalPosition.x, timer), Mathf.SmoothStep(startPosition.y, CurrfinalPosition.y, timer), 0);
                 //transform.position = Vector3.Lerp(startPosition, finalPosition, timer);
             }
 
@@ -78,7 +100,8 @@ public class Movable : MonoBehaviour {
             if (timer > 0.0f)
             {
                 timer -= Time.deltaTime * speed;
-                transform.position = new Vector3(Mathf.SmoothStep(finalPosition.x, startPosition.x, 1.0f - timer), Mathf.SmoothStep(finalPosition.y, startPosition.y, 1.0f - timer), 0);
+                transform.position = new Vector3(Mathf.SmoothStep(transform.position.x, startPosition.x, 1.0f - timer), Mathf.SmoothStep(transform.position.y, startPosition.y, 1.0f - timer), 0);
+                //transform.position = new Vector3(Mathf.SmoothStep(CurrfinalPosition.x, startPosition.x, 1.0f - timer), Mathf.SmoothStep(CurrfinalPosition.y, startPosition.y, 1.0f - timer), 0);
             }
         }
     }

@@ -2,11 +2,14 @@
 
 public class TargetSwitchScript : MonoBehaviour {
     public GameObject[] objectList;
-    
+
+    public Player.TorchColor type;
+
     private System.Array array;
     private System.Type t;
     private Generic<ISwitchTrigger> g;
 
+    private Player playa;
     private const float triggerWait = 1f;
     private float triggerTime;
 
@@ -16,6 +19,8 @@ public class TargetSwitchScript : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
+        playa = GameObject.FindObjectOfType<Player>();
+
         activated = false;
         g = new Generic<ISwitchTrigger>(objectList);
 
@@ -28,7 +33,7 @@ public class TargetSwitchScript : MonoBehaviour {
         else if(objectList[0].tag == WATER){
             request<WaterSwitch>("Player");
         }
-        triggerTime = -1f;
+        triggerTime = -10f;
 
     }
 
@@ -60,11 +65,13 @@ public class TargetSwitchScript : MonoBehaviour {
     }
 
     void trigger(Collider2D col) {
-        if(Time.time - triggerTime > triggerWait)
-            if (col.gameObject.tag == colliderTag) {
-                g.Activate((ISwitchTrigger[]) array);
-                triggerTime = Time.time;
-            }
+        if (playa.CurrentTorchType == type &&
+            playa.CanLight)
+            if (Time.time - triggerTime > triggerWait)
+                if (col.gameObject.tag == colliderTag) {
+                    g.Activate((ISwitchTrigger[]) array);
+                    triggerTime = Time.time;
+                }
     }
 
     void OnTriggerEnter2D(Collider2D col)

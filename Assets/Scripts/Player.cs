@@ -50,6 +50,7 @@ public class Player : MonoBehaviour {
     private ParticleSystem.ShapeModule fireShape;
     private ParticleSystem makeMeBig;
     private ParticleSystem makeMeSmallIfForced;
+    private ParticleSystem teleportBam;
     private bool rotated, distanceGreatEnough;
     private float rotateLerpTime;
     private Rigidbody2D sexyBody;
@@ -57,11 +58,19 @@ public class Player : MonoBehaviour {
     public  float hitCoolWaitTime;
     private Gradient currentGradient;
     private float torchLerpTime;
+    private float beatLevelTime;
+    private const float beatLevelWait = 1f;
 
     private GameObject sweetHeart;
+    private GameObject fireStandard;
+
     private GameObject flicker;
     private ParticleSystem.ColorOverLifetimeModule flickerGradient;
     private FlickerGradients flickerScript;
+
+    private GameObject flickerHeart;
+    private ParticleSystem.ColorOverLifetimeModule flickerHeartGradient;
+    private FlickerGradients flickerHeartScript;
 
     private ParticleSystem.ColorOverLifetimeModule torchGradient;
     private FlickerGradients torchScript;
@@ -69,8 +78,12 @@ public class Player : MonoBehaviour {
     private ParticleSystem.ColorOverLifetimeModule explosionGradient;
     private FlickerGradients explosionScript;
 
+    private PlayerHeart heartSystemScript;
+    private FIRE FIREUIScript;
+
     private bool changeTorchType;
     private ParticleSystem makeMeSmall;
+    private float zoom;
 
     public bool CameraShouldNOTMove {
         get { return distanceGreatEnough || !moving; }
@@ -78,16 +91,32 @@ public class Player : MonoBehaviour {
 
     //hmm...what's this for?
     void Start() {
+        //when you reload a scene if you don't reset the particles sometimes they 
+        //are added or not reset correctly, so...bam, fixed
+        ParticleSystem[] pses = GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem ps in pses) {
+            ps.Clear();
+        }
+
+        heartSystemScript = FindObjectOfType<PlayerHeart>();
+        FIREUIScript = FindObjectOfType<FIRE>();
+
         sweetHeart = GameObject.Find("SweetHeartLife");
-        canLight = true;
+        canLight = false;
         fireTail = GameObject.Find("FireTail").GetComponent<ParticleSystem>();
         makeMeBig = GameObject.Find("IWannaBeBig").GetComponent<ParticleSystem>();
         makeMeSmall = GameObject.Find("IWannaBeSmall").GetComponent<ParticleSystem>();
         makeMeSmallIfForced = GameObject.Find("SmallForced").GetComponent<ParticleSystem>();
+        teleportBam = GameObject.Find("TeleportBam").GetComponent<ParticleSystem>();
+        fireStandard = GameObject.Find("FireAbilityStandard");
 
         flicker = GameObject.Find("Flicker");
         flickerGradient = flicker.GetComponent<ParticleSystem>().colorOverLifetime;
         flickerScript = flicker.GetComponent<FlickerGradients>();
+
+        flickerHeart = GameObject.Find("FlickerHeart");
+        flickerHeartGradient = flickerHeart.GetComponent<ParticleSystem>().colorOverLifetime;
+        flickerHeartScript = flickerHeart.GetComponent<FlickerGradients>();
 
         torchGradient = fireTail.colorOverLifetime;
         torchScript = fireTail.GetComponent<FlickerGradients>();
@@ -101,7 +130,7 @@ public class Player : MonoBehaviour {
         sexyBody = GetComponent<Rigidbody2D>();
         unkillAbleDest = true;
 
-
+        beatLevelTime = int.MaxValue;
 
         SizeFix();   
     }
@@ -111,17 +140,19 @@ public class Player : MonoBehaviour {
     #region Updating
     //if something is rigidbody...
     void FixedUpdate() {
-        //if the camera is done moving once stopped to prevent stuttering...
-        if (moving)
-            if (clickDest != null) {
-                clickAndGo();
+        if (sizeFactor > 0 && beatLevelTime == int.MaxValue) {
+            //if the camera is done moving once stopped to prevent stuttering...
+            if (moving)
+                if (clickDest != null) {
+                    clickAndGo();
+                }
+                else {
+                    sexyBody.velocity *= .2f;
+                }
+            if (killDest) {
+                sexyBody.velocity *= 0;
+                killDest = false;
             }
-            else {
-                sexyBody.velocity *= .2f;
-            }
-        if (killDest) {
-            sexyBody.velocity *= 0;
-            killDest = false;
         }
     }
 
@@ -131,8 +162,28 @@ public class Player : MonoBehaviour {
         varControl();
 
         //we want input and we want it now...
-        input();
-        
+        if (sizeFactor > 0 && beatLevelTime == int.MaxValue)
+            input();
+        //unless we die or win
+        else {
+            sexyBody.velocity = Vector2.zero;
+            Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y,
+            Camera.main.transform.position.z);
+            Camera.main.orthographicSize -= zoom;
+
+            transform.localScale *= .99f;
+
+            if (Camera.main.orthographicSize - zoom > 10) 
+                zoom += Camera.main.orthographicSize / 30;
+            //win
+            if (Time.time - beatLevelTime > beatLevelWait) {
+                GameManager.instance.ActivateNextLevelPanel();
+            }
+            //dead
+            else if(sizeFactor == 0){
+
+            }
+        }
         //kinky fire changing lol...
         if (changeTorchType)
             fiftyShadesOfFire();
@@ -143,6 +194,7 @@ public class Player : MonoBehaviour {
     //sexy changing fire stuff
     void fiftyShadesOfFire() {
         flickerGradient.color = flickerScript.ChangeGradient(currentTorchType);
+        flickerHeartGradient.color = flickerHeartScript.ChangeGradient(currentTorchType);
         torchGradient.color = torchScript.ChangeGradient(currentTorchType);
         explosionGradient.color = explosionScript.ChangeGradient(currentTorchType);
         changeTorchType = false;
@@ -258,32 +310,35 @@ public class Player : MonoBehaviour {
 
     public void MakeSmall(bool forced = false)
     {
-        if (!forced)
-            forced = Time.time - hitCoolDown > hitCoolWaitTime;
-        if (forced)
-        {
             sizeFactor--;
             if (forced) {
                 makeMeSmallIfForced.startLifetime = 1f;
                 makeMeSmallIfForced.Emit(300);
             }
             else {
+                if(sizeFactor == 0) {
+                    makeMeSmallIfForced.startLifetime = 1f;
+                    makeMeSmallIfForced.Emit(300);
+                }
                 makeMeSmall.startLifetime = 1f;
                 makeMeSmall.Emit(300);
             }
-            SizeFix();
-            if (sizeFactor == 0)
+            if (sizeFactor == 0) {
                 GameManager.instance.ActivateRetryPanel();
-            hitCoolDown = Time.time;
-        }
+            }
+        SizeFix();
+
+        hitCoolDown = Time.time;
     }
-    public void MakeBig(Collider2D col) {
+    public void MakeBigAndChangeColor(Collider2D col) {
         if (sizeFactor < maxScaleFactor) {
             sizeFactor++;
             makeMeBig.startLifetime = 1f;
             makeMeBig.Emit(300);
             changeTorchType = true;
-            currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy;
+            FIREUIScript.ChangeColor(currentTorchType = col.gameObject.GetComponent<EreDayBeTorching>().colorMeHappy);
+            hitCoolDown = Time.time;
+            SizeFix();
         }
     }
 
@@ -295,25 +350,16 @@ public class Player : MonoBehaviour {
             GameManager.instance.ActivateRetryPanel();
         }
         else if (col.gameObject.tag == "Teleporter") {
-            GameManager.instance.ActivateNextLevelPanel();
+            teleportBam.Emit(300);
+            beatLevelTime = Time.time;
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
-            
                 if (col.gameObject.tag == "Torch") {
-                    MakeBig(col);
+                    MakeBigAndChangeColor(col);
                 }
                 else if (col.gameObject.tag == "Water") {
-                    sizeFactor--;
-                    makeMeSmall.startLifetime = 1f;
-                    makeMeSmall.Emit(300);
+                    MakeSmall();
                 }
-                SizeFix();
-
-                if (sizeFactor == 0)
-                    GameManager.instance.ActivateRetryPanel();
-
-                hitCoolDown = Time.time;
-            
         }
 
     }
@@ -333,7 +379,12 @@ public class Player : MonoBehaviour {
 
         transform.localScale = new Vector3(si,si,si);
         flicker.transform.localScale = new Vector3(si, si, si) / 2.5f;
+        flickerHeart.transform.localScale = new Vector3(si, si, si) / 5.5f;
         fireTail.transform.localScale = new Vector3(si, si, si);
+        fireStandard.transform.localScale = new Vector3(si, si, si) / 2.2f;
+
+        heartSystemScript.Reset();
+        FIREUIScript.SetInactive(sizeFactor);
     }
 
     //I WANT TO MOVE!

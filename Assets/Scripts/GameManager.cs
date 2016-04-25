@@ -22,8 +22,13 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioButtonHover;
     private float volume;
 
+
+    private const float deathWait = 1f;
+    private float deathTime;
+    private bool deathInit;
+
     private Player player;
-    private FireBall fire;
+    private FireBall fireBall;
     private GameObject hudPanel;
     private GameObject pausePanel;
     private GameObject retryPanel;
@@ -68,9 +73,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-
         if (Input.GetMouseButtonDown(0)) {
-            player.SizeFix();//this is for the inspector edit stuff....
             if (!player.Moving && gameState == GameState.Play)
                 player.activateMovement();
             GameManager.instance.SetTimer(true);
@@ -95,6 +98,10 @@ public class GameManager : MonoBehaviour {
             string seconds = (timer % 60).ToString("00");
             timerText.text = minutes + ":" + seconds;
         }
+
+        if (deathInit && Time.time - deathTime > deathWait) {
+            retryPanelDeathOrNot();
+        }
     }
 
     public void ActivatePausePanel() {
@@ -105,10 +112,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateRetryPanel() {
-        gameState = GameState.End;
-        AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
-        retryPanel.SetActive(true);
-        Time.timeScale = 0;
+        if (!deathInit && player.sizeFactor == 0) {
+            deathInit = true;
+            deathTime = Time.time;
+        }
+        else {
+            retryPanelDeathOrNot();
+        }
+    }
+    private void retryPanelDeathOrNot() {
+        if (gameState != GameState.End) {
+            gameState = GameState.End;
+            AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
+            retryPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ActivateNextLevelPanel() {
@@ -140,6 +158,7 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
         resetTimer = true;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
