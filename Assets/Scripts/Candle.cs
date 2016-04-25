@@ -1,82 +1,57 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 public class Candle : MonoBehaviour,ISwitchTrigger {
-    //this script covers the activation of moving objects based on player colliding with candle.
-    public int candleNumber;
-    public Player.TorchColor candleType;
-    int currLife;
-    public int candleLife;
-    GameObject[] gos;
-    Wheel[] wheelList;//list of items with wheel script
-    MovingWall[] wallList;//lis of items with movingwall script.
-    List<Movable> movableList;
-    Candle[] candleList;
-    Player player;
-    public bool CanAccess;
-    public bool activated;
-    public Vector3 pos1;//incase we need to hard-code a position, etc.
-    //public GameObject[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
-    public Movable[] Obstacle_List;//initialized your array.  Cannot test it but it is there.
-    private GameObject flame;
+
+    public int ArraySize;
+    public Movable[] MovableIEffect;
+    public Vector3[] HowMuchIMoveThem;
+    public Vector3[] MoveAfterFinished;
+    public float[] MovableSpeed;
+    
+    public float CandleActiveWait = 1;
+    public Player.TorchColor MyCandleType;
+    public bool FireCanLight;
+    
+    //my private vars
+    private AudioClip candleFlameAudio;
     private float volume;
-    public AudioClip candleFlame;
+
+    private Player player;
+    private GameObject flame;
+
+    private bool activated;
+    private float activeLerpTime;
+
 
     void Start() {
-
+        //get playa
         player = GameObject.FindObjectOfType<Player>();
-        //activated = false;
 
+        //get flame object and set it inactive
+        (flame = transform.FindChild("flame").gameObject).SetActive(false);
+        
+        //lerptimes set to big ass small value lol
+        activeLerpTime = int.MinValue;
 
-        //player = GameObject.FindObjectOfType<Fireball>();
-        //activated = false;
+        //setup audioclip
+        candleFlameAudio = Resources.Load<AudioClip>("Sounds/Candle");
+        volume = 1;//i guess?
 
-        flame = transform.FindChild("flame").gameObject;
-		if(activated)
-		{
-			currLife = candleLife;
-			flame.SetActive(true);
-            if (Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
-            {
-                foreach (Movable wall in Obstacle_List)
-                {
-                    if (wall.attachedCandle == candleNumber)
-                    {
-                        //wall.activated = true;//make this call an actual function.
-                        wall.activated = true;
-                        wall.Activation();
-                    }
-                    else {
-                        wall.activated = false;
-                    }
-                }
-            }
-        }
-		else
-			flame.SetActive(false);
-        volume = PlayerPrefs.GetFloat("sfxVolume");
-        currLife = 0;
-        movableList = new List<Movable>();
+        activated = false;
+
     }
     public void SwitchTriggger()//change this to target effect.
     {
-        // if (!CanAccess)//not sure if I will need this or not.
-        // {
-        CanAccess = !CanAccess;
-        if (activated && !CanAccess)//if it was just locked away
+        FireCanLight = !FireCanLight;
+        if (activated && !FireCanLight)//if it was just locked away
             {
                 activated = !activated;//lit candle was just locked away in ice... or something. no longer active.
-                flame.SetActive(CanAccess);
-                candleLife = 0;//just in case.
+                flame.SetActive(false);
             }
-        //flame.SetActive(true);// we are making it accessible, not turning it on.
-        //player.MakeSmall();//this will not happen because of the switch, but because of the fire's ability use.
-        //AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
-        //Activate();
-
-        // }
     }
     void OnTriggerEnter2D(Collider2D col) {
         lightCandle(col);
@@ -86,108 +61,126 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     }
     void lightCandle(Collider2D col) {
         if ((col.gameObject.tag == "Player" &&
-            player.CurrentTorchType == candleType &&
+            player.CurrentTorchType == MyCandleType &&
             player.CanLight) ||
             (col.gameObject.tag == "FireBall"&&
-             candleType == Player.TorchColor.Blue)
+             MyCandleType == Player.TorchColor.Blue)
             ) {
-            if (!activated && CanAccess) {
-                activated = !activated;
-                flame.SetActive(true);
-                if(col.gameObject.tag == "Player")
+            if (!activated && FireCanLight) {
+                Debug.Log("ACTIve");
+                if (col.gameObject.tag == "Player")
                     player.MakeSmall(true);
-                AudioSource.PlayClipAtPoint(candleFlame, Camera.main.transform.position, volume);
-                Activate();
+                activate();
             }
         }
     }
 
-    void Activate()//the activation function that starts everything up.
-    {
-        if (activated) {
-            currLife = candleLife;
-            //this will get replaced with a public array later.
-            if(Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
-            {
-                foreach(Movable wall in Obstacle_List)
-                {
-                    if (wall.attachedCandle == candleNumber)
-                    {
-                        //wall.activated = true;//make this call an actual function.
-                        wall.activated = true;
-                        wall.Activation();
-                    }
-                    else {
-                        //wall.activated = false;
-                    }
-                }
-            }
-            //could also grab an array of all candles using candlescript as the type in order to turn all other candles besides this one off.
-            candleList = GameObject.FindObjectsOfType(typeof(Candle)) as Candle[];
-            if (movableList.Count != 0) {
-                foreach (Candle light in candleList) {
-                    //wall.gameObject;
-                    if (light.candleNumber != candleNumber) {
-                        //light.activated = false;
-                        //light.Activate();
-                        //can access whatever it is that turns the light on and off here
-                        //uncertain how to do that right now.  Given that you managed to animate the fireball, I am assuming you have a good idea on how to do this.
-
-                        //can add a call here that accesses activate of the other arrays and setup something that checks if activated is true.
-                    }
-                }
-            }
-        }
-        else//Other Candle is calling this candle.  What do you want this candle to do?
-        {
-            if (Obstacle_List.Length != 0)//THIS WILL BREAK IF SOMETHING IN IT DOES NOT HAVE THE SCRIPT.
-            {
-                foreach (Movable wall in Obstacle_List)
-                {
-                    if (wall.attachedCandle == candleNumber)
-                    {
-                        //wall.activated = true;//make this call an actual function.
-                        wall.activated = false;
-                    }
-                }
-            }
-            
-            //set up the case of it being called when activated is still false (other candle calls it to turn off its objects
-            //code below is example but it is redundant here since the normal call will turn off everything else anyways.
-            /*
-            Moveable = GameObject.FindObjectsOfType(typeof(MoveableScript)) as MoveableScript[];
-            if (Moveable.Length != 0)
-            {
-                foreach (MoveableScript wall in Moveable)
-                {
-                    //wall.gameObject;
-                    if (wall.AttachedCandle == CandleNumber)
-                    {
-                        wall.Activated = false;//make this call an actual function.
-                        wall.Activation();
-                    }
-                }
-            }
-
-            */
+    private void activate() {
+        flame.SetActive(true);
+        AudioSource.PlayClipAtPoint(candleFlameAudio, Camera.main.transform.position, volume);
+        activated = true;
+        activeLerpTime = Time.time;
+        int ind = 0;
+        foreach(Movable moveMe in MovableIEffect) {
+            moveMe.Activate(MovableSpeed[ind], HowMuchIMoveThem[ind], MoveAfterFinished[ind++]);
         }
     }
-    // Update is called once per frame
+
     void Update() {
-        if(activated)
-        {
-            if (currLife > 0)
-                currLife--;
-            else
-            {
-                activated = !activated;
+        if (activated)
+            if (Time.time - activeLerpTime > CandleActiveWait) {
                 flame.SetActive(false);
-                Activate();
+                activated = false;
             }
-                
-        }
-          
-
     }
 
 }
+
+#if UNITY_EDITOR 
+#region EditorWindow
+// Custom Editor using SerializedProperties.
+// Automatic handling of multi-object editing, undo, and prefab overrides.
+[CustomEditor(typeof(Candle))]
+[CanEditMultipleObjects]
+public class MyCandleEditor : Editor {
+
+
+
+    SerializedProperty movables;
+    SerializedProperty movement;
+    SerializedProperty movementAfter;
+    SerializedProperty speed;
+    SerializedProperty arraySize;
+
+    SerializedProperty candleActiveWait;
+    SerializedProperty candleType;
+    SerializedProperty fireCanLight;
+
+    void OnEnable() {
+        // Setup the SerializedProperties.
+        updateProps();
+    }
+
+    public override void OnInspectorGUI() {
+        inspectorGagdet();
+    }
+
+    public void OnSceneGUI() {
+
+        EditorGUI.BeginChangeCheck();
+
+        if (EditorGUI.EndChangeCheck()) {
+            updateProps();
+        }
+    }
+
+    private void updateProps() {
+        movement = serializedObject.FindProperty("HowMuchIMoveThem");
+        movementAfter = serializedObject.FindProperty("MoveAfterFinished");
+        movables = serializedObject.FindProperty("MovableIEffect");
+        speed = serializedObject.FindProperty("MovableSpeed");
+        arraySize = serializedObject.FindProperty("ArraySize");
+        fireCanLight = serializedObject.FindProperty("FireCanLight");
+        candleActiveWait = serializedObject.FindProperty("CandleActiveWait");
+        candleType = serializedObject.FindProperty("MyCandleType");
+    }
+
+    private void inspectorGagdet() {
+        // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
+        serializedObject.Update();
+
+        fireCanLight.boolValue = EditorGUILayout.Toggle(fireCanLight.boolValue);
+        EditorGUILayout.DelayedFloatField(candleActiveWait);
+        candleType.enumValueIndex = (int) (Player.TorchColor)EditorGUILayout.EnumPopup((Player.TorchColor) candleType.enumValueIndex);
+
+        EditorGUILayout.DelayedIntField(arraySize);
+
+        movables.arraySize = arraySize.intValue;
+        speed.arraySize = arraySize.intValue;
+        movement.arraySize = arraySize.intValue;
+        movementAfter.arraySize = arraySize.intValue;
+
+        for (int i = 0;i < arraySize.intValue;i++) {
+            EditorGUILayout.Space();
+            EditorGUILayout.Space();
+            EditorGUILayout.Space();
+
+            movables.GetArrayElementAtIndex(i).objectReferenceValue = 
+                EditorGUILayout.ObjectField("Movable : ", movables.GetArrayElementAtIndex(i).objectReferenceValue, typeof(Movable), true);
+
+            EditorGUILayout.BeginHorizontal();
+            movement.GetArrayElementAtIndex(i).vector3Value =  
+                EditorGUILayout.Vector3Field("Move : " ,movement.GetArrayElementAtIndex(i).vector3Value);
+            EditorGUILayout.EndHorizontal();
+            movementAfter.GetArrayElementAtIndex(i).vector3Value =
+                EditorGUILayout.Vector3Field("After : ", movementAfter.GetArrayElementAtIndex(i).vector3Value);
+
+            speed.GetArrayElementAtIndex(i).floatValue = 
+                EditorGUILayout.DelayedFloatField("Speed : ",speed.GetArrayElementAtIndex(i).floatValue);
+        }
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}
+#endregion
+#endif
