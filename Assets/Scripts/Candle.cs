@@ -6,13 +6,16 @@ using UnityEditor;
 
 public class Candle : MonoBehaviour,ISwitchTrigger {
 
+    //to do with movables attached to candle
     public int ArraySize;
     public Movable[] MovableIEffect;
     public Vector3[] HowMuchIMoveThem;
     public Vector3[] MoveAfterFinished;
     public float[] MovableSpeed;
-    
-    public float CandleActiveWait = 1;
+    public float[] MovableWaitTime;
+
+
+  //  public float CandleActiveWait = 1;
     public Player.TorchColor MyCandleType;
     public bool FireCanLight;
     
@@ -26,6 +29,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     private bool activated;
     private float activeLerpTime;
 
+    private int reseted;
 
     void Start() {
         //get playa
@@ -42,7 +46,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
         volume = 1;//i guess?
 
         activated = false;
-
+        reseted = 0;
     }
     public void SwitchTriggger()//change this to target effect.
     {
@@ -53,12 +57,15 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
                 flame.SetActive(false);
             }
     }
+
     void OnTriggerEnter2D(Collider2D col) {
         lightCandle(col);
     }
+
     void OnTriggerStay2D(Collider2D col) {
         lightCandle(col);
     }
+
     void lightCandle(Collider2D col) {
         if ((col.gameObject.tag == "Player" &&
             player.CurrentTorchType == MyCandleType &&
@@ -67,7 +74,6 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
              MyCandleType == Player.TorchColor.Blue)
             ) {
             if (!activated && FireCanLight) {
-                Debug.Log("ACTIve");
                 if (col.gameObject.tag == "Player")
                     player.MakeSmall(true);
                 activate();
@@ -82,16 +88,16 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
         activeLerpTime = Time.time;
         int ind = 0;
         foreach(Movable moveMe in MovableIEffect) {
-            moveMe.Activate(MovableSpeed[ind], HowMuchIMoveThem[ind], MoveAfterFinished[ind++]);
+            moveMe.Activate(MovableSpeed[ind], HowMuchIMoveThem[ind], MoveAfterFinished[ind], MovableWaitTime[ind++], this);
         }
     }
 
-    void Update() {
-        if (activated)
-            if (Time.time - activeLerpTime > CandleActiveWait) {
-                flame.SetActive(false);
-                activated = false;
-            }
+    public void ResetActivation() {
+        if(++reseted == ArraySize) {
+            activated = false;
+            flame.SetActive(false);
+            reseted = 0;
+        }
     }
 
 }
@@ -111,8 +117,9 @@ public class MyCandleEditor : Editor {
     SerializedProperty movementAfter;
     SerializedProperty speed;
     SerializedProperty arraySize;
+    SerializedProperty moveWait;
 
-    SerializedProperty candleActiveWait;
+  //  SerializedProperty candleActiveWait;
     SerializedProperty candleType;
     SerializedProperty fireCanLight;
 
@@ -140,18 +147,28 @@ public class MyCandleEditor : Editor {
         movables = serializedObject.FindProperty("MovableIEffect");
         speed = serializedObject.FindProperty("MovableSpeed");
         arraySize = serializedObject.FindProperty("ArraySize");
+        moveWait = serializedObject.FindProperty("MovableWaitTime");
+
         fireCanLight = serializedObject.FindProperty("FireCanLight");
-        candleActiveWait = serializedObject.FindProperty("CandleActiveWait");
+    //    candleActiveWait = serializedObject.FindProperty("CandleActiveWait");
         candleType = serializedObject.FindProperty("MyCandleType");
     }
 
     private void inspectorGagdet() {
         // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
         serializedObject.Update();
-
+        EditorGUILayout.BeginHorizontal();       
+        EditorGUILayout.PrefixLabel("Can the fire light me? : ");
         fireCanLight.boolValue = EditorGUILayout.Toggle(fireCanLight.boolValue);
-        EditorGUILayout.DelayedFloatField(candleActiveWait);
-        candleType.enumValueIndex = (int) (Player.TorchColor)EditorGUILayout.EnumPopup((Player.TorchColor) candleType.enumValueIndex);
+        EditorGUILayout.EndHorizontal();
+
+
+//        EditorGUILayout.DelayedFloatField(candleActiveWait);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.PrefixLabel("Candle Torch Type : ");
+        candleType.enumValueIndex = (int) (Player.TorchColor) EditorGUILayout.EnumPopup((Player.TorchColor) candleType.enumValueIndex);
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.DelayedIntField(arraySize);
 
@@ -159,6 +176,7 @@ public class MyCandleEditor : Editor {
         speed.arraySize = arraySize.intValue;
         movement.arraySize = arraySize.intValue;
         movementAfter.arraySize = arraySize.intValue;
+        moveWait.arraySize = arraySize.intValue;
 
         for (int i = 0;i < arraySize.intValue;i++) {
             EditorGUILayout.Space();
@@ -177,6 +195,10 @@ public class MyCandleEditor : Editor {
 
             speed.GetArrayElementAtIndex(i).floatValue = 
                 EditorGUILayout.DelayedFloatField("Speed : ",speed.GetArrayElementAtIndex(i).floatValue);
+
+
+            moveWait.GetArrayElementAtIndex(i).floatValue =
+                EditorGUILayout.DelayedFloatField("WaitTilAfter : ", moveWait.GetArrayElementAtIndex(i).floatValue);
         }
 
         serializedObject.ApplyModifiedProperties();
