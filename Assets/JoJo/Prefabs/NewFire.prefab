@@ -11,7 +11,8 @@ GameObject:
   - 198: {fileID: 19800112}
   - 199: {fileID: 19990224}
   - 114: {fileID: 11457010}
-  m_Layer: 0
+  - 114: {fileID: 11417746}
+  m_Layer: 10
   m_Name: FlickerHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +34,7 @@ GameObject:
   - 198: {fileID: 19814912}
   - 199: {fileID: 19904092}
   - 114: {fileID: 11445332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall
   m_TagString: FireBall
   m_Icon: {fileID: 0}
@@ -51,7 +52,7 @@ GameObject:
   - 198: {fileID: 19845998}
   - 199: {fileID: 19953944}
   - 114: {fileID: 11488496}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flicker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +71,7 @@ GameObject:
   - 199: {fileID: 19997296}
   - 114: {fileID: 11466334}
   - 114: {fileID: 11407808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IWannaBeSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +90,7 @@ GameObject:
   - 199: {fileID: 19955944}
   - 114: {fileID: 11428238}
   - 114: {fileID: 11437460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IWannaBeBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +109,7 @@ GameObject:
   - 199: {fileID: 19991842}
   - 114: {fileID: 11440720}
   - 114: {fileID: 11400234}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TeleportBam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +125,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423866}
   - 212: {fileID: 21224304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +143,7 @@ GameObject:
   - 198: {fileID: 19871346}
   - 199: {fileID: 19940392}
   - 114: {fileID: 11489394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBallFlicker
   m_TagString: FireBall
   m_Icon: {fileID: 0}
@@ -161,7 +162,7 @@ GameObject:
   - 199: {fileID: 19927904}
   - 114: {fileID: 11445968}
   - 114: {fileID: 11478390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmallForced
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +177,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire Abilities/Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +195,7 @@ GameObject:
   - 198: {fileID: 19801556}
   - 199: {fileID: 19918742}
   - 114: {fileID: 11489386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +210,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NewFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +231,7 @@ GameObject:
   - 199: {fileID: 19978986}
   - 114: {fileID: 11404944}
   - 114: {fileID: 11463542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -251,7 +252,7 @@ GameObject:
   - 199: {fileID: 19929494}
   - 114: {fileID: 11452834}
   - 114: {fileID: 11468440}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireAbilityStandard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +270,7 @@ GameObject:
   - 198: {fileID: 19892390}
   - 199: {fileID: 19944814}
   - 114: {fileID: 11405524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBallFireTail
   m_TagString: FireBall
   m_Icon: {fileID: 0}
@@ -447,7 +448,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.374107, y: -0.6098582, z: 9.96875}
+  m_LocalPosition: {x: -12.858816, y: 1.3208134, z: 9.96875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496116}
@@ -786,6 +787,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd0452a32fb71545bde939a0eeef9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11417746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe757beb41264488c87d94b04e96ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 889f5a1203e6ca2459cc3ca78ce1ba51, type: 2}
+  - {fileID: 2100000, guid: b6c8bc5996aaec045b2837dd98235404, type: 2}
+  - {fileID: 2100000, guid: eb5c707416f2509408bbfcb6a19db234, type: 2}
+  - {fileID: 2100000, guid: ca7b2c5219f106b4381fc1f58dcfb20d, type: 2}
 --- !u!114 &11428238
 MonoBehaviour:
   m_ObjectHideFlags: 1
