@@ -43,7 +43,7 @@ public class PlayerAbilities : MonoBehaviour {
             }
             if (Input.GetMouseButton(1)) {
                 playerHeart.TickDown();
-
+                firePlayer.transform.position += new Vector3(.0001f, .0001f, .0001f);
                 if (firePlayer.sizeFactor <= 0)
                     emission.enabled = false;
                 else {

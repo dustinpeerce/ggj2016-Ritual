@@ -19,16 +19,18 @@ public class FIRE : MonoBehaviour {
     }
 
     public void FixHeart(float half) {
-        float fill = (half) % 4 / 4;
-        fill = (fill == 0) ? 1 : fill;
-        babies[babies.Length - 2].fillAmount = fill;
-        playerFlickerHeartMaterialSwap.SwapMaterials((int)(half-1) % 4);
+        if (babies != null) {
+            float fill = (half) % 4 / 4;
+            fill = (fill == 0) ? 1 : fill;
+            babies[babies.Length - 2].fillAmount = fill;
+            playerFlickerHeartMaterialSwap.SwapMaterials((int) (half - 1) % 4);
+        }
     }
 
     public void SetInactive(int size) {
-        for(int i=1 ; i <= 4 - size ; i++) {
-            babies[i].color = Inactive[i-1];
-        }
+        if(babies!=null)
+            for(int i=1 ; i <= 4 - size ; i++) 
+                babies[i].color = Inactive[i-1];
     }
         
     public void ChangeColor(Player.TorchColor newColor) {
