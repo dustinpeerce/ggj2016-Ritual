@@ -182,7 +182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].x
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].y
@@ -191,6 +191,10 @@ Prefab:
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableSpeed.Array.data[0]
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: MovableWaitTime.Array.data[0]
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
@@ -2315,7 +2319,7 @@ Prefab:
       objectReference: {fileID: 1834776450}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: HowMuchIMoveThem.Array.data[0].y
-      value: -10
+      value: -7.4
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: HowMuchIMoveThem.Array.data[0].z
@@ -2351,11 +2355,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableSpeed.Array.data[0]
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableSpeed.Array.data[1]
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: ArraySize
@@ -2379,7 +2383,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].x
@@ -2387,7 +2391,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableWaitTime.Array.data[0]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableWaitTime.Array.data[1]
@@ -3715,7 +3719,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableSpeed.Array.data[0]
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: ArraySize
@@ -3723,11 +3727,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11484972, guid: fe5473a933f19554688eaacab0572f62, type: 2}
       propertyPath: MovableWaitTime.Array.data[0]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
