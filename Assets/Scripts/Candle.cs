@@ -53,7 +53,7 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     }
     public void SwitchTriggger()//change this to target effect.
     {
-        FireCanLight = !FireCanLight;
+        FireCanLight = true;
         if (activated && !FireCanLight)//if it was just locked away
             {
                 activated = !activated;//lit candle was just locked away in ice... or something. no longer active.
