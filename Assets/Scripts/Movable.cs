@@ -23,7 +23,7 @@ public class Movable : MonoBehaviour {
 
     public void Activate(float speed, Vector3 distance, Vector3 moveBack, float afterWait, Candle resetCandle) {
         if (transform.position == distance+originalPosition)
-            resetCandle.ResetActivation();
+            resetCandle.ResetActivation(true);
         else {
             this.speed = speed;
             this.finalPos = distance + transform.position;
@@ -55,7 +55,7 @@ public class Movable : MonoBehaviour {
             else {
                 hitFirst = false;
                 hitSecond = false;
-                resetCandle.ResetActivation();
+                resetCandle.ResetActivation(aftaDistance == Vector3.zero);
                 resetCandle = null;
                 if (aftaDistance != Vector3.zero)
                     transform.position = originalPosition;

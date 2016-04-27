@@ -48,10 +48,11 @@ public class FIRE : MonoBehaviour {
         }
 
         foreach (Image i in babies)
-            i.color = tempColor;
+            if(i.name != name && i.name != "HeartBG")
+                i.color = tempColor;
 
-        babies[0].color = Panel;
-        babies[babies.Length - 1].color = Panel;
+        //babies[0].color = Panel;
+        //babies[babies.Length - 1].color = Panel;
     }
 
 }
