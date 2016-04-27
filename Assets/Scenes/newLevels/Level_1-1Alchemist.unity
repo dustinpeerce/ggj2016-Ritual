@@ -2179,44 +2179,36 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 481002, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
+    - target: {fileID: 401766, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477982, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2073038, guid: a33ba054212837342aeb67c4c9fd7743, type: 2}
-      propertyPath: m_HDR
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

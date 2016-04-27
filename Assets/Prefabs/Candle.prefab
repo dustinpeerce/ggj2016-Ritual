@@ -90,11 +90,11 @@ MonoBehaviour:
   HowMuchIMoveThem:
   - {x: -8, y: 0, z: 0}
   MoveAfterFinished:
-  - {x: 8, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   MovableSpeed:
-  - 10
+  - 30
   MovableWaitTime:
-  - 1
+  - 10
   MyCandleType: 0
   FireCanLight: 1
 --- !u!212 &21233966
