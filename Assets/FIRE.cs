@@ -48,7 +48,7 @@ public class FIRE : MonoBehaviour {
         }
 
         foreach (Image i in babies)
-            if(i.name != name)
+            if(i.name != name && i.name != "HeartBG")
                 i.color = tempColor;
 
         //babies[0].color = Panel;

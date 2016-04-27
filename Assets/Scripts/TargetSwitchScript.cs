@@ -2,9 +2,10 @@
 
 public class TargetSwitchScript : MonoBehaviour {
     public GameObject[] objectList;
-
+    public Sprite[] frogSprites;    
     public Player.TorchColor type;
 
+    private SpriteRenderer[] objectSprites;
     private System.Array array;
     private System.Type t;
     private Generic<ISwitchTrigger> g;
@@ -14,6 +15,8 @@ public class TargetSwitchScript : MonoBehaviour {
     private float triggerTime;
 
     private bool activated;
+    private bool isFrog;
+    private SpriteRenderer rendHeaven;
     private string colliderTag;
     private const string TORCH = "Torch", CANDLE = "Candle", WATER = "Water";
     
@@ -29,17 +32,21 @@ public class TargetSwitchScript : MonoBehaviour {
         }
         else if(objectList[0].tag == CANDLE){
             request<Candle>("FireBall");
+            isFrog = true;
+            rendHeaven = GetComponent<SpriteRenderer>();
         }
         else if(objectList[0].tag == WATER){
             request<WaterSwitch>("Player");
         }
         triggerTime = -10f;
-
     }
 
     private void request<Type>(string colliderTag) {
         this.colliderTag = colliderTag;
         array = g.RequestTorchOrCandle<Type>();
+        objectSprites = new SpriteRenderer[objectList.Length];
+        for (int i = 0;i < objectSprites.Length;i++)
+            objectSprites[i] = objectList[i].GetComponent<SpriteRenderer>();
     }
 
     private class Generic<Type> {
@@ -71,6 +78,13 @@ public class TargetSwitchScript : MonoBehaviour {
                 if (col.gameObject.tag == colliderTag) {
                     g.Activate((ISwitchTrigger[]) array);
                     triggerTime = Time.time;
+                    if (isFrog) {
+                        rendHeaven.sprite = frogSprites[1];
+                        rendHeaven.color = Color.white;
+                        foreach(SpriteRenderer sr in objectSprites) {
+                            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+                        }
+                    }
                 }
     }
 
