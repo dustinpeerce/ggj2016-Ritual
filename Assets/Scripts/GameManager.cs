@@ -130,18 +130,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateNextLevelPanel() {
-        gameState = GameState.End;
-        if (Time.time - startTime > starTime2)
-            if (Time.time - startTime > starTime1)
-                starsWon = 1;
+        if (gameState != GameState.End) {
+            gameState = GameState.End;
+            if (Time.time - startTime > starTime2)
+                if (Time.time - startTime > starTime1)
+                    starsWon = 1;
+                else
+                    starsWon = 2;
             else
-                starsWon = 2;
-        else
-            starsWon = 3;
+                starsWon = 3;
 
-        AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
-        nextLevelPanel.SetActive(true);
-        Time.timeScale = 0;
+            AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
+            nextLevelPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ActivateStoryPanel() {
