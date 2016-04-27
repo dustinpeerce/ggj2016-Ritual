@@ -632,6 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   sizeFactor: 3
+  deacclertionRate: 0
   scale: 3
   maxScaleFactor: 4
   currentTorchType: 0

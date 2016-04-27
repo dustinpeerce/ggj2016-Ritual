@@ -1,15 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: f801d1be46f534d4ca87a8edc3ba4a40
-<<<<<<< HEAD
-timeCreated: 1461162218
-=======
-timeCreated: 1460989378
-=======
-guid: 358343892a629b341b539bcaefd4eeaf
-timeCreated: 1461162853
->>>>>>> origin/Tree_Lord
->>>>>>> refs/remotes/origin/master
+timeCreated: 1461335542
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -71,7 +62,7 @@ TextureImporter:
         width: 1741
         height: 2298
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 118.5, y: -411.5}
@@ -226,7 +217,7 @@ TextureImporter:
         width: 1455
         height: 1791
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 144.76001, y: -295.64215}
@@ -327,7 +318,7 @@ TextureImporter:
         width: 894
         height: 1145
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 166.39941, y: -74.00516}
@@ -375,7 +366,7 @@ TextureImporter:
         width: 571
         height: 732
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 105.64856, y: 28.306702}

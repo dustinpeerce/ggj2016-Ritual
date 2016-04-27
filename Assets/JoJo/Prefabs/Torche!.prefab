@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMeHappy: 0
+  TorchNumber: 0
 --- !u!114 &11422912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMeHappy: 1
+  TorchNumber: 0
 --- !u!114 &11488786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,6 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMeHappy: 2
+  TorchNumber: 0
 --- !u!114 &11497004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,6 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMeHappy: 3
+  TorchNumber: 0
 --- !u!198 &19814210
 ParticleSystem:
   m_ObjectHideFlags: 1

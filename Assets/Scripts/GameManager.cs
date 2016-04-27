@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     private bool deathInit;
 
     private Player player;
-    private FireBall fire;
+    private FireBall fireBall;
     private GameObject hudPanel;
     private GameObject pausePanel;
     private GameObject retryPanel;
@@ -73,9 +73,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-
         if (Input.GetMouseButtonDown(0)) {
-            player.SizeFix();//this is for the inspector edit stuff....
             if (!player.Moving && gameState == GameState.Play)
                 player.activateMovement();
             GameManager.instance.SetTimer(true);
@@ -132,18 +130,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateNextLevelPanel() {
-        gameState = GameState.End;
-        if (Time.time - startTime > starTime2)
-            if (Time.time - startTime > starTime1)
-                starsWon = 1;
+        if (gameState != GameState.End) {
+            gameState = GameState.End;
+            if (Time.time - startTime > starTime2)
+                if (Time.time - startTime > starTime1)
+                    starsWon = 1;
+                else
+                    starsWon = 2;
             else
-                starsWon = 2;
-        else
-            starsWon = 3;
+                starsWon = 3;
 
-        AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
-        nextLevelPanel.SetActive(true);
-        Time.timeScale = 0;
+            AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
+            nextLevelPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ActivateStoryPanel() {
