@@ -5,7 +5,6 @@ using UnityEditor;
 
 
 public class Candle : MonoBehaviour,ISwitchTrigger {
-
     //to do with movables attached to candle
     public int ArraySize;
     public Movable[] MovableIEffect;
@@ -14,8 +13,10 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     public float[] MovableSpeed;
     public float[] MovableWaitTime;
 
+    //this is for whenever a movable block(s) is/are already at it's final position
+    private float candleFlameWait = .25f;
+    private float candleFlameTime;
 
-  //  public float CandleActiveWait = 1;
     public Player.TorchColor MyCandleType;
     public bool FireCanLight;
     
@@ -34,6 +35,8 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     void Start() {
         //get playa
         player = GameObject.FindObjectOfType<Player>();
+
+        candleFlameTime = int.MinValue;
 
         //get flame object and set it inactive
         (flame = transform.FindChild("flame").gameObject).SetActive(false);
@@ -58,27 +61,29 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
             }
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        lightCandle(col);
-    }
 
     void OnTriggerStay2D(Collider2D col) {
-        lightCandle(col);
+        if(Time.time - candleFlameTime > candleFlameWait)
+            if(!activated && FireCanLight)
+                lightCandle(col);
     }
 
     void lightCandle(Collider2D col) {
-        if ((col.gameObject.tag == "Player" &&
-            player.CurrentTorchType == MyCandleType &&
-            player.CanLight) ||
-            (col.gameObject.tag == "FireBall"&&
-             MyCandleType == Player.TorchColor.Blue)
-            ) {
-            if (!activated && FireCanLight) {
-                if (col.gameObject.tag == "Player")
-                    player.MakeSmall(true);
+            //if player collides
+            if (col.gameObject.tag == "Player" &&
+                player.CurrentTorchType == MyCandleType &&
+                player.CanLight) {
+                player.MakeSmall();
                 activate();
             }
-        }
+
+            //fireball collider
+            else if ((col.gameObject.tag == "FireBall" &&
+                MyCandleType == Player.TorchColor.Blue
+                && MyCandleType == Player.TorchColor.Blue
+                )) {
+                activate();
+            }
     }
 
     private void activate() {
@@ -92,10 +97,12 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
         }
     }
 
-    public void ResetActivation() {
+    public void ResetActivation(bool dontReset) {
+        Debug.Log(dontReset);
         if(++reseted == ArraySize) {
-            activated = false;
-            flame.SetActive(false);
+            activated = dontReset;
+            flame.SetActive(dontReset);
+            candleFlameTime = Time.time;
             reseted = 0;
         }
     }
@@ -109,9 +116,6 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
 [CustomEditor(typeof(Candle))]
 [CanEditMultipleObjects]
 public class MyCandleEditor : Editor {
-
-
-
     SerializedProperty movables;
     SerializedProperty movement;
     SerializedProperty movementAfter;
@@ -161,9 +165,6 @@ public class MyCandleEditor : Editor {
         EditorGUILayout.PrefixLabel("Can the fire light me? : ");
         fireCanLight.boolValue = EditorGUILayout.Toggle(fireCanLight.boolValue);
         EditorGUILayout.EndHorizontal();
-
-
-//        EditorGUILayout.DelayedFloatField(candleActiveWait);
 
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PrefixLabel("Candle Torch Type : ");

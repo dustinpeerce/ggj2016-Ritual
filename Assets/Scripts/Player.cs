@@ -310,13 +310,14 @@ public class Player : MonoBehaviour {
 
     public void MakeSmall(bool forced = false)
     {
+        if (sizeFactor > 0) {
             sizeFactor--;
             if (forced) {
                 makeMeSmallIfForced.startLifetime = 1f;
                 makeMeSmallIfForced.Emit(300);
             }
             else {
-                if(sizeFactor == 0) {
+                if (sizeFactor == 0) {
                     makeMeSmallIfForced.startLifetime = 1f;
                     makeMeSmallIfForced.Emit(300);
                 }
@@ -326,9 +327,10 @@ public class Player : MonoBehaviour {
             if (sizeFactor == 0) {
                 GameManager.instance.ActivateRetryPanel();
             }
-        SizeFix();
+            SizeFix();
 
-        hitCoolDown = Time.time;
+            hitCoolDown = Time.time;
+        }
     }
     public void MakeBigAndChangeColor(Collider2D col) {
         if (sizeFactor < maxScaleFactor) {
