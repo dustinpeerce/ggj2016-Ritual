@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 
         gameState = GameState.Play;
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = FindObjectOfType<Player>();
         hudPanel = GameObject.Find("hudPanel");
         pausePanel = GameObject.Find("PausePanel");
         retryPanel = GameObject.Find("RetryPanel");
