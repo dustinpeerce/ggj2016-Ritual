@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a268272191853bc40b7b9d1e98aa1a70
 folderAsset: yes
 timeCreated: 1461864146
+=======
+guid: bd91e0aaba2c73843bfade6ff34bdc7b
+folderAsset: yes
+timeCreated: 1461858071
+>>>>>>> refs/remotes/origin/JoJoDin
 licenseType: Free
 DefaultImporter:
   userData: 
