@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     public int deacclertionRate;
     public int scale = 3;
     public float maxScaleFactor;
+    public float JoySensitivity;
 
     public TorchColor currentTorchType;
     public TorchColor CurrentTorchType {
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour {
     //Private attributes
     private const int fireLimit = 5;
 
+    private bool hasJoystick;
     private bool canLight;
     private float particleRotation;
     private Vector3 mousePos;
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour {
     private Vector3 clickRotationDest;
     private Vector2 clickMoveDest;
     private Vector3? clickDest;
+    private Vector3? joyDest;
     private float clickOrHoldTime;
     private const float clickOrHoldWait = .2f;
     private float clickDestTime;
@@ -97,7 +100,7 @@ public class Player : MonoBehaviour {
         foreach(ParticleSystem ps in pses) {
             ps.Clear();
         }
-
+        
         heartSystemScript = FindObjectOfType<PlayerHeart>();
         FIREUIScript = FindObjectOfType<FIRE>();
 
@@ -132,6 +135,8 @@ public class Player : MonoBehaviour {
 
         beatLevelTime = int.MaxValue;
 
+        hasJoystick = Input.GetJoystickNames().Length > 0;
+
         SizeFix();   
     }
     #endregion
@@ -145,7 +150,8 @@ public class Player : MonoBehaviour {
             if (moving)
                 if (clickDest != null) {
                     clickAndGo();
-                }
+                } else if (joyDest != null)
+                    move((Vector2)joyDest);
                 else {
                     sexyBody.velocity *= .2f;
                 }
@@ -213,36 +219,53 @@ public class Player : MonoBehaviour {
     #region input
     //handles input and how we react to such input...
     private void input() {
+
         if (moving) {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                setDest(true);
+                setClickDest(true);
                 clickOrHoldTime = Time.time;
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0)) {
                 clickOrHoldTime = Time.time;
             }
             else if (Input.GetKey(KeyCode.Mouse0)) {
-                if(Time.time - clickOrHoldTime > clickOrHoldWait)
-                    setDest();
+                if (Time.time - clickOrHoldTime > clickOrHoldWait)
+                    setClickDest();
             }
-            
+            //otherwise give me joystick
+            else if(hasJoystick){
+                float x = Input.GetAxis("Horizontal");
+                float y = Input.GetAxis("Vertical");
+                x = Mathf.Abs(x) > .3f ? x : 0;
+                y = Mathf.Abs(y) > .3f ? y : 0;
+
+                if (x != 0 || y != 0) {
+                    joyDest = new Vector3(x, y, 0) * JoySensitivity;
+                    clickDest = null;
+                }
+                else
+                    joyDest = null;
+            }
             else if (!unkillAbleDest) {
                 killDest = true;
                 clickDest = null;
             }
+            
         }
+
     }
 
-    private void setDest(bool kill = false) {
+    private void setClickDest(bool kill = false) {
         clickDest = mouseWorldPos;
         clickMoveDest = mouseWorldPos - transform.position;
         clickRotationDest = mousePos;
-        unkillAbleDest = kill;
+        unkillAbleDest = true;
     }
 
     //that there movement
     private void move(Vector2 dist) {
-        sexyBody.AddForce(dist*(speed * deacclertionRate / 4));
+        sexyBody.AddForce(dist*(speed));
+        sexyBody.velocity /= deacclertionRate;
     }
 
     //if we just click instead of holding and moving
@@ -418,6 +441,7 @@ public class MyPlayerEditor : Editor {
     SerializedProperty sizeFactor;
     SerializedProperty deacclertionRate;
     SerializedProperty hitCoolWaitTime;
+    SerializedProperty joySens;
     void OnEnable() {
         // Setup the SerializedProperties.
         updateProps();
@@ -449,6 +473,7 @@ public class MyPlayerEditor : Editor {
         sizeFactor = serializedObject.FindProperty("sizeFactor");
         deacclertionRate = serializedObject.FindProperty("deacclertionRate");
         hitCoolWaitTime = serializedObject.FindProperty("hitCoolWaitTime");
+        joySens = serializedObject.FindProperty("JoySensitivity");
     }
 
     private void inspectorGagdet() {
@@ -466,7 +491,7 @@ public class MyPlayerEditor : Editor {
 
         ProgressBar(sizeFactor.intValue, "Fire Size " + sizeFactor.intValue.ToString() + " / 4");
 
-        EditorGUILayout.IntSlider(speed, 1, 15, new GUIContent("Speed"));
+        EditorGUILayout.IntSlider(speed, 50, 200, new GUIContent("Speed"));
 
 
         EditorGUILayout.HelpBox("100 will make it linear, 1 will make it pure acceleration based", MessageType.Info);
@@ -475,6 +500,8 @@ public class MyPlayerEditor : Editor {
         EditorGUILayout.HelpBox("Don't Edit the scale unless you ask dustin first... :) thanks!", MessageType.Warning);
 
         EditorGUILayout.DelayedIntField(scale);
+
+        EditorGUILayout.DelayedFloatField(joySens);
 
         EditorGUILayout.DelayedFloatField(hitCoolWaitTime);
         
