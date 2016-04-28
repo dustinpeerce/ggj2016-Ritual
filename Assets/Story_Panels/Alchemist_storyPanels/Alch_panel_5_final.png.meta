@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 58436b00758e6e64bbaeed06b20a2a9e
+timeCreated: 1461864183
+=======
 guid: 15dd5fccd3c3b9e4ab9aff7648495538
 timeCreated: 1461858072
+>>>>>>> refs/remotes/origin/JoJoDin
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -30,7 +35,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
+<<<<<<< HEAD
+    aniso: 16
+=======
     aniso: -1
+>>>>>>> refs/remotes/origin/JoJoDin
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
