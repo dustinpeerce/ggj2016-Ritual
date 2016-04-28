@@ -2049,6 +2049,18 @@ Prefab:
       propertyPath: InitialModule.startSpeed.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11404944, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: JoySensitivity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404944, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: deacclertionRate
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404944, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
+      propertyPath: speed
+      value: 125
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 19904092, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}
     - {fileID: 19814912, guid: 5b8b4b7917f2e6b42bec796771e9883d, type: 2}

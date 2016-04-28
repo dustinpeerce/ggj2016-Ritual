@@ -41,7 +41,7 @@ public class PlayerAbilities : MonoBehaviour {
                 emission.enabled = false;
                 firePlayer.FlipCanLightSwitch();
             }
-            if (Input.GetMouseButton(1)) {
+            if (Input.GetMouseButton(1) || Mathf.Abs(Input.GetAxis("PlayerAbility")) >= .2f) {
                 playerHeart.TickDown();
                 firePlayer.transform.position += new Vector3(.0001f, .0001f, .0001f);
                 if (firePlayer.sizeFactor <= 0)

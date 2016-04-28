@@ -73,7 +73,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        
+        if (Input.GetMouseButtonDown(0) ||
+            Mathf.Abs(Input.GetAxis("Horizontal")) >= .2f || 
+            Mathf.Abs(Input.GetAxis("Vertical"))   >= .2f) {
             if (!player.Moving && gameState == GameState.Play)
                 player.activateMovement();
             GameManager.instance.SetTimer(true);
