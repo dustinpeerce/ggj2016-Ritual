@@ -61,28 +61,32 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
             }
     }
 
+    void OnTriggerEnter2D(Collider2D col) {
+        lightCandle(col);
+    }
 
     void OnTriggerStay2D(Collider2D col) {
-        if(Time.time - candleFlameTime > candleFlameWait)
-            if(!activated && FireCanLight)
-                lightCandle(col);
+        lightCandle(col);
     }
 
     void lightCandle(Collider2D col) {
-            //if player collides
-            if (col.gameObject.tag == "Player" &&
+        if (Time.time - candleFlameTime > candleFlameWait)
+            if (!activated && FireCanLight) {
+                //if player collides
+                if (col.gameObject.tag == "Player" &&
                 player.CurrentTorchType == MyCandleType &&
                 player.CanLight) {
-                player.MakeSmall();
-                activate();
-            }
+                    player.MakeSmall();
+                    activate();
+                }
 
-            //fireball collider
-            else if ((col.gameObject.tag == "FireBall" &&
-                MyCandleType == Player.TorchColor.Blue
-                && MyCandleType == Player.TorchColor.Blue
-                )) {
-                activate();
+                //fireball collider
+                else if ((col.gameObject.tag == "FireBall" &&
+                    MyCandleType == Player.TorchColor.Blue
+                    && MyCandleType == Player.TorchColor.Blue
+                    )) {
+                    activate();
+                }
             }
     }
 
@@ -98,7 +102,6 @@ public class Candle : MonoBehaviour,ISwitchTrigger {
     }
 
     public void ResetActivation(bool dontReset) {
-        Debug.Log(dontReset);
         if(++reseted == ArraySize) {
             activated = dontReset;
             flame.SetActive(dontReset);

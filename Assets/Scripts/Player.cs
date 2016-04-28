@@ -199,7 +199,7 @@ public class Player : MonoBehaviour {
         explosionGradient.color = explosionScript.ChangeGradient(currentTorchType);
         changeTorchType = false;
     }
-
+    
     //sets up vars for using
     void varControl() {
         //We need the mouse compared to the object...
