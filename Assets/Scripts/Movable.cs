@@ -65,7 +65,8 @@ public class Movable : MonoBehaviour {
                         if (newCollisionEnter)
                             newCollisionEnter = false;
                         aftaStarted = true;
-                        body.AddForce(moveBacks[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
+                        body.AddForce(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
+                        Debug.Log(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
                     }
                     else
                         hitSecond++;
