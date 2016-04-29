@@ -85,6 +85,27 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3568556 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 2021238629}
+--- !u!252 &3568559
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3568556}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &38861262 stripped
 Transform:
   m_PrefabParentObject: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -151,6 +172,10 @@ Prefab:
     - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_Size.y
       value: 5.0799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -225,6 +250,10 @@ Prefab:
     - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_Size.y
       value: 5.0799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -407,6 +436,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -477,6 +510,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -540,6 +577,27 @@ Transform:
   - {fileID: 2143292210}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &197720988 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 528981670}
+--- !u!252 &197720991
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197720988}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &200327854 stripped
 Transform:
   m_PrefabParentObject: {fileID: 425218, guid: db043be769df05747930ca98c4309bfb, type: 2}
@@ -604,6 +662,27 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_PrefabInternal: {fileID: 732631501}
+--- !u!1 &297197848 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 491522871}
+--- !u!252 &297197851
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 297197848}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &315587912 stripped
 Transform:
   m_PrefabParentObject: {fileID: 448786, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
@@ -674,6 +753,10 @@ Prefab:
     - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_Size.y
       value: 5.0799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -778,6 +861,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bc8c2a40cd763844a7836a5555b3360, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &398241233 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 155293468}
+--- !u!252 &398241236
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 398241233}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &402658843
 Prefab:
   m_ObjectHideFlags: 0
@@ -1057,7 +1161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.806
+      value: 15.08
       objectReference: {fileID: 0}
     - target: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1089,7 +1193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.8938126
       objectReference: {fileID: 0}
     - target: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
       propertyPath: m_LocalScale.z
@@ -1111,9 +1215,34 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &520763896 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 1606025527}
+--- !u!252 &520763899
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 520763896}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &528182652 stripped
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
@@ -1181,6 +1310,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1226,10 +1359,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db043be769df05747930ca98c4309bfb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &543507909 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 824198234}
+--- !u!252 &543507912
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543507909}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &573511305 stripped
 Transform:
   m_PrefabParentObject: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_PrefabInternal: {fileID: 782544398}
+--- !u!1 &597336457 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 1391547630}
+--- !u!252 &597336460
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 597336457}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &601879181
 Prefab:
   m_ObjectHideFlags: 0
@@ -1326,10 +1501,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &627055536 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 1573727975}
+--- !u!252 &627055539
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627055536}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &642277992 stripped
 Transform:
   m_PrefabParentObject: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_PrefabInternal: {fileID: 491522871}
+--- !u!1 &648996928 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 2090477578}
+--- !u!252 &648996931
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 648996928}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &731588637
 Prefab:
   m_ObjectHideFlags: 0
@@ -1443,6 +1660,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -1476,6 +1697,27 @@ Transform:
   - {fileID: 816784275}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &739410598 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 732631501}
+--- !u!252 &739410601
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739410598}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &739906168
 Prefab:
   m_ObjectHideFlags: 0
@@ -1731,6 +1973,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1809,6 +2055,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1879,6 +2129,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1936,6 +2190,27 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_PrefabInternal: {fileID: 155293468}
+--- !u!1 &875483574 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 1655391885}
+--- !u!252 &875483577
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875483574}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &934216245
 Prefab:
   m_ObjectHideFlags: 0
@@ -2135,6 +2410,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -2204,6 +2483,10 @@ Prefab:
     - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
       propertyPath: m_Size.y
       value: 5.1099997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
@@ -2368,6 +2651,27 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
   m_PrefabInternal: {fileID: 368068967}
+--- !u!1 &1320629382 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 1107935765}
+--- !u!252 &1320629385
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320629382}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &1323333493
 Prefab:
   m_ObjectHideFlags: 0
@@ -2481,6 +2785,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -2547,6 +2855,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -2554,6 +2866,27 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_PrefabInternal: {fileID: 1594602619}
+--- !u!1 &1398085540 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 1594602619}
+--- !u!252 &1398085543
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398085540}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &1418593118 stripped
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
@@ -2632,6 +2965,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 169d6346f63124f4abacf695c51a0101, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1456588033 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 52131552}
+--- !u!252 &1456588036
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456588033}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
+--- !u!1 &1468090551 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 782544398}
+--- !u!252 &1468090554
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468090551}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &1476529888
 Prefab:
   m_ObjectHideFlags: 0
@@ -2795,6 +3170,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.0799994
       objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
   m_IsPrefabParent: 0
@@ -2911,6 +3290,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -2988,6 +3371,10 @@ Prefab:
     - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_Size.y
       value: 5.079999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -3090,6 +3477,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1633472582 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 1364190462}
+--- !u!252 &1633472585
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1633472582}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &1655391885
 Prefab:
   m_ObjectHideFlags: 0
@@ -3157,6 +3565,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -3164,10 +3576,73 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
   m_PrefabInternal: {fileID: 616945444}
+--- !u!1 &1670776026 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 1177607603}
+--- !u!252 &1670776029
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670776026}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
+--- !u!1 &1682625681 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 78745350}
+--- !u!252 &1682625684
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682625681}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &1685389619 stripped
 Transform:
   m_PrefabParentObject: {fileID: 409364, guid: e1301e9b12ec7e5438349d3864552df9, type: 2}
   m_PrefabInternal: {fileID: 1779485458}
+--- !u!1 &1691301390 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 155514202}
+--- !u!252 &1691301393
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1691301390}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &1703935989
 Prefab:
   m_ObjectHideFlags: 0
@@ -3436,6 +3911,27 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 492072, guid: fe5473a933f19554688eaacab0572f62, type: 2}
   m_PrefabInternal: {fileID: 2108193336}
+--- !u!1 &1861123528 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130792, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+  m_PrefabInternal: {fileID: 820889743}
+--- !u!252 &1861123531
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861123528}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &1900381024 stripped
 Transform:
   m_PrefabParentObject: {fileID: 448786, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
@@ -3526,6 +4022,27 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 476772, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_PrefabInternal: {fileID: 1177607603}
+--- !u!1 &1957962353 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+  m_PrefabInternal: {fileID: 318267764}
+--- !u!252 &1957962356
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1957962353}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!4 &2000946661 stripped
 Transform:
   m_PrefabParentObject: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -3673,6 +4190,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.1099997
       objectReference: {fileID: 0}
+    - target: {fileID: 6127462, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49090d21d1f3b6847bdb6f9bd94e4ba0, type: 2}
   m_IsPrefabParent: 0
@@ -3771,6 +4292,14 @@ Prefab:
     - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_Size.y
       value: 5.0799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156488, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192188, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Movable : MonoBehaviour {
 
@@ -7,32 +7,45 @@ public class Movable : MonoBehaviour {
     private float speed, afterWait, afterTime;
     private Vector3 finalPos;
     private Vector3 distance;
-    private Vector3 aftaDistance;
+    private List<Vector3> aftaDistances;
     private Vector3 originalPosition;
+    private List<Vector3> moveBacks;
     private Candle resetCandle;
     private bool cantActivateAgain;
     private Rigidbody2D body;
-    private bool hitFirst,hitSecond;
+    private bool hitFirst;
+    private int hitSecond;
+
+    private bool aftaStarted;
+    private bool newCollisionEnter;
+    private const float collisionWait = .1f;
+    private float collisionTime;
+
 
     void Start() {
         finalPos = transform.position;
         afterTime = int.MinValue;
         afterWait = 0;
         body = GetComponent<Rigidbody2D>();
+        moveBacks = new List<Vector3>();
+        aftaDistances = new List<Vector3>();
     }
 
-    public void Activate(float speed, Vector3 distance, Vector3 moveBack, float afterWait, Candle resetCandle) {
+    public void Activate(float speed, Vector3 distance, Vector3 aftaDistance, float afterWait, Candle resetCandle) {
         if (transform.position == distance+originalPosition)
             resetCandle.ResetActivation(true);
         else {
+            if (this.resetCandle != null)
+                this.resetCandle.ResetActivation(aftaDistances[aftaDistances.Count - 1] == Vector3.zero);
+            this.resetCandle = resetCandle;
             this.speed = speed;
-            this.finalPos = distance + transform.position;
-            this.moveBack = moveBack + distance + transform.position;
             this.afterWait = afterWait;
             this.distance = distance;
-            this.aftaDistance = moveBack;
-            this.originalPosition = transform.position;
-            this.resetCandle = resetCandle;
+            finalPos = distance + transform.position;
+            if(aftaDistance!=Vector3.zero)
+                moveBacks.Add(aftaDistance + finalPos);
+            aftaDistances.Add(aftaDistance);
+            originalPosition = transform.position;
         }
     }
 
@@ -45,27 +58,58 @@ public class Movable : MonoBehaviour {
                     hitFirst = true;
                     afterTime = Time.time;
                 }
-            else if (aftaDistance != Vector3.zero && !hitSecond) {
+            else if (hitSecond < moveBacks.Count) {
+                Debug.Log(Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position));
                 if (Time.time - afterTime > afterWait)
-                    if (Vector3.Distance(moveBack, transform.position) >= .1f)
-                        body.AddForce(aftaDistance * speed * body.mass);
+                    if (Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position) >= .1f) {
+                        if (newCollisionEnter)
+                            newCollisionEnter = false;
+                        aftaStarted = true;
+                        body.AddForce(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
+                        Debug.Log(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
+                    }
                     else
-                        hitSecond = true;
+                        hitSecond++;
             }
-            else {
-                hitFirst = false;
-                hitSecond = false;
-                resetCandle.ResetActivation(aftaDistance == Vector3.zero);
-                resetCandle = null;
-                if (aftaDistance != Vector3.zero)
-                    transform.position = originalPosition;
-                else
-                    transform.position = finalPos;
-            }
-
+            else 
+                reset(aftaDistances.Count > 1);
+            
         body.velocity = Vector2.zero;
         }
     }
 
+    private void reset(bool moreThanOneAfta = false) {
+        hitFirst = false;
+        hitSecond = 0;
+        resetCandle.ResetActivation(aftaDistances[aftaDistances.Count - 1] == Vector3.zero);
+        resetCandle = null;
+        aftaDistances.Clear();
+        moveBacks.Clear();
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if (aftaStarted) {
+            Debug.Log("Reset _ " + col.gameObject.name);
+            collisionTime = Time.time;
+            newCollisionEnter = true;
+        }
+    }
+    void OnCollisionStay2D(Collision2D col) {
+        if(col.gameObject.tag != "Player")
+            if(newCollisionEnter)
+                if (Time.time - collisionTime > collisionWait) {
+                collisionTime = Time.time;
+                hitSecond++;
+                newCollisionEnter = false;
+            }
+    }
+    
+    //We might implement this...we'll see
+    //void OnCollisionEnter2D(Collision2D col) {
+    //    Debug.Log("Did i hit it?");
+    //    if(resetCandle!=null)
+    //        if(col.gameObject.tag == "Block") 
+    //            reset(true);
+    //}
 
 }
