@@ -116,19 +116,26 @@ public class Movable : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
+
         if (aftaStarted) {
             collisionTime = Time.time;
             newCollisionEnter = true;
         }
     }
     void OnCollisionStay2D(Collision2D col) {
-        if(col.gameObject.tag != "Player")
+        if(col.gameObject.tag != "Player"){
             if(newCollisionEnter)
                 if (Time.time - collisionTime > collisionWait) {
                 collisionTime = Time.time;
                 hitSecond++;
                 newCollisionEnter = false;
             }
+        }
+        else
+        {
+            body.velocity = Vector2.zero;
+        }
+
     }
     
     //We might implement this...we'll see

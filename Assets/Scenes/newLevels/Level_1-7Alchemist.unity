@@ -2893,6 +2893,14 @@ Prefab:
       propertyPath: m_Size.x
       value: 2.46
       objectReference: {fileID: 0}
+    - target: {fileID: 5019446, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
+      propertyPath: m_Mass
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019446, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06e369157a5d0c847b5d1bf2317f5241, type: 2}
   m_IsPrefabParent: 0
