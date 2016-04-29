@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 476772}
   - 212: {fileID: 21200614}
   - 61: {fileID: 6127462}
+  - 252: {fileID: 25279430}
   m_Layer: 0
   m_Name: alchemist_block_lg_1
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.672741, y: 32.482616, z: 0}
+  m_LocalPosition: {x: -19.931, y: 9.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37,12 +38,12 @@ BoxCollider2D:
   m_GameObject: {fileID: 130792}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 1.28}
+  m_Size: {x: 9.299999, y: 5.1099997}
 --- !u!212 &21200614
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -73,6 +74,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!252 &25279430
+SurfaceEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130792}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 0
+  m_SpeedVariation: 0
+  m_ForceScale: 0
+  m_UseContactForce: 0
+  m_UseFriction: 0
+  m_UseBounce: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

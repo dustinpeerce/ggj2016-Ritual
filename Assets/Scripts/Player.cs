@@ -136,6 +136,7 @@ public class Player : MonoBehaviour {
         beatLevelTime = int.MaxValue;
 
         hasJoystick = Input.GetJoystickNames().Length > 0;
+        Debug.Log(hasJoystick);
 
         SizeFix();   
     }
@@ -233,7 +234,7 @@ public class Player : MonoBehaviour {
                     setClickDest();
             }
             //otherwise give me joystick
-            else if(hasJoystick){
+            else if (hasJoystick) {
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Vertical");
                 x = Mathf.Abs(x) > .3f ? x : 0;
@@ -250,7 +251,6 @@ public class Player : MonoBehaviour {
                 killDest = true;
                 clickDest = null;
             }
-            
         }
 
     }
@@ -259,7 +259,7 @@ public class Player : MonoBehaviour {
         clickDest = mouseWorldPos;
         clickMoveDest = mouseWorldPos - transform.position;
         clickRotationDest = mousePos;
-        unkillAbleDest = true;
+        unkillAbleDest = kill;
     }
 
     //that there movement
