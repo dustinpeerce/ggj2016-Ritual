@@ -43,7 +43,7 @@ public class Movable : MonoBehaviour {
             this.distance = distance;
             finalPos = distance + transform.position;
             if(aftaDistance!=Vector3.zero)
-                moveBacks.Add(aftaDistance);
+                moveBacks.Add(aftaDistance + finalPos);
             aftaDistances.Add(aftaDistance);
             originalPosition = transform.position;
         }
@@ -59,8 +59,11 @@ public class Movable : MonoBehaviour {
                     afterTime = Time.time;
                 }
             else if (hitSecond < moveBacks.Count) {
+                Debug.Log(Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position));
                 if (Time.time - afterTime > afterWait)
                     if (Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position) >= .1f) {
+                        if (newCollisionEnter)
+                            newCollisionEnter = false;
                         aftaStarted = true;
                         body.AddForce(moveBacks[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
                     }
@@ -85,6 +88,7 @@ public class Movable : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (aftaStarted) {
+            Debug.Log("Reset _ " + col.gameObject.name);
             collisionTime = Time.time;
             newCollisionEnter = true;
         }
