@@ -79,11 +79,6 @@ public class Movable : MonoBehaviour {
         hitSecond = 0;
         resetCandle.ResetActivation(aftaDistances[aftaDistances.Count - 1] == Vector3.zero);
         resetCandle = null;
-        if(!moreThanOneAfta)
-            if (aftaDistances[aftaDistances.Count - 1] != Vector3.zero)
-                transform.position = originalPosition;
-            else
-                transform.position = finalPos;
         aftaDistances.Clear();
         moveBacks.Clear();
     }
