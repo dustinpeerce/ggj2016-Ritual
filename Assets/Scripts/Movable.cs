@@ -90,12 +90,13 @@ public class Movable : MonoBehaviour {
         }
     }
     void OnCollisionStay2D(Collision2D col) {
-        if(newCollisionEnter)
-            if (Time.time - collisionTime > collisionWait) {
-            collisionTime = Time.time;
-            hitSecond++;
-            newCollisionEnter = false;
-        }
+        if(col.gameObject.tag != "Player")
+            if(newCollisionEnter)
+                if (Time.time - collisionTime > collisionWait) {
+                collisionTime = Time.time;
+                hitSecond++;
+                newCollisionEnter = false;
+            }
     }
     
     //We might implement this...we'll see
