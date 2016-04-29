@@ -20,6 +20,7 @@ public class Movable : MonoBehaviour {
     private const float collisionWait = .1f;
     private float collisionTime;
     private Vector3 sign;
+    private Vector3 aftaSign;
 
     void Start() {
         finalPos = transform.position;
@@ -43,16 +44,18 @@ public class Movable : MonoBehaviour {
             finalPos = distance + transform.position;
             if (aftaDistance != Vector3.zero)
                 moveBacks.Add(aftaDistance + finalPos);
+
             aftaDistances.Add(aftaDistance);
             originalPosition = transform.position;
 
-            Debug.Log(sign = distance.normalized);
+            sign = distance.normalized;
+            Debug.Log(aftaSign = aftaDistance.normalized);
 
 
         }
     }
     //please don't change z...or you'll die.
-    private bool hasChangedSign(Vector3 final, Vector3 pos) {
+    private bool hasChangedSign(Vector3 final, Vector3 pos, Vector3 sign) {
         bool xPass = true, yPass = true;
         Vector3 questionMe = final - pos;
         Debug.Log(questionMe);
@@ -81,7 +84,7 @@ public class Movable : MonoBehaviour {
     void FixedUpdate() {
         if (resetCandle != null) {
             if (!hitFirst) {
-                if (hasChangedSign(finalPos,transform.position))
+                if (hasChangedSign(finalPos,transform.position,sign))
                     body.AddForce(distance * speed * body.mass);
                 else {
                     hitFirst = true;
@@ -90,7 +93,7 @@ public class Movable : MonoBehaviour {
             }
             else if (hitSecond < moveBacks.Count) {
                 if (Time.time - afterTime > afterWait)
-                    if (hasChangedSign(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position)) {
+                    if (hasChangedSign(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position,aftaSign)) {
                         if (newCollisionEnter)
                             newCollisionEnter = false;
                         aftaStarted = true;

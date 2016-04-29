@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
     private Vector2 clickMoveDest;
     private Vector3? clickDest;
     private Vector3? joyDest;
+    private Vector3? rightJoyDest;
     private float clickOrHoldTime;
     private const float clickOrHoldWait = .2f;
     private float clickDestTime;
@@ -237,8 +238,11 @@ public class Player : MonoBehaviour {
             else if (hasJoystick) {
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Vertical");
-                x = Mathf.Abs(x) > .3f ? x : 0;
-                y = Mathf.Abs(y) > .3f ? y : 0;
+
+
+
+                x = Mathf.Abs(x) > .5f ? x : 0;
+                y = Mathf.Abs(y) > .5f ? y : 0;
 
                 if (x != 0 || y != 0) {
                     joyDest = new Vector3(x, y, 0) * JoySensitivity;
@@ -246,6 +250,8 @@ public class Player : MonoBehaviour {
                 }
                 else
                     joyDest = null;
+
+                
             }
             else if (!unkillAbleDest) {
                 killDest = true;
@@ -321,7 +327,19 @@ public class Player : MonoBehaviour {
     #region nonFire
     public float ParticleRotation {
         get {
-            return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg);
+            float rx = Input.GetAxis("RHorizontal");
+            float ry = Input.GetAxis("RVertical");
+            rx = Mathf.Abs(rx) > .5f ? rx : 0;
+            ry = Mathf.Abs(ry) > .5f ? ry : 0;
+            if (rx != 0 || ry != 0)
+                rightJoyDest = new Vector3(rx, ry, 0) * JoySensitivity;
+            else
+                rightJoyDest = null;
+
+            if (rightJoyDest == null)
+                return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg);
+            else
+                return (Mathf.Atan2(((Vector2)rightJoyDest).y, ((Vector2)rightJoyDest).x) * Mathf.Rad2Deg);
         }
     }
     public bool CanLight {
