@@ -15,12 +15,11 @@ public class Movable : MonoBehaviour {
     private Rigidbody2D body;
     private bool hitFirst;
     private int hitSecond;
-
     private bool aftaStarted;
     private bool newCollisionEnter;
     private const float collisionWait = .1f;
     private float collisionTime;
-
+    private Vector3 sign;
 
     void Start() {
         finalPos = transform.position;
@@ -32,7 +31,7 @@ public class Movable : MonoBehaviour {
     }
 
     public void Activate(float speed, Vector3 distance, Vector3 aftaDistance, float afterWait, Candle resetCandle) {
-        if (transform.position == distance+originalPosition)
+        if (transform.position == distance + originalPosition)
             resetCandle.ResetActivation(true);
         else {
             if (this.resetCandle != null)
@@ -42,36 +41,63 @@ public class Movable : MonoBehaviour {
             this.afterWait = afterWait;
             this.distance = distance;
             finalPos = distance + transform.position;
-            if(aftaDistance!=Vector3.zero)
+            if (aftaDistance != Vector3.zero)
                 moveBacks.Add(aftaDistance + finalPos);
             aftaDistances.Add(aftaDistance);
             originalPosition = transform.position;
+
+            Debug.Log(sign = distance.normalized);
+
+
         }
     }
+    //please don't change z...or you'll die.
+    private bool hasChangedSign(Vector3 final, Vector3 pos) {
+        bool xPass = true, yPass = true;
+        Vector3 questionMe = final - pos;
 
-    void Update() {
+        if (sign.x < 0) {
+            if (questionMe.x > 0)
+                xPass = false;
+        }
+        else if (questionMe.x < 0)
+            xPass = false;
+        else//0
+            xPass = false;
+        if (sign.y < 0) {
+            if (questionMe.y > 0)
+                yPass = false;
+        }
+        else if (questionMe.y < 0)
+            yPass = false;
+        else//0
+            yPass = false;
+        //if both have flipped signs quit moving
+        return xPass || yPass;
+    }
+
+    void FixedUpdate() {
         if (resetCandle != null) {
-            if (!hitFirst)
-                if (Vector3.Distance(finalPos, transform.position) >= .1f)
+            if (!hitFirst) {
+                if (hasChangedSign(finalPos,transform.position))
                     body.AddForce(distance * speed * body.mass);
                 else {
                     hitFirst = true;
                     afterTime = Time.time;
                 }
+            }
             else if (hitSecond < moveBacks.Count) {
-                Debug.Log(Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position));
                 if (Time.time - afterTime > afterWait)
-                    if (Vector3.Distance(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position) >= .1f) {
+                    if (hasChangedSign(moveBacks[moveBacks.Count - 1 - hitSecond], transform.position)) {
                         if (newCollisionEnter)
                             newCollisionEnter = false;
                         aftaStarted = true;
                         body.AddForce(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
-                        Debug.Log(aftaDistances[moveBacks.Count - 1 - hitSecond] * speed * body.mass);
                     }
                     else
                         hitSecond++;
             }
-            else 
+            else
                 reset(aftaDistances.Count > 1);
             
         body.velocity = Vector2.zero;
@@ -89,7 +115,6 @@ public class Movable : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (aftaStarted) {
-            Debug.Log("Reset _ " + col.gameObject.name);
             collisionTime = Time.time;
             newCollisionEnter = true;
         }
