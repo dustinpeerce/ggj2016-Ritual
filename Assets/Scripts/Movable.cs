@@ -55,23 +55,25 @@ public class Movable : MonoBehaviour {
     private bool hasChangedSign(Vector3 final, Vector3 pos) {
         bool xPass = true, yPass = true;
         Vector3 questionMe = final - pos;
-
+        Debug.Log(questionMe);
         if (sign.x < 0) {
             if (questionMe.x > 0)
                 xPass = false;
         }
         else if (questionMe.x < 0)
             xPass = false;
-        else//0
+        else if (questionMe.x == 0)
             xPass = false;
+
         if (sign.y < 0) {
             if (questionMe.y > 0)
                 yPass = false;
         }
         else if (questionMe.y < 0)
             yPass = false;
-        else//0
-            yPass = false;
+        else if (questionMe.y == 0)
+            yPass = false;        
+
         //if both have flipped signs quit moving
         return xPass || yPass;
     }

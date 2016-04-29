@@ -3948,6 +3948,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
   m_IsPrefabParent: 0
@@ -7031,6 +7035,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
   m_IsPrefabParent: 0
@@ -8884,6 +8892,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
   m_IsPrefabParent: 0
@@ -9501,6 +9513,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
       propertyPath: MoveType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
+      propertyPath: FireCanLight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10201,6 +10217,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
   m_IsPrefabParent: 0
@@ -10561,7 +10581,7 @@ Transform:
   - {fileID: 1739491101}
   - {fileID: 531866219}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!4 &1077137526 stripped
 Transform:
   m_PrefabParentObject: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
@@ -12001,6 +12021,10 @@ Prefab:
       objectReference: {fileID: 818339214}
     - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
       propertyPath: MoveType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16746,6 +16770,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
   m_IsPrefabParent: 0
@@ -20628,6 +20656,10 @@ Prefab:
       propertyPath: MoveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
+      propertyPath: FireCanLight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
   m_IsPrefabParent: 0
@@ -20696,6 +20728,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
       propertyPath: MoveType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493234, guid: 62c8cc5a57139ab438eb0fcc7feb59a7, type: 2}
+      propertyPath: FireCanLight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21590,6 +21626,10 @@ Prefab:
       objectReference: {fileID: 252441815}
     - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
       propertyPath: MoveType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471424, guid: bf2b0d5953fd8604a9fc6952da4b2a3a, type: 2}
+      propertyPath: FireCanLight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
