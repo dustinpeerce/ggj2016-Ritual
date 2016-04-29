@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11417746}
   - 114: {fileID: 11461736}
   - 114: {fileID: 11427926}
+  - 114: {fileID: 11409334}
   m_Layer: 10
   m_Name: FlickerHeart
   m_TagString: Untagged
@@ -788,6 +789,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd0452a32fb71545bde939a0eeef9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11409334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe757beb41264488c87d94b04e96ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 889f5a1203e6ca2459cc3ca78ce1ba51, type: 2}
+  - {fileID: 2100000, guid: b6c8bc5996aaec045b2837dd98235404, type: 2}
+  - {fileID: 2100000, guid: eb5c707416f2509408bbfcb6a19db234, type: 2}
+  - {fileID: 2100000, guid: ca7b2c5219f106b4381fc1f58dcfb20d, type: 2}
 --- !u!114 &11417746
 MonoBehaviour:
   m_ObjectHideFlags: 1
