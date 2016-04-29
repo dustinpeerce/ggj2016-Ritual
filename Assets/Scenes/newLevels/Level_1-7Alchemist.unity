@@ -98,7 +98,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.56
+      value: -32.8
       objectReference: {fileID: 0}
     - target: {fileID: 459222, guid: a1a51c32f5d4e8042889b5ace5e7efa5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5837,7 +5837,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470568, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
       propertyPath: MoveAfterFinished.Array.data[0].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11470568, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
       propertyPath: MovableWaitTime.Array.data[0]
@@ -9182,7 +9182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11409866, guid: c10493b388cb9c440842b15196a6d013, type: 2}
       propertyPath: MovableWaitTime.Array.data[2]
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11409866, guid: c10493b388cb9c440842b15196a6d013, type: 2}
       propertyPath: MovableIEffect.Array.data[0]
