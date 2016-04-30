@@ -76,6 +76,7 @@ public class TargetSwitchScript : MonoBehaviour {
             playa.CanLight)
             if (Time.time - triggerTime > triggerWait)
                 if (col.gameObject.tag == colliderTag) {
+                    GameManager.instance.TargetAudioPlay();
                     g.Activate((ISwitchTrigger[]) array);
                     triggerTime = Time.time;
                     if (isFrog) {

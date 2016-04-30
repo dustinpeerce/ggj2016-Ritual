@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StoryTrigger : MonoBehaviour {
 
     // Public Attributes
     public GameObject[] storyPanels;
     public AudioClip changePanel;
+    public AudioClip audioStoryPanel;
+    public AudioClip audioGame;
 
     // Private Attributes
     private int currentPanelIndex = 0;
     private float volume;
 
     void Start() {
+
+        MusicManager.instance.SetMusic(audioStoryPanel);
 
         GameManager.instance.ActivateStoryPanel();
 
@@ -49,6 +54,9 @@ public class StoryTrigger : MonoBehaviour {
     }
 
     public void ClosePanel() {
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+            MusicManager.instance.SetMusic(audioGame);
+
         GameManager.instance.DeactivateStoryPanel();
         this.gameObject.SetActive(false);
     }

@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioPause;
     public AudioClip audioButtonClick;
     public AudioClip audioButtonHover;
+    public AudioClip audioWater;
+    public AudioClip audioTorch;
+    public AudioClip audioTarget;
+    public AudioClip audioFireball;
     private float volume;
 
 
@@ -225,5 +229,21 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonHover, Camera.main.transform.position, volume);
         Time.timeScale = 0;
+    }
+
+    public void WaterAudioPlay() {
+        AudioSource.PlayClipAtPoint(audioWater, Camera.main.transform.position, volume);
+    }
+
+    public void TorchAudioPlay() {
+        AudioSource.PlayClipAtPoint(audioTorch, Camera.main.transform.position, volume);
+    }
+
+    public void TargetAudioPlay() {
+        AudioSource.PlayClipAtPoint(audioTarget, Camera.main.transform.position, volume);
+    }
+
+    public void FireballAudioPlay() {
+        AudioSource.PlayClipAtPoint(audioFireball, Camera.main.transform.position, volume);
     }
 }

@@ -1383,6 +1383,10 @@ MonoBehaviour:
   audioPause: {fileID: 8300000, guid: c313d6fa0dc6d834f8e9f7c4afa8d6c2, type: 3}
   audioButtonClick: {fileID: 8300000, guid: 301f0083cc2956e4a9c96fdb58e0f6d6, type: 3}
   audioButtonHover: {fileID: 8300000, guid: e0b1967531da7c14d8594fa9d20ae2ae, type: 3}
+  audioWater: {fileID: 8300000, guid: 1b44755b88533e042ba4f639625d708d, type: 3}
+  audioTorch: {fileID: 8300000, guid: 9bfc107de20a1d6429dedd2433ecdad3, type: 3}
+  audioTarget: {fileID: 8300000, guid: 5b6e2da23ed38844582cfb8f712a9506, type: 3}
+  audioFireball: {fileID: 8300000, guid: f3d4c9566a1edac4c9636c635b0526b3, type: 3}
 --- !u!114 &11430540
 MonoBehaviour:
   m_ObjectHideFlags: 1

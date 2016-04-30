@@ -398,9 +398,11 @@ public class Player : MonoBehaviour {
         }
         if (Time.time - hitCoolDown > hitCoolWaitTime) {
                 if (col.gameObject.tag == "Torch") {
+                    GameManager.instance.TorchAudioPlay();
                     MakeBigAndChangeColor(col);
                 }
                 else if (col.gameObject.tag == "Water") {
+                    GameManager.instance.WaterAudioPlay();
                     MakeSmall();
                 }
         }
@@ -510,7 +512,6 @@ public class MyPlayerEditor : Editor {
         ProgressBar(sizeFactor.intValue, "Fire Size " + sizeFactor.intValue.ToString() + " / 4");
 
         EditorGUILayout.IntSlider(speed, 50, 200, new GUIContent("Speed"));
-
 
         EditorGUILayout.HelpBox("100 will make it linear, 1 will make it pure acceleration based", MessageType.Info);
         EditorGUILayout.IntSlider(deacclertionRate, 1, 100, new GUIContent("Deaccleration Rate"));

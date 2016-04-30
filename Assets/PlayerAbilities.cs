@@ -57,6 +57,7 @@ public class PlayerAbilities : MonoBehaviour {
                             boomBitch.enabled = true;
                             break;
                         case Player.TorchColor.Blue:
+                            GameManager.instance.FireballAudioPlay();
                             fireBall.FireTheFireball();
                             break;
                     }

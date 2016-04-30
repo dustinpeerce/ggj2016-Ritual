@@ -240,7 +240,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: targetAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b6e2da23ed38844582cfb8f712a9506, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169274}
