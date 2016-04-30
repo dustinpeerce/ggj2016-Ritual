@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LevelSelectManager : MonoBehaviour {
 
@@ -11,12 +12,17 @@ public class LevelSelectManager : MonoBehaviour {
     public AudioClip changePage;
     
     // Private Attributes
+    private GameObject[] worldPanelsFirstSelected;
     private int currentPanelIndex = 0;
     private float volume;
 
 	void Start () {
         worldPanels[0].SetActive(true);
+        worldPanelsFirstSelected = new GameObject[worldPanels.Length];
+        worldPanelsFirstSelected[0] = worldPanels[0].transform.GetChild(0).gameObject;
+        EventSystem.current.SetSelectedGameObject(worldPanelsFirstSelected[currentPanelIndex]);
         for (int i = 1; i < worldPanels.Length; i++) {
+            worldPanelsFirstSelected[i] = worldPanels[i].transform.GetChild(0).gameObject;
             worldPanels[i].SetActive(false);
         }
 

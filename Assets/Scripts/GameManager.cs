@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public interface ISwitchTrigger {
     void SwitchTriggger();
@@ -33,6 +34,9 @@ public class GameManager : MonoBehaviour {
     private GameObject pausePanel;
     private GameObject retryPanel;
     private GameObject nextLevelPanel;
+    private GameObject retryPanelFirstSelected;
+    private GameObject nextLevelPanelFirstSelected;
+    private GameObject pausePanelFirstSelected;
     private float timer,startTime;
     private bool timerActive,resetTimer;
     private Text timerText;
@@ -53,8 +57,11 @@ public class GameManager : MonoBehaviour {
         player = FindObjectOfType<Player>();
         hudPanel = GameObject.Find("hudPanel");
         pausePanel = GameObject.Find("PausePanel");
+        pausePanelFirstSelected = pausePanel.transform.FindChild("RetryButton").gameObject;
         retryPanel = GameObject.Find("RetryPanel");
+        retryPanelFirstSelected = retryPanel.transform.FindChild("RetryButton").gameObject;
         nextLevelPanel = GameObject.Find("NextLevelPanel");
+        nextLevelPanelFirstSelected = nextLevelPanel.transform.FindChild("NextLevelButton").gameObject;
         timerText = GameObject.Find("TimerText").GetComponent<Text>();
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
 	}
@@ -111,6 +118,7 @@ public class GameManager : MonoBehaviour {
         gameState = GameState.Paused;
         AudioSource.PlayClipAtPoint(audioPause, Camera.main.transform.position, volume);
         pausePanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(pausePanelFirstSelected);
         Time.timeScale = 0;
     }
 
@@ -128,6 +136,7 @@ public class GameManager : MonoBehaviour {
             gameState = GameState.End;
             AudioSource.PlayClipAtPoint(audioLose, Camera.main.transform.position, volume);
             retryPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(retryPanelFirstSelected);
             Time.timeScale = 0;
         }
     }
@@ -145,6 +154,7 @@ public class GameManager : MonoBehaviour {
 
             AudioSource.PlayClipAtPoint(audioWin, Camera.main.transform.position, volume);
             nextLevelPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(nextLevelPanelFirstSelected);
             Time.timeScale = 0;
         }
     }
@@ -172,6 +182,7 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         AudioSource.PlayClipAtPoint(audioButtonClick, Camera.main.transform.position, volume);
         pausePanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void NextLevel() {

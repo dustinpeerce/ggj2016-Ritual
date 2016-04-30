@@ -2,12 +2,15 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour {
 
     public GameObject musicManager;
     public GameObject mainPanel;
+    public GameObject mainPanelFirstSelected;
     public GameObject settingsPanel;
+    public GameObject settingsPanelFirstSelected;
     public AudioClip buttonClick;
     public AudioClip buttonHover;
     public AudioClip sliderDrop;
@@ -22,6 +25,7 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         mainPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(mainPanelFirstSelected);
         settingsPanel.SetActive(false);
 
         Time.timeScale = 1.0f;
@@ -46,12 +50,14 @@ public class MenuManager : MonoBehaviour {
         AudioSource.PlayClipAtPoint(buttonClick, Camera.main.transform.position, volume);
         mainPanel.SetActive(false);
         settingsPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(settingsPanelFirstSelected);
     }
 
     public void Close() {
         AudioSource.PlayClipAtPoint(buttonClick, Camera.main.transform.position, volume);
         settingsPanel.SetActive(false);
         mainPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(mainPanelFirstSelected);
     }
 
     public void Exit() {
