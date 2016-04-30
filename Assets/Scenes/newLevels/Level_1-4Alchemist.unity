@@ -2550,6 +2550,26 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6101644, guid: c10493b388cb9c440842b15196a6d013, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+    - target: {fileID: 6107300, guid: c10493b388cb9c440842b15196a6d013, type: 2}
+      propertyPath: m_Size.x
+      value: 3.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107300, guid: c10493b388cb9c440842b15196a6d013, type: 2}
+      propertyPath: m_Size.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107300, guid: c10493b388cb9c440842b15196a6d013, type: 2}
+      propertyPath: m_Offset.x
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107300, guid: c10493b388cb9c440842b15196a6d013, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c10493b388cb9c440842b15196a6d013, type: 2}
   m_IsPrefabParent: 0
@@ -3823,6 +3843,26 @@ Prefab:
     - target: {fileID: 11470568, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
       propertyPath: HowMuchIMoveThem.Array.data[0].x
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032594, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+    - target: {fileID: 6142264, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
+      propertyPath: m_Size.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142264, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
+      propertyPath: m_Size.y
+      value: 2.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142264, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142264, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}
+      propertyPath: m_Offset.x
+      value: -0.38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7484d4c03271ce446bc2c7ffc6c9fa7a, type: 2}

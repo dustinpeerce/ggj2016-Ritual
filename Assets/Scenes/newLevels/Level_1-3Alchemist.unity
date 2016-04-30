@@ -3218,6 +3218,18 @@ Prefab:
       propertyPath: MovableIEffect.Array.data[0]
       value: 
       objectReference: {fileID: 1834776450}
+    - target: {fileID: 6149120, guid: a07b01431aa0ccf42ac2bda172d27726, type: 2}
+      propertyPath: m_Size.x
+      value: 3.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149120, guid: a07b01431aa0ccf42ac2bda172d27726, type: 2}
+      propertyPath: m_Size.y
+      value: 3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096468, guid: a07b01431aa0ccf42ac2bda172d27726, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a07b01431aa0ccf42ac2bda172d27726, type: 2}
   m_IsPrefabParent: 0
@@ -3442,6 +3454,26 @@ Prefab:
       propertyPath: MovableIEffect.Array.data[0]
       value: 
       objectReference: {fileID: 1225094816}
+    - target: {fileID: 6193004, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
+      propertyPath: m_Size.x
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193004, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
+      propertyPath: m_Size.y
+      value: 3.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193004, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
+      propertyPath: m_Offset.x
+      value: -0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193004, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
+      propertyPath: m_Offset.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056900, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5430ca82d10a3f40891e2a9bb50cccb, type: 2}
   m_IsPrefabParent: 0
@@ -4126,9 +4158,39 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: m_Size.x
+      value: 2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: m_Size.y
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179612, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+      propertyPath: m_Offset.x
+      value: -0.21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2108193337 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 140000, guid: fe5473a933f19554688eaacab0572f62, type: 2}
+  m_PrefabInternal: {fileID: 2108193336}
+--- !u!61 &2108193338
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108193337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 291a79ba8547d894b81f65d63c5cee30, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.09, y: 2.22}
 --- !u!1001 &2127024312
 Prefab:
   m_ObjectHideFlags: 0
